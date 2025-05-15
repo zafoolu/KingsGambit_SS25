@@ -125,7 +125,6 @@ GameObject:
   - component: {fileID: 5461154255325297327}
   - component: {fileID: 3584056150184242983}
   - component: {fileID: 8383293016791129356}
-  - component: {fileID: -7060519666911141116}
   m_Layer: 7
   m_Name: BuildingOilHarvester
   m_TagString: Untagged
@@ -266,19 +265,6 @@ MonoBehaviour:
   startEnabledState: 0
   startTimer: 0
   startIntensity: 0.5
---- !u!114 &-7060519666911141116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3096952985198886928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7436477c50e6fce4789c78f43cf8a90e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resourceType: 3
 --- !u!1 &5931997346013031247
 GameObject:
   m_ObjectHideFlags: 0
