@@ -47,10 +47,6 @@ public class CursorSystemManager : MonoBehaviour {
             selectedCursorTypeSO = CursorTypeListSO.Instance.cursorHandUnClick;
         }
 
-        if (SpecialSkillsManager.Instance.IsAirstrikeButtonActive()) {
-            selectedCursorTypeSO = CursorTypeListSO.Instance.attack;
-        }
-
         if (selectedCursorTypeSO != lastSelectedCursorTypeSO) {
             CursorSystem.SetActiveCursorTypeSO(selectedCursorTypeSO);
         }

@@ -1,62 +1,62 @@
-using UnityEngine;
-using UnityEngine.UI;
+//using UnityEngine;
+//using UnityEngine.UI;
 
-public class SpecialSkillsUI : MonoBehaviour {
-
-
-    [SerializeField] private Button airstrikeButton;
-    [SerializeField] private GameObject airstrikeButtonSelectedGameObject;
-    [SerializeField] private Image airstrikeProgressImage;
+//public class SpecialSkillsUI : MonoBehaviour {
 
 
-    private void Awake() {
-        airstrikeButton.onClick.AddListener(() => {
-            if (SpecialSkillsManager.Instance.CanUseAirstrikeSkill()) {
-                // Can use skill
-                BuildingPlacementManager.Instance.ClearActiveBuildingType();
-                SpecialSkillsManager.Instance.SetIsAirstrikeButtonActive(true);
-            }
-        });
+//    [SerializeField] private Button airstrikeButton;
+//    [SerializeField] private GameObject airstrikeButtonSelectedGameObject;
+//    [SerializeField] private Image airstrikeProgressImage;
 
-        airstrikeButton.GetComponent<PointerEnterExitHook>().Setup(
-            () => {
-                TooltipScreenSpaceUI.ShowTooltip_Static(GetAirstrikeTooltipString, 99f);
-            },
-            () => {
-                TooltipScreenSpaceUI.HideTooltip_Static();
-            }
-        );
-    }
 
-    private void Start() {
-        SpecialSkillsManager.Instance.OnIsAirstrikeButtonActiveChanged += SpecialSkillsManager_OnIsAirstrikeButtonActiveChanged;
-        SpecialSkillsManager.Instance.OnZombiesKilledChanged += SpecialSkillsManager_OnZombiesKilledChanged;
+//    private void Awake() {
+//        airstrikeButton.onClick.AddListener(() => {
+//            if (SpecialSkillsManager.Instance.CanUseAirstrikeSkill()) {
+//                // Can use skill
+//                BuildingPlacementManager.Instance.ClearActiveBuildingType();
+//                SpecialSkillsManager.Instance.SetIsAirstrikeButtonActive(true);
+//            }
+//        });
 
-        UpdateVisual();
-    }
+//        airstrikeButton.GetComponent<PointerEnterExitHook>().Setup(
+//            () => {
+//                TooltipScreenSpaceUI.ShowTooltip_Static(GetAirstrikeTooltipString, 99f);
+//            },
+//            () => {
+//                TooltipScreenSpaceUI.HideTooltip_Static();
+//            }
+//        );
+//    }
 
-    private string GetAirstrikeTooltipString() {
-        string returnString = "Airstrike";
+//    private void Start() {
+//        SpecialSkillsManager.Instance.OnIsAirstrikeButtonActiveChanged += SpecialSkillsManager_OnIsAirstrikeButtonActiveChanged;
+//        SpecialSkillsManager.Instance.OnZombiesKilledChanged += SpecialSkillsManager_OnZombiesKilledChanged;
 
-        if (!SpecialSkillsManager.Instance.CanUseAirstrikeSkill()) {
-            returnString += "\n<color=#ff0000>Cannot use yet " + Mathf.RoundToInt(SpecialSkillsManager.Instance.GetAirstrikeSkillProgress() * 100f)+ "%</color>";
-        }
+//        UpdateVisual();
+//    }
 
-        return returnString;
-    }
+//    private string GetAirstrikeTooltipString() {
+//        string returnString = "Airstrike";
 
-    private void SpecialSkillsManager_OnZombiesKilledChanged(object sender, System.EventArgs e) {
-        UpdateVisual();
-    }
+//        if (!SpecialSkillsManager.Instance.CanUseAirstrikeSkill()) {
+//            returnString += "\n<color=#ff0000>Cannot use yet " + Mathf.RoundToInt(SpecialSkillsManager.Instance.GetAirstrikeSkillProgress() * 100f)+ "%</color>";
+//        }
 
-    private void SpecialSkillsManager_OnIsAirstrikeButtonActiveChanged(object sender, System.EventArgs e) {
-        UpdateVisual();
-    }
+//        return returnString;
+//    }
 
-    private void UpdateVisual() {
-        airstrikeButtonSelectedGameObject.SetActive(SpecialSkillsManager.Instance.IsAirstrikeButtonActive());
+//    private void SpecialSkillsManager_OnZombiesKilledChanged(object sender, System.EventArgs e) {
+//        UpdateVisual();
+//    }
 
-        airstrikeProgressImage.fillAmount = SpecialSkillsManager.Instance.GetAirstrikeSkillProgress();
-    }
+//    private void SpecialSkillsManager_OnIsAirstrikeButtonActiveChanged(object sender, System.EventArgs e) {
+//        UpdateVisual();
+//    }
 
-}
+//    private void UpdateVisual() {
+//        airstrikeButtonSelectedGameObject.SetActive(SpecialSkillsManager.Instance.IsAirstrikeButtonActive());
+
+//        airstrikeProgressImage.fillAmount = SpecialSkillsManager.Instance.GetAirstrikeSkillProgress();
+//    }
+
+//}

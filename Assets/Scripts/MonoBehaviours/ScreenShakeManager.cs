@@ -13,7 +13,7 @@ public class ScreenShakeManager : MonoBehaviour {
     private void Start() {
         BuildingPlacementManager.Instance.OnBuildingPlaced += BuildingPlacementManager_OnBuildingPlaced;
         DOTSEventsManager.Instance.OnHealthDead += DOTSEventsManager_OnHealthDead;
-        SpecialSkillsManager.Instance.OnAirStrikeExplosion += SpecialSkillsManager_OnAirStrikeExplosion;
+       
     }
 
     private void SpecialSkillsManager_OnAirStrikeExplosion(object sender, System.EventArgs e) {
