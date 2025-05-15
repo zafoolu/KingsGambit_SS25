@@ -127,22 +127,8 @@ public class UnitSelectionManager : MonoBehaviour {
             return;
         }
 
-        if (Input.GetMouseButtonDown(0)) {
-            if (SpecialSkillsManager.Instance.IsAirstrikeButtonActive()) {
-                // Aitstrike active, start airstrike
-                UnityEngine.Ray cameraRay = Camera.main.ScreenPointToRay(Input.mousePosition);
-                if (Physics.Raycast(cameraRay, out UnityEngine.RaycastHit raycastHit, 999f)) {
-                    SpecialSkillsManager.Instance.UseAirstrikeSkill(raycastHit.point);
-                }
-            }
-        }
 
-        if (Input.GetMouseButtonDown(1)) {
-            if (SpecialSkillsManager.Instance.IsAirstrikeButtonActive()) {
-                // Aitstrike active, start airstrike
-                SpecialSkillsManager.Instance.SetIsAirstrikeButtonActive(false);
-            }
-        }
+ 
 
         if (Input.GetMouseButtonDown(0)) {
             selectionStartMousePosition = Input.mousePosition;
