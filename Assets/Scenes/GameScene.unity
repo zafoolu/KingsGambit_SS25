@@ -970,9 +970,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911a28f52f6feea449c405849cfa9c05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  airstrikeButton: {fileID: 0}
-  airstrikeButtonSelectedGameObject: {fileID: 0}
-  airstrikeProgressImage: {fileID: 0}
 --- !u!1 &296788207
 GameObject:
   m_ObjectHideFlags: 0
