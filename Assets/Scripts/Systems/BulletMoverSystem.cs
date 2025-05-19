@@ -3,74 +3,66 @@ using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 
-[UpdateInGroup(typeof(SimulationSystemGroup))]
-public partial struct BulletMoverSystem : ISystem
-{
-    [BurstCompile]
-    public void OnCreate(ref SystemState state)
-    {
-        state.RequireForUpdate<EndSimulationEntityCommandBufferSystem.Singleton>();
-    }
+partial struct BulletMoverSystem : ISystem {
+
 
     [BurstCompile]
-    public void OnUpdate(ref SystemState state)
-    {
+    public void OnUpdate(ref SystemState state) {
         EntityCommandBuffer entityCommandBuffer =
-            SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>()
-            .CreateCommandBuffer(state.WorldUnmanaged);
+            SystemAPI.GetSingleton<EndSimulationEntityCommandBufferSystem.Singleton>().CreateCommandBuffer(state.WorldUnmanaged);
 
-        float deltaTime = SystemAPI.Time.DeltaTime;
-        const float moveSpeed = 10f;
-        const float destroyDistanceSq = 0.1f * 0.1f;
-
-        foreach ((RefRW<LocalTransform> localTransform,
+        foreach ((
+            RefRW<LocalTransform> localTransform,
             RefRW<Bullet> bullet,
             RefRO<Target> target,
-            Entity bulletEntity) in SystemAPI.Query<
+            Entity entity)
+            in SystemAPI.Query<
                 RefRW<LocalTransform>,
                 RefRW<Bullet>,
-                RefRO<Target>>()
-                .WithEntityAccess())
-        {
+                RefRO<Target>>().WithEntityAccess()) {
+
             float3 targetPosition;
-            Entity targetEntity = target.ValueRO.targetEntity;
 
-            if (targetEntity == Entity.Null || !SystemAPI.Exists(targetEntity))
-            {
+            if (target.ValueRO.targetEntity == Entity.Null) {
+                // Has no target
                 targetPosition = bullet.ValueRO.lastTargetPosition;
-            }
-            else
-            {
-                if (!SystemAPI.HasComponent<LocalTransform>(targetEntity) ||
-                    !SystemAPI.HasComponent<ShootVictim>(targetEntity))
-                {
-                    targetPosition = bullet.ValueRO.lastTargetPosition;
-                }
-                else
-                {
-                    var targetTransform = SystemAPI.GetComponent<LocalTransform>(targetEntity);
-                    var shootVictim = SystemAPI.GetComponent<ShootVictim>(targetEntity);
-                    targetPosition = targetTransform.TransformPoint(shootVictim.hitLocalPosition);
-                }
+            } else {
+                // Has target
+                LocalTransform targetLocalTransform = SystemAPI.GetComponent<LocalTransform>(target.ValueRO.targetEntity);
+                ShootVictim targetShootVictim = SystemAPI.GetComponent<ShootVictim>(target.ValueRO.targetEntity);
+                targetPosition = targetLocalTransform.TransformPoint(targetShootVictim.hitLocalPosition);
             }
 
-            float3 moveDir = math.normalize(targetPosition - localTransform.ValueRO.Position);
-            localTransform.ValueRW.Position += moveDir * deltaTime * moveSpeed;
+            bullet.ValueRW.lastTargetPosition = targetPosition;
 
-            if (math.distancesq(localTransform.ValueRO.Position, targetPosition) < destroyDistanceSq)
-            {
-                if (targetEntity != Entity.Null &&
-                    SystemAPI.Exists(targetEntity) &&
-                    SystemAPI.HasComponent<Health>(targetEntity))
-                {
-                    var targetHealth = SystemAPI.GetComponentRW<Health>(targetEntity);
+            float distanceBeforeSq = math.distancesq(localTransform.ValueRO.Position, targetPosition);
+
+            float3 moveDirection = targetPosition - localTransform.ValueRO.Position;
+            moveDirection = math.normalize(moveDirection);
+
+            localTransform.ValueRW.Position += moveDirection * bullet.ValueRO.speed * SystemAPI.Time.DeltaTime;
+
+            float distanceAfterSq = math.distancesq(localTransform.ValueRO.Position, targetPosition);
+
+            if (distanceAfterSq > distanceBeforeSq) {
+                // Overshot
+                localTransform.ValueRW.Position = targetPosition;
+            }
+
+            float destroyDistanceSq = .2f;
+            if (math.distancesq(localTransform.ValueRO.Position, targetPosition) < destroyDistanceSq) {
+                // Close enough to damage target
+                if (target.ValueRO.targetEntity != Entity.Null) {
+                    RefRW<Health> targetHealth = SystemAPI.GetComponentRW<Health>(target.ValueRO.targetEntity);
                     targetHealth.ValueRW.healthAmount -= bullet.ValueRO.damageAmount;
                     targetHealth.ValueRW.onHealthChanged = true;
                     targetHealth.ValueRW.onTookDamage = true;
                 }
 
-                entityCommandBuffer.DestroyEntity(bulletEntity);
+                entityCommandBuffer.DestroyEntity(entity);
             }
         }
     }
+
+
 }
