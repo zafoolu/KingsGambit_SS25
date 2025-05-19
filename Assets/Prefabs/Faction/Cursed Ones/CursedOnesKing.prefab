@@ -443,7 +443,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerMax: 2.1
   damageAmount: 82
-  colliderSize: 0.6
+  colliderSize: 2
 --- !u!114 &-6407208375415748744
 MonoBehaviour:
   m_ObjectHideFlags: 0
