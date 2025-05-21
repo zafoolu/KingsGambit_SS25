@@ -12,7 +12,7 @@ public partial class KnightTacticSystem : SystemBase
         
         try
         {
-            // Erste Job sammelt nur ShootVictim-Positionen
+            
             Entities
                 .WithName("CollectEntityPositions")
                 .WithAll<LocalToWorld, ShootVictim>() // Nur Entities mit ShootVictim-Komponente
@@ -26,7 +26,7 @@ public partial class KnightTacticSystem : SystemBase
                 })
                 .Run();
 
-            // Second job to check overlaps and debug draw
+            
             Entities
                 .WithName("CheckTacticOverlaps")
                 .ForEach((Entity entity, in KnightTactic tactic, in LocalToWorld transform) =>
@@ -41,9 +41,12 @@ public partial class KnightTacticSystem : SystemBase
                     quaternion hitbox2WorldRot = math.mul(worldRot, tactic.collider2Rotation);
 
                     #if UNITY_EDITOR
-                    DrawDebugBox(hitbox1WorldPos, hitbox1WorldRot, tactic.collider1Size, new Color(1, 0, 0, 0.5f));
-                    DrawDebugBox(hitbox2WorldPos, hitbox2WorldRot, tactic.collider2Size, new Color(0, 1, 0, 0.5f));
+                    int collider1Hits = 0;
+                    int collider2Hits = 0;
+                    Entity collider1Entity = Entity.Null;
+                    Entity collider2Entity = Entity.Null;
 
+                    // Zähle zuerst die Kollisionen
                     for (int i = 0; i < entityPositions.Length; i++)
                     {
                         var otherEntityPos = entityPositions[i];
@@ -52,10 +55,39 @@ public partial class KnightTacticSystem : SystemBase
                         bool inCollider1 = IsPointInBox(otherEntityPos.Position, hitbox1WorldPos, hitbox1WorldRot, tactic.collider1Size);
                         bool inCollider2 = IsPointInBox(otherEntityPos.Position, hitbox2WorldPos, hitbox2WorldRot, tactic.collider2Size);
 
-                        if (inCollider1 || inCollider2)
+                        if (inCollider1)
                         {
-                            string colliderInfo = inCollider1 ? "Collider 1" : "Collider 2";
-                            Debug.Log($"Kollision mit Opfer: Entity {entity.Index} ({colliderInfo}) mit ShootVictim Entity {otherEntityPos.Entity.Index}");
+                            collider1Hits++;
+                            collider1Entity = otherEntityPos.Entity;
+                        }
+                        if (inCollider2)
+                        {
+                            collider2Hits++;
+                            collider2Entity = otherEntityPos.Entity;
+                        }
+                    }
+
+                    // Setze die Farben basierend auf der Anzahl der Kollisionen
+                    Color box1Color = collider1Hits == 1 ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
+                    Color box2Color = collider2Hits == 1 ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
+
+                    DrawDebugBox(hitbox1WorldPos, hitbox1WorldRot, tactic.collider1Size, box1Color);
+                    DrawDebugBox(hitbox2WorldPos, hitbox2WorldRot, tactic.collider2Size, box2Color);
+
+                    // Debug-Ausgaben
+                    if (collider1Hits == 1 && collider2Hits == 1)
+                    {
+                        Debug.Log($"SHOOT - Perfekte Taktik! Entity {entity.Index} mit Victims {collider1Entity.Index} und {collider2Entity.Index}");
+                    }
+                    else
+                    {
+                        if (collider1Hits > 0)
+                        {
+                            Debug.Log($"Box 1 hat {collider1Hits} Kollision(en)");
+                        }
+                        if (collider2Hits > 0)
+                        {
+                            Debug.Log($"Box 2 hat {collider2Hits} Kollision(en)");
                         }
                     }
                     #endif
