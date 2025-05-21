@@ -16,6 +16,9 @@ public class KnightTacticAuthoring : MonoBehaviour
     public Vector3 collider2Rotation;
     public Vector3 collider2Scale = Vector3.one;
 
+    public float timerMax = 1f;  // Neue Variable für Schuss-Cooldown
+    public int damageAmount = 10; // Neue Variable für Schaden
+
     public class Baker : Baker<KnightTacticAuthoring>
     {
         public override void Bake(KnightTacticAuthoring authoring)
@@ -28,7 +31,11 @@ public class KnightTacticAuthoring : MonoBehaviour
                 collider1Position = authoring.collider1Position,
                 collider2Position = authoring.collider2Position,
                 collider1Rotation = Quaternion.Euler(authoring.collider1Rotation),
-                collider2Rotation = Quaternion.Euler(authoring.collider2Rotation)
+                collider2Rotation = Quaternion.Euler(authoring.collider2Rotation),
+                timerMax = authoring.timerMax,
+                timer = 0f,
+                damageAmount = authoring.damageAmount,
+                onShoot = new KnightTactic.OnShootEvent { isTriggered = false }
             });
         }
     }
@@ -90,4 +97,15 @@ public struct KnightTactic : IComponentData
     public Vector3 collider2Position;
     public Quaternion collider1Rotation;
     public Quaternion collider2Rotation;
+    
+    public float timer;
+    public float timerMax;
+    public int damageAmount;
+    public OnShootEvent onShoot;
+
+    public struct OnShootEvent
+    {
+        public bool isTriggered;
+        public float3 shootFromPosition;
+    }
 }
