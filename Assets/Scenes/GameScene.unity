@@ -379,7 +379,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cinemachineCamera: {fileID: 935374951}
   fieldOfViewMin: 20
-  fieldOfViewMax: 60
+  fieldOfViewMax: 85
 --- !u!1 &120068472
 GameObject:
   m_ObjectHideFlags: 0

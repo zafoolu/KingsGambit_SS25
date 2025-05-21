@@ -86,6 +86,68 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1444579161231081238
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8306445744574089035}
+  m_Layer: 6
+  m_Name: BulletSpawnPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8306445744574089035
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1444579161231081238}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.268, y: 1.935, z: 1.98}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7874505460035524181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6518172271047824370
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1188449751526927131}
+  m_Layer: 6
+  m_Name: HitPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1188449751526927131
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6518172271047824370}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.43, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7874505460035524181}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &7119888033824733612
 GameObject:
   m_ObjectHideFlags: 0
@@ -206,6 +268,10 @@ PrefabInstance:
       propertyPath: targetFaction
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -81372276374732813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: healthAmount
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_Name
       value: CarraraGolemsBishop
@@ -295,9 +361,15 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       insertIndex: 0
-      addedObject: {fileID: 1515477726171896230}
+      addedObject: {fileID: 8306445744574089035}
     - targetCorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       insertIndex: 1
+      addedObject: {fileID: 1188449751526927131}
+    - targetCorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      insertIndex: 2
+      addedObject: {fileID: 1515477726171896230}
+    - targetCorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      insertIndex: 3
       addedObject: {fileID: 8186375137360168971}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
@@ -306,6 +378,15 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3323873867033200624}
+    - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2134766295538930049}
+    - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1414223836727203895}
+    - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8811969285589938667}
   m_SourcePrefab: {fileID: 100100000, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
 --- !u!1 &2547314701683967756 stripped
 GameObject:
@@ -338,6 +419,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3790fcf0360af2d4184bdfaf290a1fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2134766295538930049
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547314701683967756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8b97635ab30f1c4d8001727a06b6a4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visualGameObject: {fileID: 1062680069303344837}
+  showScale: 2
+--- !u!114 &1414223836727203895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547314701683967756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4df94a1d23c7627488fe81b1bf4a7fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timerMax: 0.5
+  damageAmount: 20
+  attackDistance: 40
+  bulletspawnPositionTransform: {fileID: 8306445744574089035}
+--- !u!114 &8811969285589938667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547314701683967756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f3c290608b78e438534c9af8962ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPositionTransform: {fileID: 1188449751526927131}
 --- !u!4 &7874505460035524181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
