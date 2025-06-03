@@ -7,13 +7,21 @@ public class BuildingTypeSO : ScriptableObject {
 
     public enum BuildingType {
         None,
-        ZombieSpawner,
-        Tower,
-        Barracks,
-        HQ,
-        GoldHarvester,
-        IronHarvester,
-        OilHarvester,
+        
+        // Carrara Golems buildings
+        CarraraWorkshop,
+        CarraraTownhall,
+        CarraraSmeltery,
+        CarraraQuarry,
+        CarraraBarracks,
+        
+        // Cursed Ones buildings
+        CursedTownhall,
+        CursedRuins,
+        CursedGoldmine,
+        CursedCathedral,
+        CursedBloodcircle,
+        CursedAltar,
     }
 
 
@@ -35,25 +43,71 @@ public class BuildingTypeSO : ScriptableObject {
 
     public Entity GetPrefabEntity(EntitiesReferences entitiesReferences) {
         switch (buildingType) {
-            default:
             case BuildingType.None:
-            case BuildingType.Tower:            return entitiesReferences.buildingTowerPrefabEntity;
-            case BuildingType.Barracks:         return entitiesReferences.buildingBarracksPrefabEntity;
-            case BuildingType.IronHarvester:    return entitiesReferences.buildingIronHarvesterPrefabEntity;
-            case BuildingType.GoldHarvester:    return entitiesReferences.buildingGoldHarvesterPrefabEntity;
-            case BuildingType.OilHarvester:     return entitiesReferences.buildingOilHarvesterPrefabEntity;
+                return Entity.Null;
+            
+            // Carrara Golems buildings
+            case BuildingType.CarraraWorkshop:
+                return entitiesReferences.carraraGolemWorkshopPrefabEntity;
+            case BuildingType.CarraraTownhall:
+                return entitiesReferences.carraraGolemTownhallPrefabEntity;
+            case BuildingType.CarraraSmeltery:
+                return entitiesReferences.carraraGolemSmelteryPrefabEntity;
+            case BuildingType.CarraraQuarry:
+                return entitiesReferences.carraraGolemQuarryPrefabEntity;
+            case BuildingType.CarraraBarracks:
+                return entitiesReferences.carraraGolemBarracksPrefabEntity;
+            
+            // Cursed Ones buildings
+            case BuildingType.CursedTownhall:
+                return entitiesReferences.cursedOnesTownhallPrefabEntity;
+            case BuildingType.CursedRuins:
+                return entitiesReferences.cursedOnesRuinsPrefabEntity;
+            case BuildingType.CursedGoldmine:
+                return entitiesReferences.cursedOnesGoldminePrefabEntity;
+            case BuildingType.CursedCathedral:
+                return entitiesReferences.cursedOnesCathedralPrefabEntity;
+            case BuildingType.CursedBloodcircle:
+                return entitiesReferences.cursedOnesBloodCirclePrefabEntity;
+            case BuildingType.CursedAltar:
+                return entitiesReferences.cursedOnesAltarPrefabEntity;
+            default:
+                return Entity.Null;
         }
     }
 
     public Entity GetVisualPrefabEntity(EntitiesReferences entitiesReferences) {
         switch (buildingType) {
-            default:
             case BuildingType.None:
-            case BuildingType.Tower:            return entitiesReferences.buildingTowerVisualPrefabEntity;
-            case BuildingType.Barracks:         return entitiesReferences.buildingBarracksVisualPrefabEntity;
-            case BuildingType.IronHarvester:    return entitiesReferences.buildingIronHarvesterVisualPrefabEntity;
-            case BuildingType.GoldHarvester:    return entitiesReferences.buildingGoldHarvesterVisualPrefabEntity;
-            case BuildingType.OilHarvester:     return entitiesReferences.buildingOilHarvesterVisualPrefabEntity;
+                return Entity.Null;
+            
+            // Carrara Golems buildings
+            case BuildingType.CarraraWorkshop:
+                return entitiesReferences.carraraGolemWorkshopVisualPrefabEntity;
+            case BuildingType.CarraraTownhall:
+                return entitiesReferences.carraraGolemTownhallVisualPrefabEntity;
+            case BuildingType.CarraraSmeltery:
+                return entitiesReferences.carraraGolemSmelteryVisualPrefabEntity;
+            case BuildingType.CarraraQuarry:
+                return entitiesReferences.carraraGolemQuarryVisualPrefabEntity;
+            case BuildingType.CarraraBarracks:
+                return entitiesReferences.carraraGolemBarracksVisualPrefabEntity;
+            
+            // Cursed Ones buildings
+            case BuildingType.CursedTownhall:
+                return entitiesReferences.cursedOnesTownhallVisualPrefabEntity;
+            case BuildingType.CursedRuins:
+                return entitiesReferences.cursedOnesRuinsVisualPrefabEntity;
+            case BuildingType.CursedGoldmine:
+                return entitiesReferences.cursedOnesGoldmineVisualPrefabEntity;
+            case BuildingType.CursedCathedral:
+                return entitiesReferences.cursedOnesCathedralVisualPrefabEntity;
+            case BuildingType.CursedBloodcircle:
+                return entitiesReferences.cursedOnesBloodCircleVisualPrefabEntity;
+            case BuildingType.CursedAltar:
+                return entitiesReferences.cursedOnesAltarVisualPrefabEntity;
+            default:
+                return Entity.Null;
         }
     }
 

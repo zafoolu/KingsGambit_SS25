@@ -14,6 +14,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitTypeSOList:
   - {fileID: 11400000, guid: 07dd5c522f69142438621a7c062fecd8, type: 2}
-  - {fileID: 11400000, guid: e0c6e60cb353b3542905b56ab7585d92, type: 2}
-  - {fileID: 11400000, guid: 53e92b48f765fef4eb3ab42a007fc6df, type: 2}
-  - {fileID: 11400000, guid: f7b84500f24128244a4bd7156a0a2b8c, type: 2}

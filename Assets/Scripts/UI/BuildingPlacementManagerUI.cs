@@ -32,6 +32,13 @@ public class BuildingPlacementManagerUI : MonoBehaviour {
 
             buttonSingle.Setup(buildingTypeSO);
         }
+
+        // Add the None building type
+        RectTransform noneRectTransform = Instantiate(buildingTemplate, buildingContainer);
+        noneRectTransform.gameObject.SetActive(true);
+        BuildingPlacementManagerUI_ButtonSingle noneButtonSingle = noneRectTransform.GetComponent<BuildingPlacementManagerUI_ButtonSingle>();
+        noneButtonSingle.Setup(buildingTypeListSO.none);
+        buildingButtonDictionary.Add(buildingTypeListSO.none, noneButtonSingle);
     }
 
     private void Start() {

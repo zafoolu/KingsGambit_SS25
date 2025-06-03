@@ -122,32 +122,36 @@ public partial class KnightTacticSystem : SystemBase
     {
         Vector3 pos = new Vector3(position.x, position.y, position.z);
         Quaternion rot = new Quaternion(rotation.value.x, rotation.value.y, rotation.value.z, rotation.value.w);
-
-        Vector3[] points = new Vector3[8];
         Vector3 halfSize = size * 0.5f;
 
-        points[0] = pos + rot * new Vector3(-halfSize.x, -halfSize.y, -halfSize.z);
-        points[1] = pos + rot * new Vector3(halfSize.x, -halfSize.y, -halfSize.z);
-        points[2] = pos + rot * new Vector3(halfSize.x, -halfSize.y, halfSize.z);
-        points[3] = pos + rot * new Vector3(-halfSize.x, -halfSize.y, halfSize.z);
-        points[4] = pos + rot * new Vector3(-halfSize.x, halfSize.y, -halfSize.z);
-        points[5] = pos + rot * new Vector3(halfSize.x, halfSize.y, -halfSize.z);
-        points[6] = pos + rot * new Vector3(halfSize.x, halfSize.y, halfSize.z);
-        points[7] = pos + rot * new Vector3(-halfSize.x, halfSize.y, halfSize.z);
+        // Draw the bottom face
+        Vector3 p0 = pos + rot * new Vector3(-halfSize.x, -halfSize.y, -halfSize.z);
+        Vector3 p1 = pos + rot * new Vector3(halfSize.x, -halfSize.y, -halfSize.z);
+        Vector3 p2 = pos + rot * new Vector3(halfSize.x, -halfSize.y, halfSize.z);
+        Vector3 p3 = pos + rot * new Vector3(-halfSize.x, -halfSize.y, halfSize.z);
+        
+        // Draw the top face
+        Vector3 p4 = pos + rot * new Vector3(-halfSize.x, halfSize.y, -halfSize.z);
+        Vector3 p5 = pos + rot * new Vector3(halfSize.x, halfSize.y, -halfSize.z);
+        Vector3 p6 = pos + rot * new Vector3(halfSize.x, halfSize.y, halfSize.z);
+        Vector3 p7 = pos + rot * new Vector3(-halfSize.x, halfSize.y, halfSize.z);
 
-        Debug.DrawLine(points[0], points[1], color);
-        Debug.DrawLine(points[1], points[2], color);
-        Debug.DrawLine(points[2], points[3], color);
-        Debug.DrawLine(points[3], points[0], color);
+        // Draw bottom face
+        Debug.DrawLine(p0, p1, color);
+        Debug.DrawLine(p1, p2, color);
+        Debug.DrawLine(p2, p3, color);
+        Debug.DrawLine(p3, p0, color);
 
-        Debug.DrawLine(points[4], points[5], color);
-        Debug.DrawLine(points[5], points[6], color);
-        Debug.DrawLine(points[6], points[7], color);
-        Debug.DrawLine(points[7], points[4], color);
+        // Draw top face
+        Debug.DrawLine(p4, p5, color);
+        Debug.DrawLine(p5, p6, color);
+        Debug.DrawLine(p6, p7, color);
+        Debug.DrawLine(p7, p4, color);
 
-        Debug.DrawLine(points[0], points[4], color);
-        Debug.DrawLine(points[1], points[5], color);
-        Debug.DrawLine(points[2], points[6], color);
-        Debug.DrawLine(points[3], points[7], color);
+        // Draw vertical lines
+        Debug.DrawLine(p0, p4, color);
+        Debug.DrawLine(p1, p5, color);
+        Debug.DrawLine(p2, p6, color);
+        Debug.DrawLine(p3, p7, color);
     }
 }

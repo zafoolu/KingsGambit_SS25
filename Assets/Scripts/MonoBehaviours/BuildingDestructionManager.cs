@@ -29,30 +29,30 @@ public class BuildingDestructionManager : MonoBehaviour {
 
             Transform brokenPartsTransform = null;
 
-            switch (buildingTypeSOHolder.buildingType) {
-                default:
-                case BuildingTypeSO.BuildingType.ZombieSpawner:
-                    brokenPartsTransform = Instantiate(buildingZombieSpawnerVisualBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
-                    break;
-                case BuildingTypeSO.BuildingType.HQ:
-                    brokenPartsTransform = Instantiate(buildingHQVisualBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
-                    break;
-                case BuildingTypeSO.BuildingType.Barracks:
-                    brokenPartsTransform = Instantiate(buildingBarracksVisualBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
-                    break;
-                case BuildingTypeSO.BuildingType.Tower:
-                    brokenPartsTransform = Instantiate(buildingTowerBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
-                    break;
-                case BuildingTypeSO.BuildingType.GoldHarvester:
-                    brokenPartsTransform = Instantiate(buildingGoldHarvesterBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
-                    break;
-                case BuildingTypeSO.BuildingType.IronHarvester:
-                    brokenPartsTransform = Instantiate(buildingIronHarvesterBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
-                    break;
-                case BuildingTypeSO.BuildingType.OilHarvester:
-                    brokenPartsTransform = Instantiate(buildingOilHarvesterBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
-                    break;
-            }
+            //switch (buildingTypeSOHolder.buildingType) {
+            //    default:
+            //    case BuildingTypeSO.BuildingType.ZombieSpawner:
+            //        brokenPartsTransform = Instantiate(buildingZombieSpawnerVisualBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
+            //        break;
+            //    case BuildingTypeSO.BuildingType.HQ:
+            //        brokenPartsTransform = Instantiate(buildingHQVisualBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
+            //        break;
+            //    case BuildingTypeSO.BuildingType.Barracks:
+            //        brokenPartsTransform = Instantiate(buildingBarracksVisualBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
+            //        break;
+            //    case BuildingTypeSO.BuildingType.Tower:
+            //        brokenPartsTransform = Instantiate(buildingTowerBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
+            //        break;
+            //    case BuildingTypeSO.BuildingType.GoldHarvester:
+            //        brokenPartsTransform = Instantiate(buildingGoldHarvesterBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
+            //        break;
+            //    case BuildingTypeSO.BuildingType.IronHarvester:
+            //        brokenPartsTransform = Instantiate(buildingIronHarvesterBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
+            //        break;
+            //    case BuildingTypeSO.BuildingType.OilHarvester:
+            //        brokenPartsTransform = Instantiate(buildingOilHarvesterBrokenPartsPrefab, localTransform.Position, Quaternion.identity);
+            //        break;
+            //}
 
             foreach (Rigidbody rigidbody in brokenPartsTransform.GetComponentsInChildren<Rigidbody>()) {
                 rigidbody.AddExplosionForce(300f, brokenPartsTransform.position, 10f);

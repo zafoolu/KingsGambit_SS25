@@ -13,12 +13,9 @@ MonoBehaviour:
   m_Name: _BuildingTypeListSO
   m_EditorClassIdentifier: 
   buildingTypeSOList:
-  - {fileID: 11400000, guid: 948c615c478a7074b8435c12e0e51f91, type: 2}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 11400000, guid: 3b235290b4893524ca37e24d1cf4f60f, type: 2}
+  - {fileID: 11400000, guid: c66d58add044a4d46a4d120d8d001d8e, type: 2}
+  - {fileID: 11400000, guid: fe9759588d4052f43a4ead9ce513bcfc, type: 2}
+  - {fileID: 11400000, guid: 90689191150efe6419cf83e89bd138ec, type: 2}
+  - {fileID: 11400000, guid: 741ee4af5377e394ea4745405ef0606a, type: 2}
   none: {fileID: 11400000, guid: 948c615c478a7074b8435c12e0e51f91, type: 2}

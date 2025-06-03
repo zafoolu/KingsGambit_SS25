@@ -4,42 +4,38 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class BuildingBarracksUI : MonoBehaviour {
-
-
     [SerializeField] private Button soldierButton;
     [SerializeField] private Button scoutButton;
     [SerializeField] private Image progressBarImage;
     [SerializeField] private RectTransform unitQueueContainer;
     [SerializeField] private RectTransform unitQueueTemplate;
 
-
     private Entity buildingBarracksEntity;
     private EntityManager entityManager;
 
-
     private void Awake() {
         soldierButton.onClick.AddListener(() => {
-            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(UnitTypeSO.UnitType.Soldier);
+            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(UnitTypeSO.UnitType.CarraraPawn);
             if (!ResourceManager.Instance.CanSpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray)) {
                 return;
             }
             ResourceManager.Instance.SpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray);
 
             entityManager.SetComponentData(buildingBarracksEntity, new BuildingBarracksUnitEnqueue {
-                unitType = UnitTypeSO.UnitType.Soldier,
+                unitType = UnitTypeSO.UnitType.CarraraPawn,
             });
             entityManager.SetComponentEnabled<BuildingBarracksUnitEnqueue>(buildingBarracksEntity, true);
         });
 
         scoutButton.onClick.AddListener(() => {
-            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(UnitTypeSO.UnitType.Scout);
+            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(UnitTypeSO.UnitType.CarraraKnight);
             if (!ResourceManager.Instance.CanSpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray)) {
                 return;
             }
             ResourceManager.Instance.SpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray);
 
             entityManager.SetComponentData(buildingBarracksEntity, new BuildingBarracksUnitEnqueue {
-                unitType = UnitTypeSO.UnitType.Scout,
+                unitType = UnitTypeSO.UnitType.CarraraKnight,
             });
             entityManager.SetComponentEnabled<BuildingBarracksUnitEnqueue>(buildingBarracksEntity, true);
         });
