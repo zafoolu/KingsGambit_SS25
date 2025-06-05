@@ -324,8 +324,6 @@ GameObject:
   - component: {fileID: 953340304164881076}
   - component: {fileID: 542340119936065967}
   - component: {fileID: 1142051322730546290}
-  - component: {fileID: 7054226118792649685}
-  - component: {fileID: 5087880904030013854}
   - component: {fileID: 4249663614245142331}
   - component: {fileID: 3058571535076712594}
   - component: {fileID: 6915748298670056221}
@@ -397,31 +395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 5
---- !u!114 &7054226118792649685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7615775973135517010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e767c4219fbc0944aafb4e5774a8aaa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  factionType: 0
---- !u!114 &5087880904030013854
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7615775973135517010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1865ddbaf9143984188074db6f0ea4a2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &4249663614245142331
 MonoBehaviour:
   m_ObjectHideFlags: 0

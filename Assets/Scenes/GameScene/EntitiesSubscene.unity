@@ -3293,7 +3293,7 @@ MonoBehaviour:
   carraraPawnPrefabGameObject: {fileID: 0}
   cursedKingPrefabGameObject: {fileID: 0}
   uncursedKingPrefabGameObject: {fileID: 0}
-  cursedQueenPrefabGameObject: {fileID: 0}
+  cursedQueenPrefabGameObject: {fileID: 121009751022966959, guid: 797c6ef876b2945418df80a763a2fcf4, type: 3}
   cursedBishopPrefabGameObject: {fileID: 0}
   cursedKnightPrefabGameObject: {fileID: 0}
   cursedRookPrefabGameObject: {fileID: 0}

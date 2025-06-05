@@ -13,6 +13,5 @@ MonoBehaviour:
   m_Name: _ResourceTypeListSO
   m_EditorClassIdentifier: 
   resourceTypeSOList:
-  - {fileID: 11400000, guid: 30658c08781bbf348b09ab8713084862, type: 2}
+  - {fileID: 11400000, guid: 6acdd97f35b9df2489f35d66e8afc2ba, type: 2}
   - {fileID: 11400000, guid: e1a454ac8ba13e242a721b4752861427, type: 2}
-  - {fileID: 11400000, guid: 5ad8677db5dc021419b6d1db7721f77a, type: 2}

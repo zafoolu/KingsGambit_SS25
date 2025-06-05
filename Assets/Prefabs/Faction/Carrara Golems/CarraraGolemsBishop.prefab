@@ -332,6 +332,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7586578343600374686, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8214485602918476189, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
@@ -373,7 +377,7 @@ PrefabInstance:
       addedObject: {fileID: 8186375137360168971}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
-      insertIndex: 4
+      insertIndex: 3
       addedObject: {fileID: 7563388392971565976}
     - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       insertIndex: -1
@@ -443,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timerMax: 1
   damageAmount: 10
-  colliderSize: 6
+  colliderSize: 0.6
 --- !u!4 &7874505460035524181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}

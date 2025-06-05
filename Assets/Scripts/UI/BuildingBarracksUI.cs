@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class BuildingBarracksUI : MonoBehaviour {
     [SerializeField] private Button soldierButton;
     [SerializeField] private Button scoutButton;
+    [SerializeField] private Button enemyButton;
     [SerializeField] private Image progressBarImage;
     [SerializeField] private RectTransform unitQueueContainer;
     [SerializeField] private RectTransform unitQueueTemplate;
@@ -36,6 +37,21 @@ public class BuildingBarracksUI : MonoBehaviour {
 
             entityManager.SetComponentData(buildingBarracksEntity, new BuildingBarracksUnitEnqueue {
                 unitType = UnitTypeSO.UnitType.CarraraKnight,
+            });
+            entityManager.SetComponentEnabled<BuildingBarracksUnitEnqueue>(buildingBarracksEntity, true);
+        });
+
+        enemyButton.onClick.AddListener(() => {
+            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(UnitTypeSO.UnitType.CursedQueen);
+            if (!ResourceManager.Instance.CanSpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray))
+            {
+                return;
+            }
+            ResourceManager.Instance.SpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray);
+
+            entityManager.SetComponentData(buildingBarracksEntity, new BuildingBarracksUnitEnqueue
+            {
+                unitType = UnitTypeSO.UnitType.CursedQueen,
             });
             entityManager.SetComponentEnabled<BuildingBarracksUnitEnqueue>(buildingBarracksEntity, true);
         });
