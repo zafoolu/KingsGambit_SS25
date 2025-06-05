@@ -329,7 +329,7 @@ GameObject:
   - component: {fileID: 4249663614245142331}
   - component: {fileID: 3058571535076712594}
   - component: {fileID: 6915748298670056221}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: CarraraGolemBarracks
   m_TagString: Untagged
   m_Icon: {fileID: 0}

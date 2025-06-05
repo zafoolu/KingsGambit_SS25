@@ -688,7 +688,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3310414852858521443, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -3262,16 +3263,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefabGameObject: {fileID: 3991669301782067511, guid: 7d8853fed6247f94ba6387500026db25, type: 3}
   buildingConstructionPrefabGameObject: {fileID: 260656576514254975, guid: b0feb5e3dc386644a819a27c4c22c58e, type: 3}
-  carraraGolemWorkshopPrefabGameObject: {fileID: 1221120250187058794, guid: 71ad0e7c7abb06146809ee3c585aad36, type: 3}
-  carraraGolemTownhallPrefabGameObject: {fileID: 1221120250187058794, guid: 1e2304e23bead88428f005342feb49bd, type: 3}
-  carraraGolemSmelteryPrefabGameObject: {fileID: 1221120250187058794, guid: 6ca05727e62beaa4aa3bdca07e3052aa, type: 3}
-  carraraGolemQuarryPrefabGameObject: {fileID: 1221120250187058794, guid: 2aad13f404f9b0d4ea6213b643ffa8e2, type: 3}
-  carraraGolemBarracksPrefabGameObject: {fileID: 1221120250187058794, guid: 4c9247c64195de746adbbcf4014f9c8f, type: 3}
-  carraraGolemWorkshopVisualPrefabGameObject: {fileID: 4872919489429875883, guid: 98a2e97dedcf5204e9f270a09d6424d3, type: 3}
-  carraraGolemTownhallVisualPrefabGameObject: {fileID: 4872919489429875883, guid: a42c0feca4204124dac4b400a912b1e1, type: 3}
-  carraraGolemSmelteryVisualPrefabGameObject: {fileID: 4872919489429875883, guid: e14d29f1e3d62fd45b2ec85165a3c65d, type: 3}
-  carraraGolemQuarryVisualPrefabGameObject: {fileID: 4872919489429875883, guid: b18396af1f591e74b9444b5d349d4978, type: 3}
-  carraraGolemBarracksVisualPrefabGameObject: {fileID: 4872919489429875883, guid: a84e1c3507c8257428ed7c925331b422, type: 3}
+  carraraGolemWorkshopPrefabGameObject: {fileID: 7031758499250102526, guid: eba4a2c8460064345a5d86803ada0454, type: 3}
+  carraraGolemTownhallPrefabGameObject: {fileID: 9086386954394918745, guid: bf0a131ae12705d4b98902b367ef7c75, type: 3}
+  carraraGolemSmelteryPrefabGameObject: {fileID: 4518705754565501375, guid: a79ccd13b3751614a980292acbb3972d, type: 3}
+  carraraGolemQuarryPrefabGameObject: {fileID: 3861292433987656103, guid: e63775f5ee6885447baa42ece8843517, type: 3}
+  carraraGolemBarracksPrefabGameObject: {fileID: 7615775973135517010, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+  carraraGolemWorkshopVisualPrefabGameObject: {fileID: 4276404124519164293, guid: 6784e11e33a66d6478705bd4eae26eac, type: 3}
+  carraraGolemTownhallVisualPrefabGameObject: {fileID: 991778514987320439, guid: 8dcb3b5f05bb4d848a2bad78a16334f2, type: 3}
+  carraraGolemSmelteryVisualPrefabGameObject: {fileID: 5252382397114951589, guid: 9d6e347563bc615439b56a51a0b77a84, type: 3}
+  carraraGolemQuarryVisualPrefabGameObject: {fileID: 8404454561484871503, guid: 584c8c540dfa03346836eca7833e88e8, type: 3}
+  carraraGolemBarracksVisualPrefabGameObject: {fileID: 7910005357866228033, guid: 83e74744e2047ad4da93beb21d075ad2, type: 3}
   cursedOnesTownhallPrefabGameObject: {fileID: 1221120250187058794, guid: 3ac220a5385613148a68b5c77f1ea72f, type: 3}
   cursedOnesRuinsPrefabGameObject: {fileID: 1221120250187058794, guid: ab2e5a6d164dd9a4b8282b9e97d5201a, type: 3}
   cursedOnesGoldminePrefabGameObject: {fileID: 1221120250187058794, guid: e8b11f2e77afa1f45aae8b748c6b6bfd, type: 3}
@@ -3286,8 +3287,8 @@ MonoBehaviour:
   cursedOnesAltarVisualPrefabGameObject: {fileID: 4872919489429875883, guid: 6816784ad255f5e4c84335d2adceaf31, type: 3}
   carraraKingPrefabGameObject: {fileID: 0}
   carraraQueenPrefabGameObject: {fileID: 0}
-  carraraBishopPrefabGameObject: {fileID: 0}
-  carraraKnightPrefabGameObject: {fileID: 0}
+  carraraBishopPrefabGameObject: {fileID: 2547314701683967756, guid: 20d1f64e92990304ba98ab54976584df, type: 3}
+  carraraKnightPrefabGameObject: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
   carraraRookPrefabGameObject: {fileID: 0}
   carraraPawnPrefabGameObject: {fileID: 0}
   cursedKingPrefabGameObject: {fileID: 0}

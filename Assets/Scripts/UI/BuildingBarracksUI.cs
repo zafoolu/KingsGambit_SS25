@@ -15,14 +15,14 @@ public class BuildingBarracksUI : MonoBehaviour {
 
     private void Awake() {
         soldierButton.onClick.AddListener(() => {
-            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(UnitTypeSO.UnitType.CarraraPawn);
+            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(UnitTypeSO.UnitType.CarraraBishop);
             if (!ResourceManager.Instance.CanSpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray)) {
                 return;
             }
             ResourceManager.Instance.SpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray);
 
             entityManager.SetComponentData(buildingBarracksEntity, new BuildingBarracksUnitEnqueue {
-                unitType = UnitTypeSO.UnitType.CarraraPawn,
+                unitType = UnitTypeSO.UnitType.CarraraBishop,
             });
             entityManager.SetComponentEnabled<BuildingBarracksUnitEnqueue>(buildingBarracksEntity, true);
         });

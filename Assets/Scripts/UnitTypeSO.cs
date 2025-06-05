@@ -32,7 +32,7 @@ public class UnitTypeSO : ScriptableObject {
     public Entity GetPrefabEntity(EntitiesReferences entitiesReferences) {
         switch (unitType) {
             default:
-            case UnitType.None: return entitiesReferences.carraraKingPrefabEntity;
+            case UnitType.None: return default;
             // Carrara Golems Chess Units
             case UnitType.CarraraKing: return entitiesReferences.carraraKingPrefabEntity;
             case UnitType.CarraraQueen: return entitiesReferences.carraraQueenPrefabEntity;

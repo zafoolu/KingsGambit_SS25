@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1ff53428e0e41f546bc54531e1b75218, type: 3}
-  m_Name: CursedKnight
+  m_Name: CarraraBishop
   m_EditorClassIdentifier: 
-  unitType: 11
+  unitType: 3
   ragdollPrefab: {fileID: 0}
-  progressMax: 0
+  progressMax: 4
   sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
   spawnCostResourceAmountArray: []

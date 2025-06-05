@@ -16,7 +16,7 @@ public class BuildingBarracksAuthoring : MonoBehaviour {
 
             AddComponent(entity, new BuildingBarracks {
                 progressMax = authoring.progressMax,
-                rallyPositionOffset = new float3(10, 0, 0),
+                rallyPositionOffset = new float3(15, 0, 0),
             });
 
             AddBuffer<SpawnUnitTypeBuffer>(entity);
