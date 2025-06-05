@@ -1,157 +1,85 @@
+using Unity.Burst;
 using Unity.Entities;
 using Unity.Mathematics;
 using Unity.Transforms;
 using UnityEngine;
-using Unity.Collections;
 
-public partial class KnightTacticSystem : SystemBase
+public partial struct KnightTacticSystem : ISystem
 {
-    protected override void OnUpdate()
+    [BurstCompile]
+    public void OnCreate(ref SystemState state)
     {
-        var entityPositions = new NativeList<EntityPosition>(Allocator.TempJob);
-        
-        try
+        state.RequireForUpdate<EntitiesReferences>();
+    }
+
+    [BurstCompile]
+    public void OnUpdate(ref SystemState state)
+    {
+        var deltaTime = SystemAPI.Time.DeltaTime;
+        var entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();
+
+        foreach ((RefRW<LocalTransform> transform, RefRW<KnightTactic> knightTactic)
+            in SystemAPI.Query<RefRW<LocalTransform>, RefRW<KnightTactic>>())
         {
-            
-            Entities
-                .WithName("CollectEntityPositions")
-                .WithAll<LocalToWorld, ShootVictim>() // Nur Entities mit ShootVictim-Komponente
-                .ForEach((Entity entity, in LocalToWorld transform) =>
+            // Timer aktualisieren
+            knightTactic.ValueRW.timer += deltaTime;
+            if (knightTactic.ValueRW.timer < knightTactic.ValueRO.timerMax) continue;
+
+            int targetsInBox1 = 0;
+            int targetsInBox2 = 0;
+            Entity targetInBox1 = Entity.Null;
+            Entity targetInBox2 = Entity.Null;
+
+            foreach ((RefRO<LocalTransform> victimTransform, Entity victimEntity)
+                in SystemAPI.Query<RefRO<LocalTransform>>().WithAll<ShootVictim>().WithEntityAccess())
+            {
+                float3 localPos = victimTransform.ValueRO.Position - transform.ValueRO.Position;
+
+                if (IsPointInBox(localPos, knightTactic.ValueRO.collider1Position,
+                    knightTactic.ValueRO.collider1Size, knightTactic.ValueRO.collider1Rotation))
                 {
-                    entityPositions.Add(new EntityPosition 
-                    { 
-                        Entity = entity, 
-                        Position = transform.Position 
-                    });
-                })
-                .Run();
+                    targetsInBox1++;
+                    targetInBox1 = victimEntity;
+                }
 
-            
-            Entities
-                .WithName("CheckTacticOverlaps")
-                .ForEach((Entity entity, in KnightTactic tactic, in LocalToWorld transform) =>
+                if (IsPointInBox(localPos, knightTactic.ValueRO.collider2Position,
+                    knightTactic.ValueRO.collider2Size, knightTactic.ValueRO.collider2Rotation))
                 {
-                    float3 worldPos = transform.Position;
-                    quaternion worldRot = transform.Rotation;
+                    targetsInBox2++;
+                    targetInBox2 = victimEntity;
+                }
+            }
 
-                    float3 hitbox1WorldPos = worldPos + math.mul(worldRot, new float3(tactic.collider1Position.x, tactic.collider1Position.y, tactic.collider1Position.z));
-                    quaternion hitbox1WorldRot = math.mul(worldRot, tactic.collider1Rotation);
+            if (targetsInBox1 == 1 && targetsInBox2 == 1)
+            {
+                Debug.Log("SHOOT - Perfekte Taktik!");
 
-                    float3 hitbox2WorldPos = worldPos + math.mul(worldRot, new float3(tactic.collider2Position.x, tactic.collider2Position.y, tactic.collider2Position.z));
-                    quaternion hitbox2WorldRot = math.mul(worldRot, tactic.collider2Rotation);
+                // Timer zurücksetzen
+                knightTactic.ValueRW.timer = 0f;
 
-                    #if UNITY_EDITOR
-                    int collider1Hits = 0;
-                    int collider2Hits = 0;
-                    Entity collider1Entity = Entity.Null;
-                    Entity collider2Entity = Entity.Null;
+                // Schuss-Event auslösen
+                knightTactic.ValueRW.onShoot.isTriggered = true;
+                knightTactic.ValueRW.onShoot.shootFromPosition = transform.ValueRO.Position;
 
-                    // Zähle zuerst die Kollisionen
-                    for (int i = 0; i < entityPositions.Length; i++)
-                    {
-                        var otherEntityPos = entityPositions[i];
-                        if (otherEntityPos.Entity == entity) continue;
-
-                        bool inCollider1 = IsPointInBox(otherEntityPos.Position, hitbox1WorldPos, hitbox1WorldRot, tactic.collider1Size);
-                        bool inCollider2 = IsPointInBox(otherEntityPos.Position, hitbox2WorldPos, hitbox2WorldRot, tactic.collider2Size);
-
-                        if (inCollider1)
-                        {
-                            collider1Hits++;
-                            collider1Entity = otherEntityPos.Entity;
-                        }
-                        if (inCollider2)
-                        {
-                            collider2Hits++;
-                            collider2Entity = otherEntityPos.Entity;
-                        }
-                    }
-
-                    // Setze die Farben basierend auf der Anzahl der Kollisionen
-                    Color box1Color = collider1Hits == 1 ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
-                    Color box2Color = collider2Hits == 1 ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
-
-                    DrawDebugBox(hitbox1WorldPos, hitbox1WorldRot, tactic.collider1Size, box1Color);
-                    DrawDebugBox(hitbox2WorldPos, hitbox2WorldRot, tactic.collider2Size, box2Color);
-
-                    // Debug-Ausgaben
-                    if (collider1Hits == 1 && collider2Hits == 1)
-                    {
-                        Debug.Log($"SHOOT - Perfekte Taktik! Entity {entity.Index} mit Victims {collider1Entity.Index} und {collider2Entity.Index}");
-                    }
-                    else
-                    {
-                        if (collider1Hits > 0)
-                        {
-                            Debug.Log($"Box 1 hat {collider1Hits} Kollision(en)");
-                        }
-                        if (collider2Hits > 0)
-                        {
-                            Debug.Log($"Box 2 hat {collider2Hits} Kollision(en)");
-                        }
-                    }
-                    #endif
-                })
-                .Run();
-        }
-        finally
-        {
-            entityPositions.Dispose();
+                // Bullets erstellen
+                CreateBullet(state, entitiesReferences, transform.ValueRO.Position, targetInBox1);
+                CreateBullet(state, entitiesReferences, transform.ValueRO.Position, targetInBox2);
+            }
         }
     }
 
-    private struct EntityPosition
+    private void CreateBullet(SystemState state, EntitiesReferences references, float3 position, Entity target)
     {
-        public Entity Entity;
-        public float3 Position;
+        Entity bullet = state.EntityManager.Instantiate(references.bulletPrefabEntity);
+        SystemAPI.SetComponent(bullet, LocalTransform.FromPosition(position));
+        SystemAPI.GetComponentRW<Target>(bullet).ValueRW.targetEntity = target;
     }
 
-    private static bool IsPointInBox(float3 point, float3 boxPosition, quaternion boxRotation, Vector3 boxSize)
+    private bool IsPointInBox(float3 point, float3 boxPosition, float3 boxSize, quaternion boxRotation)
     {
-        // Transformiere den Punkt in lokale Koordinaten der Box
         float3 localPoint = math.mul(math.inverse(boxRotation), point - boxPosition);
-        
-        // Prüfe ob der Punkt innerhalb der Box-Grenzen liegt
-        Vector3 halfSize = boxSize * 0.5f;
-        return math.abs(localPoint.x) <= halfSize.x &&
-               math.abs(localPoint.y) <= halfSize.y &&
-               math.abs(localPoint.z) <= halfSize.z;
-    }
-
-    private static void DrawDebugBox(float3 position, quaternion rotation, Vector3 size, Color color)
-    {
-        Vector3 pos = new Vector3(position.x, position.y, position.z);
-        Quaternion rot = new Quaternion(rotation.value.x, rotation.value.y, rotation.value.z, rotation.value.w);
-        Vector3 halfSize = size * 0.5f;
-
-        // Draw the bottom face
-        Vector3 p0 = pos + rot * new Vector3(-halfSize.x, -halfSize.y, -halfSize.z);
-        Vector3 p1 = pos + rot * new Vector3(halfSize.x, -halfSize.y, -halfSize.z);
-        Vector3 p2 = pos + rot * new Vector3(halfSize.x, -halfSize.y, halfSize.z);
-        Vector3 p3 = pos + rot * new Vector3(-halfSize.x, -halfSize.y, halfSize.z);
-        
-        // Draw the top face
-        Vector3 p4 = pos + rot * new Vector3(-halfSize.x, halfSize.y, -halfSize.z);
-        Vector3 p5 = pos + rot * new Vector3(halfSize.x, halfSize.y, -halfSize.z);
-        Vector3 p6 = pos + rot * new Vector3(halfSize.x, halfSize.y, halfSize.z);
-        Vector3 p7 = pos + rot * new Vector3(-halfSize.x, halfSize.y, halfSize.z);
-
-        // Draw bottom face
-        Debug.DrawLine(p0, p1, color);
-        Debug.DrawLine(p1, p2, color);
-        Debug.DrawLine(p2, p3, color);
-        Debug.DrawLine(p3, p0, color);
-
-        // Draw top face
-        Debug.DrawLine(p4, p5, color);
-        Debug.DrawLine(p5, p6, color);
-        Debug.DrawLine(p6, p7, color);
-        Debug.DrawLine(p7, p4, color);
-
-        // Draw vertical lines
-        Debug.DrawLine(p0, p4, color);
-        Debug.DrawLine(p1, p5, color);
-        Debug.DrawLine(p2, p6, color);
-        Debug.DrawLine(p3, p7, color);
+        return math.abs(localPoint.x) <= boxSize.x / 2 &&
+               math.abs(localPoint.y) <= boxSize.y / 2 &&
+               math.abs(localPoint.z) <= boxSize.z / 2;
     }
 }
