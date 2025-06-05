@@ -6,9 +6,10 @@ public class ResourceTypeSO : ScriptableObject {
 
     public enum ResourceType {
         None,
-        Iron,
-        Gold,
-        Oil,
+        Gold,   
+        Marble,
+        Curse,
+        Goldessence,
     }
 
 

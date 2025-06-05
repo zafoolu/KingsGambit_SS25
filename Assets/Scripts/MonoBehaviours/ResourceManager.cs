@@ -27,10 +27,8 @@ public class ResourceManager : MonoBehaviour {
         foreach (ResourceTypeSO resourceTypeSO in resourceTypeListSO.resourceTypeSOList) {
             resourceTypeAmountDictionary[resourceTypeSO.resourceType] = 0;
         }
-
-        AddResourceAmount(ResourceTypeSO.ResourceType.Iron, 50);
         AddResourceAmount(ResourceTypeSO.ResourceType.Gold, 50);
-        AddResourceAmount(ResourceTypeSO.ResourceType.Oil, 50);
+        AddResourceAmount(ResourceTypeSO.ResourceType.Marble, 50);
     }
 
     public void AddResourceAmount(ResourceTypeSO.ResourceType resourceType, int amount) {
