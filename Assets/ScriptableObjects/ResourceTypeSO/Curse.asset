@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5357147711d1b9643b68ef112c198aef, type: 3}
   m_Name: Curse
   m_EditorClassIdentifier: 
-  resourceType: 0
-  sprite: {fileID: 0}
+  resourceType: 3
+  sprite: {fileID: 21300000, guid: 8ce2383b88bcfd54dba62d535f267563, type: 3}

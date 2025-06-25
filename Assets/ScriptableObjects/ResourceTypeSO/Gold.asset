@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Gold
   m_EditorClassIdentifier: 
   resourceType: 1
-  sprite: {fileID: 21300000, guid: 6d6767b5d644420409d8688842bf3ba0, type: 3}
+  sprite: {fileID: 21300000, guid: 1244c085f97f8e34e9abdf56d94dd5c5, type: 3}
