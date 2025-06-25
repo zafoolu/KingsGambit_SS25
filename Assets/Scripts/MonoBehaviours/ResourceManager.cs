@@ -26,13 +26,16 @@ public class ResourceManager : MonoBehaviour {
 
         foreach (ResourceTypeSO resourceTypeSO in resourceTypeListSO.resourceTypeSOList) {
             resourceTypeAmountDictionary[resourceTypeSO.resourceType] = 0;
+            Debug.Log($"[ResourceManager] Initialized resource type: {resourceTypeSO.resourceType}");
         }
         AddResourceAmount(ResourceTypeSO.ResourceType.Gold, 50);
         AddResourceAmount(ResourceTypeSO.ResourceType.Marble, 50);
+        AddResourceAmount(ResourceTypeSO.ResourceType.Goldessence, 0);
     }
 
     public void AddResourceAmount(ResourceTypeSO.ResourceType resourceType, int amount) {
         resourceTypeAmountDictionary[resourceType] += amount;
+        Debug.Log($"[ResourceManager] Added {amount} {resourceType}. New amount: {resourceTypeAmountDictionary[resourceType]}");
         OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
     }
 
@@ -55,12 +58,14 @@ public class ResourceManager : MonoBehaviour {
 
     public void SpendResourceAmount(ResourceAmount resourceAmount) {
         resourceTypeAmountDictionary[resourceAmount.resourceType] -= resourceAmount.amount;
+        Debug.Log($"[ResourceManager] Spent {resourceAmount.amount} {resourceAmount.resourceType}. Remaining: {resourceTypeAmountDictionary[resourceAmount.resourceType]}");
         OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
     }
 
     public void SpendResourceAmount(ResourceAmount[] resourceAmountArray) {
         foreach (ResourceAmount resourceAmount in resourceAmountArray) {
             resourceTypeAmountDictionary[resourceAmount.resourceType] -= resourceAmount.amount;
+            Debug.Log($"[ResourceManager] Spent {resourceAmount.amount} {resourceAmount.resourceType}. Remaining: {resourceTypeAmountDictionary[resourceAmount.resourceType]}");
         }
         OnResourceAmountChanged?.Invoke(this, EventArgs.Empty);
     }
