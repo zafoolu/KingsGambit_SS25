@@ -129,11 +129,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8edf72c669bdf3f40aeefb0ae4243618, type: 3}
   m_PrefabInstance: {fileID: 743070118}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &55331594 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4392682108660053711, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
-  m_PrefabInstance: {fileID: 458391139}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &100452294 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8edf72c669bdf3f40aeefb0ae4243618, type: 3}
@@ -484,24 +479,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8edf72c669bdf3f40aeefb0ae4243618, type: 3}
---- !u!1 &451720346 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
-  m_PrefabInstance: {fileID: 458391139}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &451720368
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451720346}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f3c290608b78e438534c9af8962ddb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hitPositionTransform: {fileID: 55331594}
 --- !u!1001 &452148824
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -688,14 +665,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3310414852858521443, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 451720368}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
 --- !u!1001 &472717187
 PrefabInstance:

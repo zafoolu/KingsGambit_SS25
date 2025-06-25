@@ -38,19 +38,27 @@ public class KnightTacticAuthoring : MonoBehaviour
                 onShoot = new KnightTactic.OnShootEvent { isTriggered = false }
             });
         }
-     }
+    }
 
     private void OnDrawGizmos()
+    {
+        // Gizmos im Editor und zur Laufzeit anzeigen
+        DrawGizmosLogic();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        // Gizmos auch bei Auswahl anzeigen
+        DrawGizmosLogic();
+    }
+
+    private void DrawGizmosLogic()
     {
         Matrix4x4 originalMatrix = Gizmos.matrix;
 
         // Collider 1
         int unitsInCollider1 = CountUnitsInCollider(collider1Position, collider1Size, collider1Rotation, collider1Scale);
-        Gizmos.color = new Color(1, 0, 0, 0.5f); // Standard: Rot
-        if (unitsInCollider1 == 1)
-        {
-            Gizmos.color = new Color(0, 1, 0, 0.5f); // Grün wenn genau 1 Unit
-        }
+        Gizmos.color = (unitsInCollider1 == 1) ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
         Matrix4x4 hitbox1Matrix = Matrix4x4.TRS(
             transform.position + collider1Position,
             Quaternion.Euler(collider1Rotation),
@@ -61,11 +69,7 @@ public class KnightTacticAuthoring : MonoBehaviour
 
         // Collider 2
         int unitsInCollider2 = CountUnitsInCollider(collider2Position, collider2Size, collider2Rotation, collider2Scale);
-        Gizmos.color = new Color(1, 0, 0, 0.5f); // Standard: Rot
-        if (unitsInCollider2 == 1)
-        {
-            Gizmos.color = new Color(0, 1, 0, 0.5f); // Grün wenn genau 1 Unit
-        }
+        Gizmos.color = (unitsInCollider2 == 1) ? new Color(0, 1, 0, 0.5f) : new Color(1, 0, 0, 0.5f);
         Matrix4x4 hitbox2Matrix = Matrix4x4.TRS(
             transform.position + collider2Position,
             Quaternion.Euler(collider2Rotation),

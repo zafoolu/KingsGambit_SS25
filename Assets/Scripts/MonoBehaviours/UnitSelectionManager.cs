@@ -160,8 +160,8 @@ public class UnitSelectionManager : MonoBehaviour {
                 if (entityManager.HasComponent<Faction>(raycastHit.Entity)) {
                     // Hit something with a Faction
                     Faction faction = entityManager.GetComponentData<Faction>(raycastHit.Entity);
-                    if (faction.factionType == FactionType.Zombie) {
-                        // Right clicking on a Zombie
+                    if (faction.factionType == FactionType.CursedOnes) {
+                        // Right clicking on a Cursed One
                         isAttackingSingleTarget = true;
 
                         entityQuery = new EntityQueryBuilder(Allocator.Temp).WithAll<Selected>().WithPresent<TargetOverride>().Build(entityManager);

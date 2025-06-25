@@ -88,8 +88,8 @@ public class CursorSystemManager : MonoBehaviour {
                 if (entityManager.HasComponent<Faction>(raycastHit.Entity)) {
                     // Hit something with a Faction
                     Faction faction = entityManager.GetComponentData<Faction>(raycastHit.Entity);
-                    if (faction.factionType == FactionType.Zombie) {
-                        // Right clicking on a Zombie
+                    if (faction.factionType == FactionType.CursedOnes) {
+                        // Right clicking on a Cursed One
                         selectedCursorTypeSO = CursorTypeListSO.Instance.attack;
                     }
                 }
