@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: Goldessence
   m_EditorClassIdentifier: 
   resourceType: 4
-  sprite: {fileID: 21300000, guid: 079a204772dbee44c9d5d88215e815d3, type: 3}
+  sprite: {fileID: 21300000, guid: 734d843edfa796d4f91be8a12fd7da7f, type: 3}
