@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.00000001490093
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalRotation.y
@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -1.4551912e-10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -504,6 +504,8 @@ MonoBehaviour:
   collider2Position: {x: 20, y: 5, z: 20}
   collider2Rotation: {x: 0, y: -45, z: 0}
   collider2Scale: {x: 50, y: 10, z: 10}
+  timerMax: 1
+  damageAmount: 10
 --- !u!114 &3310414852858521443
 MonoBehaviour:
   m_ObjectHideFlags: 0
