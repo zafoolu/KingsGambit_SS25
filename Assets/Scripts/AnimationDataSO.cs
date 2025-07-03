@@ -18,6 +18,8 @@ public class AnimationDataSO : ScriptableObject {
         ScoutAim,
         CarraraKnightWalk,
         CarraraKnightIdle,
+        CarraraQueenWalk,
+        CarraraQueenIdle,
     }
 
 
