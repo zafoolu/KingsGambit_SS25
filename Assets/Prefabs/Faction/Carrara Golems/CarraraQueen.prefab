@@ -306,7 +306,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: idleAnimationType
-      value: 15
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: walkAnimationType
