@@ -264,17 +264,25 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8529816399816192840, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: factionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4232887784662527282, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: range
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -4232887784662527282, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: targetFaction
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 522523392802109760, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: moveSpeed
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_Name
-      value: CarraraGolemsBishop
+      value: CarraraGolemsRook
       objectReference: {fileID: 0}
     - target: {fileID: 3576154652990622764, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -287,6 +295,18 @@ PrefabInstance:
     - target: {fileID: 3576154652990622764, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: idleAnimationType
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: walkAnimationType
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4256729297452172453, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: unitType
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6764060585275082531, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_Mesh

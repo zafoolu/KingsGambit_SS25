@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CarraraRookWalk
+  m_EditorClassIdentifier: 
+  animationType: 15
+  meshArray:
+  - {fileID: 895430802385478545, guid: ee7fa44d9f8ed754da0744d571bff2ef, type: 3}
+  - {fileID: 895430802385478545, guid: 183a7124c32191a46b0e68c88c47fe6a, type: 3}
+  - {fileID: 895430802385478545, guid: 3ba88faef0ae2ba49800d60fa9b0a087, type: 3}
+  - {fileID: 895430802385478545, guid: 67be97a1ed77ba84a94170fa08f93071, type: 3}
+  - {fileID: 895430802385478545, guid: ce01c5686337b5a408898592f8fc7141, type: 3}
+  - {fileID: 895430802385478545, guid: b602288d97889364fb824722dc83ca49, type: 3}
+  - {fileID: 895430802385478545, guid: c426aba499b66294cbf6a3b10ee0c9b5, type: 3}
+  - {fileID: 895430802385478545, guid: 4f37d00d801c6e146a1772dde4b6ac9b, type: 3}
+  - {fileID: 895430802385478545, guid: ca0fc0e1cb70940439d92c9a225fbc22, type: 3}
+  - {fileID: 895430802385478545, guid: 9d66a93bbb9488540a2d3cfd57e9cfca, type: 3}
+  - {fileID: 895430802385478545, guid: 0ec570d0d33fc5e4aab7fc4eb3ffabac, type: 3}
+  - {fileID: 895430802385478545, guid: 8bec91e7b54b9a64eadaa52e1cbde851, type: 3}
+  - {fileID: 895430802385478545, guid: 8cf4782b286a4f349b29048984beec2a, type: 3}
+  - {fileID: 895430802385478545, guid: ca1112f35d436af48b90309200a60f9b, type: 3}
+  - {fileID: 895430802385478545, guid: 77e4b12df1b84054ca26150d8f241e6b, type: 3}
+  - {fileID: 895430802385478545, guid: aa2a0bd7fcd1abb47926d20176a4ef90, type: 3}
+  - {fileID: 895430802385478545, guid: e115bdbce38b3804aa0cfd01ba14f997, type: 3}
+  - {fileID: 895430802385478545, guid: 50061bcc769ef934dbe83e0594284fcc, type: 3}
+  - {fileID: 895430802385478545, guid: f665eb3dd7c72a34b9d7d7838b5a6b34, type: 3}
+  - {fileID: 895430802385478545, guid: c4623e361e0bb4a488e261f5deb32cf7, type: 3}
+  - {fileID: 895430802385478545, guid: a6c6e7ae7be949b41aaa1f78d209ed74, type: 3}
+  - {fileID: 895430802385478545, guid: ffc805284d4a6104da8b958b94001b19, type: 3}
+  - {fileID: 895430802385478545, guid: 8120ae56da6ad3b4784573c345bdeb8c, type: 3}
+  - {fileID: 895430802385478545, guid: a8c72c64323d7a54ca46875692e11211, type: 3}
+  frameTimerMax: 0.05
