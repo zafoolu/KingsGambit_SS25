@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CarraraKnightWalk
+  m_EditorClassIdentifier: 
+  animationType: 12
+  meshArray:
+  - {fileID: -250844637386769753, guid: 263b6295fe6d88a4cb297949d3aed7ee, type: 3}
+  - {fileID: -250844637386769753, guid: 5d81adcb1ef39be4598690fad958aedf, type: 3}
+  - {fileID: -250844637386769753, guid: 93aa2852e71e2714ca5bde9980ef3fed, type: 3}
+  - {fileID: -250844637386769753, guid: fa0e89e5bb1e6ee4bb2d0f644461c760, type: 3}
+  - {fileID: -250844637386769753, guid: 3385df782b742064f811694e81fc2459, type: 3}
+  - {fileID: -250844637386769753, guid: 8768051c9ebf1b14aad1913c21947607, type: 3}
+  - {fileID: -250844637386769753, guid: 8c94a290fa95da34db5ec9e155de3ee0, type: 3}
+  - {fileID: -250844637386769753, guid: 4fde9737fd4480244941def452212047, type: 3}
+  - {fileID: -250844637386769753, guid: 7d6e9d95af2e8ad4387f96a443732e7f, type: 3}
+  - {fileID: -250844637386769753, guid: dc7057f3c72f17a42a6ec6f46d45a989, type: 3}
+  - {fileID: -250844637386769753, guid: c654295c19356de40a4961becb354b7a, type: 3}
+  - {fileID: -250844637386769753, guid: fe6a5e87c52362746927880e1e5a974f, type: 3}
+  - {fileID: -250844637386769753, guid: cea420618657aa94fb41f4edc8ed9bb9, type: 3}
+  - {fileID: -250844637386769753, guid: 443ab6a307b856e4986962d1d67b7507, type: 3}
+  - {fileID: -250844637386769753, guid: 2dba9494b36500c47a181067565c6ae2, type: 3}
+  - {fileID: -250844637386769753, guid: 8feee09720fd78c4db9aa7f58a367546, type: 3}
+  - {fileID: -250844637386769753, guid: d008d25122ed9074b96450781b3b119d, type: 3}
+  - {fileID: -250844637386769753, guid: d21bc165e4c6a0c4d8264a013e368143, type: 3}
+  - {fileID: -250844637386769753, guid: c164665eaf95da8439c6802fe721b033, type: 3}
+  - {fileID: -250844637386769753, guid: b3fe8623c396f7349a5575ea85a969a3, type: 3}
+  - {fileID: -250844637386769753, guid: 1ea41c7384db33a4fa178f86f1ba815f, type: 3}
+  - {fileID: -250844637386769753, guid: 0c5059be4d7a12b43ac16d0656d512b5, type: 3}
+  - {fileID: -250844637386769753, guid: 6c8f7cbeeb838f643b5960e1146f72ee, type: 3}
+  - {fileID: -250844637386769753, guid: 97a9b133924e62e49b826b43073f6935, type: 3}
+  frameTimerMax: 0.05
