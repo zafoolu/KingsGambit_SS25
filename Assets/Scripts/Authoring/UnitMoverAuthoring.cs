@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class UnitMoverAuthoring : MonoBehaviour {
 
-
-    public float moveSpeed;
-    public float rotationSpeed;
-
+    public float moveSpeed = 5f;
+    public float rotationSpeed = 10f;
+    
+    [Header("Collision Avoidance")]
+    public float personalSpace = 1.5f;       // Minimaler Abstand zu anderen Einheiten
+    public float avoidanceWeight = 0.7f;     // Wie stark die Einheit ausweicht (0-1)
 
     public class Baker : Baker<UnitMoverAuthoring> {
 
@@ -16,20 +18,11 @@ public class UnitMoverAuthoring : MonoBehaviour {
             AddComponent(entity, new UnitMover {
                 moveSpeed = authoring.moveSpeed,
                 rotationSpeed = authoring.rotationSpeed,
+                personalSpace = authoring.personalSpace,
+                avoidanceWeight = authoring.avoidanceWeight,
+                avoidanceDirection = float3.zero,
+                isMoving = false
             });
         }
-
     }
-
-}
-
-public struct UnitMover : IComponentData {
-
-
-    public float moveSpeed;
-    public float rotationSpeed;
-    public float3 targetPosition;
-    public bool isMoving;
-
-
 }
