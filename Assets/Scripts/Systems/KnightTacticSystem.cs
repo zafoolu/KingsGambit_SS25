@@ -52,7 +52,7 @@ public partial struct KnightTacticSystem : ISystem
 
             if (targetsInBox1 == 1 && targetsInBox2 == 1)
             {
-                Debug.Log("SHOOT - Perfekte Taktik!");
+                
 
                 // Timer zurücksetzen
                 knightTactic.ValueRW.timer = 0f;
