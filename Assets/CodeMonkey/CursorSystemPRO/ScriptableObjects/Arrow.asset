@@ -14,5 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textureArray:
   - {fileID: 2800000, guid: afc2209df170e55458a8de37eeb5bc6e, type: 3}
+  spriteArray: []
   frameRate: 0
   offset: {x: 10, y: 10}
