@@ -34,19 +34,41 @@ partial struct FormationTargetTransferSystem : ISystem {
         public ComponentLookup<Target> targetComponentLookup;
 
         public void Execute(
-            in FormationFollower formationFollower,
+            ref FormationFollower formationFollower,
             in Entity followerEntity) {
 
             // Prüfe ob der FlagBearer ein Target hat
             if (targetComponentLookup.HasComponent(formationFollower.flagBearerEntity)) {
                 Target flagBearerTarget = targetComponentLookup[formationFollower.flagBearerEntity];
                 
-                // Übertrage Target vom FlagBearer an FormationFollower
+                if (flagBearerTarget.targetEntity != Entity.Null) {
+                    // FlagBearer hat ein Target - übertrage es an FormationFollower
+                    if (targetComponentLookup.HasComponent(followerEntity)) {
+                        targetComponentLookup[followerEntity] = new Target {
+                            targetEntity = flagBearerTarget.targetEntity
+                        };
+                    }
+                } else {
+                    // FlagBearer hat kein Target - entferne Target von FormationFollower und setze Formation zurück
+                    if (targetComponentLookup.HasComponent(followerEntity)) {
+                        targetComponentLookup[followerEntity] = new Target {
+                            targetEntity = Entity.Null
+                        };
+                    }
+                    
+                    // Markiere FormationFollower für Formation-Reset
+                    formationFollower.shouldResetToFormation = true;
+                }
+            } else {
+                // FlagBearer hat keine Target-Komponente - entferne Target von FormationFollower
                 if (targetComponentLookup.HasComponent(followerEntity)) {
                     targetComponentLookup[followerEntity] = new Target {
-                        targetEntity = flagBearerTarget.targetEntity
+                        targetEntity = Entity.Null
                     };
                 }
+                
+                // Markiere FormationFollower für Formation-Reset
+                formationFollower.shouldResetToFormation = true;
             }
         }
     }

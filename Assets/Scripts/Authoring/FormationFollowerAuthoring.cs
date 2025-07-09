@@ -43,7 +43,8 @@ public class FormationFollowerAuthoring : MonoBehaviour
                 targetPosition = float3.zero,
                 moveSpeed = authoring.moveSpeed,
                 rotationSpeed = authoring.rotationSpeed,
-                isMoving = false
+                isMoving = false,
+                shouldResetToFormation = false
             });
         }
     }
@@ -64,4 +65,7 @@ public struct FormationFollower : IComponentData
     public float moveSpeed;
     public float rotationSpeed;
     public bool isMoving;
+    
+    // Formation Reset
+    public bool shouldResetToFormation; // Flag um Formation zurückzusetzen wenn kein Target
 }

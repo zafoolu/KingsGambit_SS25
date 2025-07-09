@@ -62,13 +62,30 @@ public partial struct FormationCalculationJob : IJobEntity
         LocalTransform flagBearerTransform = localTransformLookup[formationFollower.flagBearerEntity];
         FlagBearer flagBearer = flagBearerLookup[formationFollower.flagBearerEntity];
 
-        // Berechne Formation-Position wenn:
-        // 1. Flag-Bearer sich bewegt ODER
-        // 2. FormationFollower hat noch keine gültige Zielposition (erste Berechnung)
-        bool hasValidTargetPosition = !math.all(formationFollower.targetPosition == float3.zero);
-        if (!flagBearer.isMoving && !formationFollower.isMoving && hasValidTargetPosition)
+        // Prüfe ob Formation zurückgesetzt werden soll
+        bool shouldCalculateFormation = false;
+        
+        if (formationFollower.shouldResetToFormation)
         {
-            return; // Flag-Bearer steht still und Follower ist bereits an Position
+            // Formation-Reset wurde angefordert
+            shouldCalculateFormation = true;
+            formationFollower.shouldResetToFormation = false; // Flag zurücksetzen
+        }
+        else
+        {
+            // Normale Formation-Berechnung wenn:
+            // 1. Flag-Bearer sich bewegt ODER
+            // 2. FormationFollower hat noch keine gültige Zielposition (erste Berechnung)
+            bool hasValidTargetPosition = !math.all(formationFollower.targetPosition == float3.zero);
+            if (flagBearer.isMoving || formationFollower.isMoving || !hasValidTargetPosition)
+            {
+                shouldCalculateFormation = true;
+            }
+        }
+        
+        if (!shouldCalculateFormation)
+        {
+            return; // Keine Neuberechnung nötig
         }
 
         // Berechne Formation-Position relativ zum Flag-Bearer
@@ -85,7 +102,7 @@ public partial struct FormationCalculationJob : IJobEntity
         // Berechne neue Zielposition
         float3 newTargetPosition = flagBearerTransform.Position + rotatedOffset;
         
-        // Nur Position aktualisieren wenn sie sich signifikant geändert hat
+        // Position aktualisieren
         float distanceToNewTarget = math.lengthsq(newTargetPosition - formationFollower.targetPosition);
         if (distanceToNewTarget > 0.1f) // Mindestabstand für Update
         {
