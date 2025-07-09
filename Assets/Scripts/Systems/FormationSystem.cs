@@ -62,8 +62,11 @@ public partial struct FormationCalculationJob : IJobEntity
         LocalTransform flagBearerTransform = localTransformLookup[formationFollower.flagBearerEntity];
         FlagBearer flagBearer = flagBearerLookup[formationFollower.flagBearerEntity];
 
-        // Nur neue Position berechnen wenn Flag-Bearer sich bewegt
-        if (!flagBearer.isMoving && !formationFollower.isMoving)
+        // Berechne Formation-Position wenn:
+        // 1. Flag-Bearer sich bewegt ODER
+        // 2. FormationFollower hat noch keine gültige Zielposition (erste Berechnung)
+        bool hasValidTargetPosition = !math.all(formationFollower.targetPosition == float3.zero);
+        if (!flagBearer.isMoving && !formationFollower.isMoving && hasValidTargetPosition)
         {
             return; // Flag-Bearer steht still und Follower ist bereits an Position
         }

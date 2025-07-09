@@ -43,7 +43,7 @@ public class FlagBearerAuthoring : MonoBehaviour
                 formationDistance = authoring.formationDistance,
                 moveSpeed = authoring.moveSpeed,
                 rotationSpeed = authoring.rotationSpeed,
-                targetPosition = float3.zero,
+                targetPosition = authoring.transform.position,
                 isMoving = false
             });
         }
