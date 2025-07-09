@@ -304,6 +304,10 @@ PrefabInstance:
       propertyPath: walkAnimationType
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: meleeAttackAnimationType
+      value: 17
+      objectReference: {fileID: 0}
     - target: {fileID: 4256729297452172453, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: unitType
       value: 5

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
   m_Name: CarraraBishopWalk
   m_EditorClassIdentifier: 
-  animationType: 18
+  animationType: 19
   meshArray:
   - {fileID: 916595882931800696, guid: 66a59529a9183884bb1852d5c302f54d, type: 3}
   - {fileID: 916595882931800696, guid: 78eb1296c7529a941a773c01976af7d9, type: 3}

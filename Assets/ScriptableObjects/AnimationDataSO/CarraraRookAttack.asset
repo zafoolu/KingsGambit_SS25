@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CarraraRookAttack
+  m_EditorClassIdentifier: 
+  animationType: 17
+  meshArray:
+  - {fileID: 895430802385478545, guid: 056d581d1f3896e48b1592b36208cbc2, type: 3}
+  - {fileID: 895430802385478545, guid: 535480f259eab9e46844cf96f194b606, type: 3}
+  - {fileID: 895430802385478545, guid: 63c4294f9e031b045a4c40bc8cc344b4, type: 3}
+  - {fileID: 895430802385478545, guid: 5c75133f0138a104890da96b3b5831e5, type: 3}
+  - {fileID: 895430802385478545, guid: 3b5ba5082cf3292409f50bb7fbccd89e, type: 3}
+  - {fileID: 895430802385478545, guid: 5c99e4e1e2658f7418a2e67a5da9e228, type: 3}
+  - {fileID: 895430802385478545, guid: 69cc84c47d7b07147a44754687f203f9, type: 3}
+  - {fileID: 895430802385478545, guid: 9f7a8e697db00a344ba35b5cdecb1742, type: 3}
+  - {fileID: 895430802385478545, guid: 0dbbe9fa2abf0744e8a90f8652e80995, type: 3}
+  - {fileID: 895430802385478545, guid: c48e456542c5cb7438a4ada5032cd9b6, type: 3}
+  - {fileID: 895430802385478545, guid: 6a23190992d670349b95f44d838dd134, type: 3}
+  - {fileID: 895430802385478545, guid: b1960a0c14b8cf6468032ab8eed1bbac, type: 3}
+  - {fileID: 895430802385478545, guid: 047117807d7187148b0950f576d4bcf3, type: 3}
+  - {fileID: 895430802385478545, guid: 2c3dd1e80861b4d4a927abfa0974c2b4, type: 3}
+  - {fileID: 895430802385478545, guid: 976b99e8ef89a4e44a28f77370b49f55, type: 3}
+  - {fileID: 895430802385478545, guid: f7677f81cc7c77c49a85b247b4e750f1, type: 3}
+  - {fileID: 895430802385478545, guid: e1d81d3d50672234da7e806a2e2122e9, type: 3}
+  - {fileID: 895430802385478545, guid: 334a4ba45d6d5444fab14cb6c6eb450a, type: 3}
+  - {fileID: 895430802385478545, guid: f5773c18e635ee142ba48b8a2f566ca2, type: 3}
+  - {fileID: 895430802385478545, guid: 809befcc1eaa82c46899c259b0e99011, type: 3}
+  - {fileID: 895430802385478545, guid: 3c26864d7fadf93468930d0821f6284e, type: 3}
+  - {fileID: 895430802385478545, guid: acd56ee1de525e54cbb5ddf7ff037a3f, type: 3}
+  - {fileID: 895430802385478545, guid: 84602ff02e26077428e120e9a4d84f46, type: 3}
+  - {fileID: 895430802385478545, guid: 2c10378091d96f64d9332677920d9604, type: 3}
+  - {fileID: 895430802385478545, guid: 38842110b5094124398f904376b684fd, type: 3}
+  - {fileID: 895430802385478545, guid: b54c8ddb8e1f7e443a687f823f6c610e, type: 3}
+  - {fileID: 895430802385478545, guid: 35c4f0e5373a3114ab753ce8e7ccef7f, type: 3}
+  - {fileID: 895430802385478545, guid: 874e6b28a01c9594690e99691afc6e8b, type: 3}
+  - {fileID: 895430802385478545, guid: afcad45188c86044488ebd31c9ebb571, type: 3}
+  - {fileID: 895430802385478545, guid: 15b46da12727d554886316cba282055f, type: 3}
+  frameTimerMax: 0.05

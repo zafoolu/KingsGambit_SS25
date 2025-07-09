@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
   m_Name: CarraraQueenIdle
   m_EditorClassIdentifier: 
-  animationType: 15
+  animationType: 14
   meshArray:
   - {fileID: 1850417869668590896, guid: f303b41a4d390b54c91e82382a885f60, type: 3}
   frameTimerMax: 0.5
