@@ -19,10 +19,10 @@ partial struct ResetEventsSystem : ISystem {
     }
 
     public void OnUpdate(ref SystemState state) {
-        if (SystemAPI.HasSingleton<BuildingHQ>()) {
-            Health hqHealth = SystemAPI.GetComponent<Health>(SystemAPI.GetSingletonEntity<BuildingHQ>());
-            if (hqHealth.onDead) {
-                DOTSEventsManager.Instance.TriggerOnHQDead();
+        if (SystemAPI.HasSingleton<King>()) {
+            Health kingHealth = SystemAPI.GetComponent<Health>(SystemAPI.GetSingletonEntity<King>());
+            if (kingHealth.onDead) {
+                DOTSEventsManager.Instance.TriggerOnKingDead();
             }
         }
 
