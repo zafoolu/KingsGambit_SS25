@@ -24,6 +24,7 @@ public class AnimationDataSO : ScriptableObject {
         CarraraRookAttack,
         CarraraBishopIdle,
         CarraraBishopWalk,
+        CursedQueenWalk,
     }
 
 
