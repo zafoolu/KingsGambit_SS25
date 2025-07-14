@@ -23,4 +23,4 @@ MonoBehaviour:
   visualPrefab: {fileID: 7258244194174621070, guid: 8dcb3b5f05bb4d848a2bad78a16334f2, type: 3}
   buildCostResourceAmountArray:
   - resourceType: 2
-    amount: 4
+    amount: 0

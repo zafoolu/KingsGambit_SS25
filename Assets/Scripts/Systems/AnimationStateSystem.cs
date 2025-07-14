@@ -17,10 +17,26 @@ partial struct AnimationStateSystem : ISystem {
     [BurstCompile]
     public void OnUpdate(ref SystemState state) {
         activeAnimationComponentLookup.Update(ref state);
+        
+        // Original UnitMover Animation Jobs
         IdleWalkingAnimationStateJob idleWalkingAnimationStateJob = new IdleWalkingAnimationStateJob {
             activeAnimationComponentLookup = activeAnimationComponentLookup,
         };
         idleWalkingAnimationStateJob.ScheduleParallel();
+
+        // Formation FlagBearer Animation Jobs
+        activeAnimationComponentLookup.Update(ref state);
+        FlagBearerIdleWalkingAnimationStateJob flagBearerIdleWalkingJob = new FlagBearerIdleWalkingAnimationStateJob {
+            activeAnimationComponentLookup = activeAnimationComponentLookup,
+        };
+        flagBearerIdleWalkingJob.ScheduleParallel();
+
+        // Formation Follower Animation Jobs
+        activeAnimationComponentLookup.Update(ref state);
+        FormationFollowerIdleWalkingAnimationStateJob formationFollowerIdleWalkingJob = new FormationFollowerIdleWalkingAnimationStateJob {
+            activeAnimationComponentLookup = activeAnimationComponentLookup,
+        };
+        formationFollowerIdleWalkingJob.ScheduleParallel();
 
         activeAnimationComponentLookup.Update(ref state);
         AimShootAnimationStateJob aimShootAnimationStateJob = new AimShootAnimationStateJob {
@@ -86,6 +102,40 @@ public partial struct MeleeAttackAnimationStateJob : IJobEntity {
         if (meleeAttack.onAttacked) {
             RefRW<ActiveAnimation> activeAnimation = activeAnimationComponentLookup.GetRefRW(animatedMesh.meshEntity);
             activeAnimation.ValueRW.nextAnimationType = unitAnimations.meleeAttackAnimationType;
+        }
+    }
+
+}
+
+
+[BurstCompile]
+public partial struct FlagBearerIdleWalkingAnimationStateJob : IJobEntity {
+
+    [NativeDisableParallelForRestriction] public ComponentLookup<ActiveAnimation> activeAnimationComponentLookup;
+
+    public void Execute(in AnimatedMesh animatedMesh, in FlagBearer flagBearer, in UnitAnimations unitAnimations) {
+        RefRW<ActiveAnimation> activeAnimation = activeAnimationComponentLookup.GetRefRW(animatedMesh.meshEntity);
+        if (flagBearer.isMoving) {
+            activeAnimation.ValueRW.nextAnimationType = unitAnimations.walkAnimationType;
+        } else {
+            activeAnimation.ValueRW.nextAnimationType = unitAnimations.idleAnimationType;
+        }
+    }
+
+}
+
+
+[BurstCompile]
+public partial struct FormationFollowerIdleWalkingAnimationStateJob : IJobEntity {
+
+    [NativeDisableParallelForRestriction] public ComponentLookup<ActiveAnimation> activeAnimationComponentLookup;
+
+    public void Execute(in AnimatedMesh animatedMesh, in FormationFollower formationFollower, in UnitAnimations unitAnimations) {
+        RefRW<ActiveAnimation> activeAnimation = activeAnimationComponentLookup.GetRefRW(animatedMesh.meshEntity);
+        if (formationFollower.isMoving) {
+            activeAnimation.ValueRW.nextAnimationType = unitAnimations.walkAnimationType;
+        } else {
+            activeAnimation.ValueRW.nextAnimationType = unitAnimations.idleAnimationType;
         }
     }
 

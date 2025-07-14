@@ -31,15 +31,37 @@ public class BuildingPlacementManager : MonoBehaviour {
     }
 
     private void Update() {
+        // Test: Überprüfe jeden Mausklick
+        if (Input.GetMouseButtonDown(0)) {
+            Debug.Log("*** RAW MOUSE CLICK DETECTED ***");
+        }
+        
         if (ghostTransform != null) {
             ghostTransform.position = MouseWorldPosition.Instance.GetPosition();
         }
 
-        if (EventSystem.current.IsPointerOverGameObject()) {
+        // Überprüfe UI-Überlagerung nur bei Mausklick, nicht bei Vorschau
+        bool isOverUI = EventSystem.current.IsPointerOverGameObject();
+        if (isOverUI && !Input.GetMouseButtonDown(0)) {
+            Debug.Log("Mouse is over UI element, showing preview only!");
+            // Zeige trotzdem die Vorschau, aber verhindere das Bauen
+        } else if (isOverUI && Input.GetMouseButtonDown(0)) {
+            Debug.Log("Mouse is over UI element, cannot build!");
             return;
         }
 
+        if (buildingTypeSO == null) {
+            Debug.Log("BuildingTypeSO is null!");
+            return;
+        }
+        
         if (buildingTypeSO.IsNone()) {
+            Debug.Log("No building type selected!");
+            return;
+        }
+        
+        if (MouseWorldPosition.Instance == null) {
+            Debug.LogError("MouseWorldPosition.Instance is null!");
             return;
         }
 
@@ -79,8 +101,15 @@ public class BuildingPlacementManager : MonoBehaviour {
         }
 
         if (Input.GetMouseButtonDown(0)) {
+            Debug.Log("=== MOUSE CLICKED FOR BUILDING PLACEMENT ===");
+            Debug.Log("Mouse position: " + Input.mousePosition);
+            Debug.Log("World position: " + MouseWorldPosition.Instance.GetPosition());
+            Debug.Log("Building type: " + buildingTypeSO.nameString);
+            Debug.Log("Is over UI: " + EventSystem.current.IsPointerOverGameObject());
             if (ResourceManager.Instance.CanSpendResourceAmount(buildingTypeSO.buildCostResourceAmountArray)) {
+                Debug.Log("Resources available for building!");
                 if (CanPlaceBuilding(out string errorMessage)) {
+                    Debug.Log("Building placement validated successfully!");
                     ResourceManager.Instance.SpendResourceAmount(buildingTypeSO.buildCostResourceAmountArray);
 
                     Vector3 mouseWorldPosition = MouseWorldPosition.Instance.GetPosition();
@@ -146,16 +175,17 @@ public class BuildingPlacementManager : MonoBehaviour {
 
                     OnBuildingPlaced?.Invoke(this, EventArgs.Empty);
                 } else {
-                    // Cannot build here for reason: errorMessage
+                    Debug.LogError("Cannot build here for reason: " + errorMessage);
                 }
             } else {
-                // Cannot spend resources
+                Debug.LogError("Cannot spend resources for building!");
             }
         }
     }
 
     private bool CanPlaceBuilding(out string errorMessage) {
         Vector3 mouseWorldPosition = MouseWorldPosition.Instance.GetPosition();
+        Debug.Log("Checking if building can be placed at position: " + mouseWorldPosition);
         EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
 
         EntityQuery entityQuery = entityManager.CreateEntityQuery(typeof(PhysicsWorldSingleton));
@@ -177,6 +207,7 @@ public class BuildingPlacementManager : MonoBehaviour {
             ref distanceHitList,
             collisionFilter)) {
             // Hit something
+            Debug.LogError("Build area is not clear! Found " + distanceHitList.Length + " overlapping objects.");
             errorMessage = "Build area must be clear!";
             return false;
         }
@@ -233,6 +264,7 @@ public class BuildingPlacementManager : MonoBehaviour {
             }
         }
 
+        Debug.Log("Building placement validation passed!");
         errorMessage = null;
         return true;
     }

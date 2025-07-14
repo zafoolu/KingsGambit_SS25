@@ -10,12 +10,16 @@ partial struct FindTargetSystem : ISystem {
 
     private ComponentLookup<LocalTransform> localTransformComponentLookup;
     private ComponentLookup<Faction> factionComponentLookup;
+    private ComponentLookup<FormationFollower> formationFollowerLookup;
+    private ComponentLookup<TargetOverride> targetOverrideComponentLookup;
     private EntityStorageInfoLookup entityStorageInfoLookup;
 
     [BurstCompile]
     public void OnCreate(ref SystemState state) {
         localTransformComponentLookup = state.GetComponentLookup<LocalTransform>(true);
         factionComponentLookup = state.GetComponentLookup<Faction>(true);
+        formationFollowerLookup = state.GetComponentLookup<FormationFollower>(true);
+        targetOverrideComponentLookup = state.GetComponentLookup<TargetOverride>(true);
         entityStorageInfoLookup = state.GetEntityStorageInfoLookup();
     }
 
@@ -28,6 +32,8 @@ partial struct FindTargetSystem : ISystem {
 
         localTransformComponentLookup.Update(ref state);
         factionComponentLookup.Update(ref state);
+        formationFollowerLookup.Update(ref state);
+        targetOverrideComponentLookup.Update(ref state);
         entityStorageInfoLookup.Update(ref state);
 
         FindTargetJob findTargetJob = new FindTargetJob {
@@ -35,9 +41,11 @@ partial struct FindTargetSystem : ISystem {
             collisionWorld = collisionWorld,
             entityStorageInfoLookup = entityStorageInfoLookup,
             factionComponentLookup = factionComponentLookup,
+            formationFollowerLookup = formationFollowerLookup,
             localTransformComponentLookup = localTransformComponentLookup,
+            targetOverrideComponentLookup = targetOverrideComponentLookup,
         };
-        findTargetJob.ScheduleParallel();
+        state.Dependency = findTargetJob.ScheduleParallel(state.Dependency);
 
         /*
         foreach ((
@@ -113,6 +121,8 @@ partial struct FindTargetSystem : ISystem {
 
         [ReadOnly] public ComponentLookup<LocalTransform> localTransformComponentLookup;
         [ReadOnly] public ComponentLookup<Faction> factionComponentLookup;
+        [ReadOnly] public ComponentLookup<FormationFollower> formationFollowerLookup;
+        [ReadOnly] public ComponentLookup<TargetOverride> targetOverrideComponentLookup;
         [ReadOnly] public EntityStorageInfoLookup entityStorageInfoLookup; 
         [ReadOnly] public CollisionWorld collisionWorld;
 
@@ -123,8 +133,7 @@ partial struct FindTargetSystem : ISystem {
             in LocalTransform localTransform,
             ref FindTarget findTarget,
             ref Target target,
-            in TargetOverride targetOverride) {
-
+            in Entity entity) {
 
             findTarget.timer -= deltaTime;
             if (findTarget.timer > 0f) {
@@ -133,9 +142,13 @@ partial struct FindTargetSystem : ISystem {
             }
             findTarget.timer += findTarget.timerMax;
 
-            if (targetOverride.targetEntity != Entity.Null) {
-                target.targetEntity = targetOverride.targetEntity;
-                return;
+            // Prüfe TargetOverride über ComponentLookup
+            if (targetOverrideComponentLookup.HasComponent(entity)) {
+                TargetOverride targetOverride = targetOverrideComponentLookup[entity];
+                if (targetOverride.targetEntity != Entity.Null) {
+                    target.targetEntity = targetOverride.targetEntity;
+                    return;
+                }
             }
 
             NativeList<DistanceHit> distanceHitList = new NativeList<DistanceHit>(Allocator.TempJob);

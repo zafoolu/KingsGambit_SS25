@@ -11,7 +11,7 @@ public class DOTSEventsManager : MonoBehaviour {
 
     public event EventHandler OnBarracksUnitQueueChanged;
     public event EventHandler OnGameWin;
-    public event EventHandler OnHQDead;
+    public event EventHandler OnKingDead;
     public event EventHandler OnHealthDead;
     public event EventHandler OnHordeStartedSpawning;
     public event EventHandler OnHordeStartSpawningSoon;
@@ -28,8 +28,8 @@ public class DOTSEventsManager : MonoBehaviour {
         }
     }
 
-    public void TriggerOnHQDead() {
-        OnHQDead?.Invoke(this, EventArgs.Empty);
+    public void TriggerOnKingDead() {
+        OnKingDead?.Invoke(this, EventArgs.Empty);
     }
 
     public void TriggerOnHealthDead(NativeList<Entity> entityNativeList) {

@@ -72,10 +72,15 @@ partial struct BuildingBarracksSystem : ISystem {
             Entity spawnedUnitEntity = state.EntityManager.Instantiate(unitTypeSO.GetPrefabEntity(entitiesReferences));
             SystemAPI.SetComponent(spawnedUnitEntity, LocalTransform.FromPosition(localTransform.ValueRO.Position));
 
-            SystemAPI.SetComponent(spawnedUnitEntity, new MoveOverride {
-                targetPosition = localTransform.ValueRO.Position + buildingBarracks.ValueRO.rallyPositionOffset
-            });
-            SystemAPI.SetComponentEnabled<MoveOverride>(spawnedUnitEntity, true);
+            // Only set MoveOverride for non-formation units
+            if (!SystemAPI.HasComponent<FormationFollower>(spawnedUnitEntity) && 
+                !SystemAPI.HasComponent<FlagBearer>(spawnedUnitEntity))
+            {
+                SystemAPI.SetComponent(spawnedUnitEntity, new MoveOverride {
+                    targetPosition = localTransform.ValueRO.Position + buildingBarracks.ValueRO.rallyPositionOffset
+                });
+                SystemAPI.SetComponentEnabled<MoveOverride>(spawnedUnitEntity, true);
+            }
         }
     }
 
