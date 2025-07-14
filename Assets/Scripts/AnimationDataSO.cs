@@ -25,6 +25,7 @@ public class AnimationDataSO : ScriptableObject {
         CarraraBishopIdle,
         CarraraBishopWalk,
         CursedQueenWalk,
+        CarraraBishopAttack,
     }
 
 
@@ -42,6 +43,7 @@ public class AnimationDataSO : ScriptableObject {
             case AnimationType.SoldierShoot:
             case AnimationType.ZombieAttack:
             case AnimationType.CarraraRookAttack:
+            case AnimationType.CarraraBishopAttack:
                 return true;
         }
     }

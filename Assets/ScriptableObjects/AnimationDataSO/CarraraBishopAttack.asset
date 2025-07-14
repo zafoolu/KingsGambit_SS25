@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CarraraBishopAttack
+  m_EditorClassIdentifier: 
+  animationType: 21
+  meshArray:
+  - {fileID: 916595882931800696, guid: 749c94618cc82564aabfc767bf602155, type: 3}
+  - {fileID: 916595882931800696, guid: 44a6f9501e38c14459009295ff73702f, type: 3}
+  - {fileID: 916595882931800696, guid: 783ec8dc79aa878409366cde49b4928f, type: 3}
+  - {fileID: 916595882931800696, guid: edf0ea73fe834b74bb018b43a83faa8c, type: 3}
+  - {fileID: 916595882931800696, guid: 12229ed8b8479744b90162f9fc287e52, type: 3}
+  - {fileID: 916595882931800696, guid: ce1c5bc3c73e9974b9b66315c2ae9427, type: 3}
+  - {fileID: 916595882931800696, guid: efd56f579c6ecf9459d164543e240307, type: 3}
+  - {fileID: 916595882931800696, guid: 68b194afc00b2e043805650e3be49366, type: 3}
+  - {fileID: 916595882931800696, guid: 4eb7df7c543448a4db5c2ab35b4b3a6c, type: 3}
+  - {fileID: 916595882931800696, guid: 525e8e15ddd08c54da4e33cff742cac8, type: 3}
+  - {fileID: 916595882931800696, guid: 8da06f75b2740ad499d40eb06303d4e7, type: 3}
+  - {fileID: 916595882931800696, guid: fe0e570966c46724abc937d6cadce99c, type: 3}
+  - {fileID: 916595882931800696, guid: b382bd61cb2f9fe4c89c1c105dce3867, type: 3}
+  - {fileID: 916595882931800696, guid: 419b6ea2028c83b48a368a2cab86a257, type: 3}
+  - {fileID: 916595882931800696, guid: 2d54f656dd5855a43a702258efb68c96, type: 3}
+  - {fileID: 916595882931800696, guid: 71e94ae23b2f3ff41878142d1379701a, type: 3}
+  - {fileID: 916595882931800696, guid: f66992fe5a06b9b48924ba3d6b800029, type: 3}
+  - {fileID: 916595882931800696, guid: 7609d518dddc23c4c8a21c894f28837e, type: 3}
+  - {fileID: 916595882931800696, guid: e03d709ca8e679344932aac846fa8656, type: 3}
+  - {fileID: 916595882931800696, guid: 226245dc7da517a4191ceca4f77b518d, type: 3}
+  - {fileID: 916595882931800696, guid: 50b6938d49b86c24282a2c171662747c, type: 3}
+  - {fileID: 916595882931800696, guid: bab6c79ce8add6b4490e1f4a958eb7be, type: 3}
+  - {fileID: 916595882931800696, guid: a28149d983e66014abe69c145b1803b8, type: 3}
+  - {fileID: 916595882931800696, guid: e1437359a9250164f9a006556db33f87, type: 3}
+  - {fileID: 916595882931800696, guid: 04050fc97807f2a4385df0111f02f26d, type: 3}
+  - {fileID: 916595882931800696, guid: 683df160d26db874b81a64ad59568122, type: 3}
+  - {fileID: 916595882931800696, guid: 24ca4c24757a42c478940fbfd5213ac0, type: 3}
+  - {fileID: 916595882931800696, guid: d64dc1533ca60124392503301c74b21c, type: 3}
+  - {fileID: 916595882931800696, guid: a02fcf2b0ca7a50429c121c78d670fde, type: 3}
+  - {fileID: 916595882931800696, guid: c9a4d56989c82d74cb0df57b793e18d1, type: 3}
+  frameTimerMax: 0.05

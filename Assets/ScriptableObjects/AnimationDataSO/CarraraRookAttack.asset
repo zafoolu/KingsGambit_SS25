@@ -44,4 +44,4 @@ MonoBehaviour:
   - {fileID: 895430802385478545, guid: 874e6b28a01c9594690e99691afc6e8b, type: 3}
   - {fileID: 895430802385478545, guid: afcad45188c86044488ebd31c9ebb571, type: 3}
   - {fileID: 895430802385478545, guid: 15b46da12727d554886316cba282055f, type: 3}
-  frameTimerMax: 0.05
+  frameTimerMax: 0.04
