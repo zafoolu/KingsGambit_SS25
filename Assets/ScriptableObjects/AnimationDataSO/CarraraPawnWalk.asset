@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CarraraPawnWalk
+  m_EditorClassIdentifier: 
+  animationType: 23
+  meshArray:
+  - {fileID: 2292569941267114622, guid: 2b0a09f2912d6f442a54b65deaea5250, type: 3}
+  - {fileID: 2292569941267114622, guid: b571b523bb9d16b41bf319d2410d5ffc, type: 3}
+  - {fileID: 2292569941267114622, guid: 0963573b215436a48a35b49f00f0954b, type: 3}
+  - {fileID: 2292569941267114622, guid: 3b2c1f31182711642b67aeeaab7ff543, type: 3}
+  - {fileID: 2292569941267114622, guid: 15b2eb6c880aebc4daee3b6a06673144, type: 3}
+  - {fileID: 2292569941267114622, guid: 44366a59a56868c4ab73ca5f86d71e2d, type: 3}
+  - {fileID: 2292569941267114622, guid: 4ead33b39f3dbdd4b8aef23aba2bfe9a, type: 3}
+  - {fileID: 2292569941267114622, guid: a81b068d0a3b02e4bbe4fa0c6baa2fb1, type: 3}
+  - {fileID: 2292569941267114622, guid: 5c29ea05903812a41b60e3fabb472433, type: 3}
+  - {fileID: 2292569941267114622, guid: 7c8bafaec87c43a4e86bb59b92d934ee, type: 3}
+  - {fileID: 2292569941267114622, guid: 1f76a486c92a43c499e42a1cdacb3c7d, type: 3}
+  - {fileID: 2292569941267114622, guid: d03acb3ef4eeff44684cc14a5d81398b, type: 3}
+  - {fileID: 2292569941267114622, guid: fefcf013d8744574dbfb975d6646fc91, type: 3}
+  - {fileID: 2292569941267114622, guid: dd16397d9c246ae42ae3044a3239f1bb, type: 3}
+  - {fileID: 2292569941267114622, guid: 8552c5f4d418fcb4d951da15eb16c22b, type: 3}
+  - {fileID: 2292569941267114622, guid: 15e02ff8ec61c77458f5f5cd438ae22b, type: 3}
+  - {fileID: 2292569941267114622, guid: 7ac4a1b7a9628714babcea0ab44ca8cf, type: 3}
+  - {fileID: 2292569941267114622, guid: d461245173396bd4894c59b4cb983aa5, type: 3}
+  - {fileID: 2292569941267114622, guid: cd4d32e449c749147a020a30af5c8963, type: 3}
+  frameTimerMax: 0.05
