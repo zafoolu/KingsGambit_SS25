@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CarraraKingWalk
+  m_EditorClassIdentifier: 
+  animationType: 27
+  meshArray:
+  - {fileID: -2920103237634045771, guid: c50da451888e7344892032f795d26580, type: 3}
+  - {fileID: -2920103237634045771, guid: f8b56a781b15b25408e7254171e8b135, type: 3}
+  - {fileID: -2920103237634045771, guid: 74c5d076f7963bd44b757c6ff5442a4d, type: 3}
+  - {fileID: -2920103237634045771, guid: 7db5851956aefc241bc1dc3cb39fa404, type: 3}
+  - {fileID: -2920103237634045771, guid: 20b40428e1ad3d9468d8c993b35f2252, type: 3}
+  - {fileID: -2920103237634045771, guid: 857211834b3fe014cba72a947f5098e0, type: 3}
+  - {fileID: -2920103237634045771, guid: 77622d3577aa7a8478aaa07e97fd5e40, type: 3}
+  - {fileID: -2920103237634045771, guid: b705387a973dfad469677d9c9dbb30b6, type: 3}
+  - {fileID: -2920103237634045771, guid: d69e00a816d10e444ba8492805bbb467, type: 3}
+  - {fileID: -2920103237634045771, guid: 561ffd427b9eed94683833077a963487, type: 3}
+  - {fileID: -2920103237634045771, guid: 4894bb22432e9e444b0f23a0e698d265, type: 3}
+  - {fileID: -2920103237634045771, guid: ca9c5378c2b357344abe5edb1957502e, type: 3}
+  - {fileID: -2920103237634045771, guid: f80314bb7ded7b44c8b4c3f9077ce6f2, type: 3}
+  - {fileID: -2920103237634045771, guid: 1a91fda3cd811374380b95b5fb8375a8, type: 3}
+  - {fileID: -2920103237634045771, guid: 5b5533f3b0c5f0946908099b4f876d8d, type: 3}
+  - {fileID: -2920103237634045771, guid: 6004ccc2c8f80c34a97136190024cb51, type: 3}
+  - {fileID: -2920103237634045771, guid: 161701de330996947aa22c8909beb086, type: 3}
+  - {fileID: -2920103237634045771, guid: d181385450db25a41b9365ec75a1710b, type: 3}
+  - {fileID: -2920103237634045771, guid: db1db1e7fd123d64da9558a4b3965e65, type: 3}
+  - {fileID: -2920103237634045771, guid: dac1986d63302074b85036cc53ff5bb0, type: 3}
+  - {fileID: -2920103237634045771, guid: cbce04fed3d042c49b461d8dc8912066, type: 3}
+  - {fileID: -2920103237634045771, guid: a1922b3f84340f54f97ae7ad3363d658, type: 3}
+  - {fileID: -2920103237634045771, guid: 80158065ee8ae44468824b17da5e5554, type: 3}
+  frameTimerMax: 0.05

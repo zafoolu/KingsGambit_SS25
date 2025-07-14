@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CarraraKingAttack
+  m_EditorClassIdentifier: 
+  animationType: 28
+  meshArray:
+  - {fileID: -2920103237634045771, guid: 566c1b54e9fcc4c4f998480a21ae3d46, type: 3}
+  - {fileID: -2920103237634045771, guid: 8b4451035ac636e40a41563062292377, type: 3}
+  - {fileID: -2920103237634045771, guid: c8225a66d8c4ab74792494fc2614ecad, type: 3}
+  - {fileID: -2920103237634045771, guid: 99df4cd43126d704b85d9dd76aa041bf, type: 3}
+  - {fileID: -2920103237634045771, guid: bcc15f3ac51cb4348b7daa310e83991e, type: 3}
+  - {fileID: -2920103237634045771, guid: fc1341aa5491876479753f48cf46e12f, type: 3}
+  - {fileID: -2920103237634045771, guid: ceb52cf2ad5a40e438718b8b8894a758, type: 3}
+  - {fileID: -2920103237634045771, guid: cfd292384159a2c408d3bcab0f3ba005, type: 3}
+  - {fileID: -2920103237634045771, guid: 7294d8ee772e3b045ae4e22c1ebb96b4, type: 3}
+  - {fileID: -2920103237634045771, guid: c74a8c2595478a64a9eca4448f500790, type: 3}
+  - {fileID: -2920103237634045771, guid: cc5d7a57620217a43ab158bf93e11cc5, type: 3}
+  - {fileID: -2920103237634045771, guid: 88cd184268a63a64caba24330b32ca44, type: 3}
+  - {fileID: -2920103237634045771, guid: 2c1d44ff5f103ee46a81b3277b847b25, type: 3}
+  - {fileID: -2920103237634045771, guid: 66b4533ef00673a47ad3f2f3489deefc, type: 3}
+  - {fileID: -2920103237634045771, guid: 577e8b4a1013d4547b437cbe73582d8c, type: 3}
+  - {fileID: -2920103237634045771, guid: 4064bbe21b97e5548b76cd832a13f515, type: 3}
+  - {fileID: -2920103237634045771, guid: 43f82bf5cf0594c4bb2663f754787994, type: 3}
+  - {fileID: -2920103237634045771, guid: 078c6136811e6af4f9f3d0ad7ef717dd, type: 3}
+  frameTimerMax: 0.05
