@@ -97,6 +97,7 @@ partial struct UnitMoverSystem : ISystem
 
 
 [BurstCompile]
+[WithNone(typeof(FlagBearer), typeof(FormationFollower))]
 public partial struct UnitMoverJob : IJobEntity
 {
 

@@ -586,13 +586,17 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8529816399816192840, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: factionType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -4232887784662527282, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: range
       value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -4232887784662527282, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: targetFaction
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 522523392802109760, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: rotationSpeed

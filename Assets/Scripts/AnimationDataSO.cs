@@ -41,6 +41,7 @@ public class AnimationDataSO : ScriptableObject {
             case AnimationType.ScoutShoot:
             case AnimationType.SoldierShoot:
             case AnimationType.ZombieAttack:
+            case AnimationType.CarraraRookAttack:
                 return true;
         }
     }

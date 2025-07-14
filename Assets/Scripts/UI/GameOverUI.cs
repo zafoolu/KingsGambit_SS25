@@ -16,12 +16,12 @@ public class GameOverUI : MonoBehaviour {
     }
 
     private void Start() {
-        DOTSEventsManager.Instance.OnHQDead += DOTSEventsManager_OnHQDead;
+        DOTSEventsManager.Instance.OnKingDead += DOTSEventsManager_OnKingDead;
 
         Hide();
     }
 
-    private void DOTSEventsManager_OnHQDead(object sender, System.EventArgs e) {
+    private void DOTSEventsManager_OnKingDead(object sender, System.EventArgs e) {
         Show();
         Time.timeScale = 0f;
     }

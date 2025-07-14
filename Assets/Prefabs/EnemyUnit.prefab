@@ -53,7 +53,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4232887784662527282, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: targetFaction
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -81372276374732813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: healthAmount
@@ -77,7 +77,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 0491ace4e8ea79a41ae8aadc2734ec38, type: 2}
     - target: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_Name
-      value: ZombieUnit
+      value: EnemyUnit
       objectReference: {fileID: 0}
     - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: idleAnimationType

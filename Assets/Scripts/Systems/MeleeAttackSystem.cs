@@ -14,6 +14,7 @@ partial struct MeleeAttackSystem : ISystem {
         CollisionWorld collisionWorld = physicsWorldSingleton.CollisionWorld;
         NativeList<RaycastHit> raycastHitList = new NativeList<RaycastHit>(Allocator.Temp);
 
+        // Handle normal units with TargetPositionPathQueued
         foreach ((
             RefRO<LocalTransform> localTransform,
             RefRW<MeleeAttack> meleeAttack,
@@ -70,6 +71,72 @@ partial struct MeleeAttackSystem : ISystem {
                 // Target is close enough to attack
                 targetPositionPathQueued.ValueRW.targetPosition = localTransform.ValueRO.Position;
                 targetPositionPathQueuedEnabled.ValueRW = true;
+
+                meleeAttack.ValueRW.timer -= SystemAPI.Time.DeltaTime;
+                if (meleeAttack.ValueRO.timer > 0) {
+                    continue;
+                }
+                meleeAttack.ValueRW.timer = meleeAttack.ValueRO.timerMax;
+
+                RefRW<Health> targetHealth = SystemAPI.GetComponentRW<Health>(target.ValueRO.targetEntity);
+                targetHealth.ValueRW.healthAmount -= meleeAttack.ValueRO.damageAmount;
+                targetHealth.ValueRW.onHealthChanged = true;
+                targetHealth.ValueRW.onTookDamage = true;
+
+                meleeAttack.ValueRW.onAttacked = true;
+            }
+        }
+
+        // Handle FormationFollower units
+        foreach ((RefRO<LocalTransform> localTransform,
+                 RefRW<MeleeAttack> meleeAttack,
+                 RefRO<Target> target,
+                 RefRW<FormationFollower> formationFollower)
+                in SystemAPI.Query<RefRO<LocalTransform>,
+                                   RefRW<MeleeAttack>,
+                                   RefRO<Target>,
+                                   RefRW<FormationFollower>>()) {
+
+            if (target.ValueRO.targetEntity == Entity.Null) {
+                continue;
+            }
+
+            LocalTransform targetLocalTransform = SystemAPI.GetComponent<LocalTransform>(target.ValueRO.targetEntity);
+            float meleeAttackDistanceSq = 2f;
+            bool isCloseEnoughToAttack = math.distancesq(localTransform.ValueRO.Position, targetLocalTransform.Position) < meleeAttackDistanceSq;
+
+            bool isTouchingTarget = false;
+            if (!isCloseEnoughToAttack) {
+                float3 dirToTarget = targetLocalTransform.Position - localTransform.ValueRO.Position;
+                dirToTarget = math.normalize(dirToTarget);
+                float distanceExtraToTestRaycast = .4f;
+                RaycastInput raycastInput = new RaycastInput {
+                    Start = localTransform.ValueRO.Position,
+                    End = localTransform.ValueRO.Position + dirToTarget * (meleeAttack.ValueRO.colliderSize + distanceExtraToTestRaycast),
+                    Filter = new CollisionFilter {
+                        BelongsTo = ~0u,
+                        CollidesWith = 1u << GameAssets.UNITS_LAYER | 1u << GameAssets.BUILDINGS_LAYER,
+                        GroupIndex = 0,
+                    },
+                };
+                raycastHitList.Clear();
+                if (collisionWorld.CastRay(raycastInput, ref raycastHitList)) {
+                    foreach (RaycastHit raycastHit in raycastHitList) {
+                        if (raycastHit.Entity == target.ValueRO.targetEntity) {
+                            // Raycast hit target, close enough to attack this entity
+                            isTouchingTarget = true;
+                            break;
+                        }
+                    }
+                }
+            }
+
+            if (!isCloseEnoughToAttack && !isTouchingTarget) {
+                // Target is too far - move FormationFollower towards target
+                formationFollower.ValueRW.targetPosition = targetLocalTransform.Position;
+            } else {
+                // Target is close enough to attack - stop moving and attack
+                formationFollower.ValueRW.targetPosition = localTransform.ValueRO.Position;
 
                 meleeAttack.ValueRW.timer -= SystemAPI.Time.DeltaTime;
                 if (meleeAttack.ValueRO.timer > 0) {
