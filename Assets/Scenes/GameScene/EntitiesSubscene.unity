@@ -333,6 +333,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarraraGolemsRook
       objectReference: {fileID: 0}
+    - target: {fileID: 2547314701683967756, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7874505460035524181, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
       propertyPath: m_LocalPosition.x
       value: 46.4
@@ -828,6 +832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarraraQueen
       objectReference: {fileID: 0}
+    - target: {fileID: 121009751022966959, guid: f7f0e47671a89474883f14d5d9e168d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5743167583605967350, guid: f7f0e47671a89474883f14d5d9e168d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 22.79
@@ -1127,6 +1135,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarraraGolemsKnight
       objectReference: {fileID: 0}
+    - target: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8580884141649540636, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
       propertyPath: m_LocalPosition.x
       value: 29.2
@@ -1214,6 +1226,10 @@ PrefabInstance:
     - target: {fileID: 2547314701683967756, guid: ee9a6388b2ffb8048ae6685f6888b374, type: 3}
       propertyPath: m_Name
       value: CarraraGolemsBishop
+      objectReference: {fileID: 0}
+    - target: {fileID: 2547314701683967756, guid: ee9a6388b2ffb8048ae6685f6888b374, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4376420591064692702, guid: ee9a6388b2ffb8048ae6685f6888b374, type: 3}
       propertyPath: idleAnimationType

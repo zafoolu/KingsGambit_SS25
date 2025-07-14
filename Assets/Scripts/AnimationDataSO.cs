@@ -29,7 +29,7 @@ public class AnimationDataSO : ScriptableObject {
         CarraraQueenAttack,
         CarraraPawnWalk,
         CarraraPawnIdle,
-       // CarraraPawnAttack,
+        CarraraPawnAttack,
     }
 
 
@@ -49,7 +49,7 @@ public class AnimationDataSO : ScriptableObject {
             case AnimationType.CarraraRookAttack:
             case AnimationType.CarraraBishopAttack:
             case AnimationType.CarraraQueenAttack:
-           // case AnimationType.CarraraPawnAttack:
+            case AnimationType.CarraraPawnAttack:
                 return true;
         }
     }
