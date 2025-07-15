@@ -14,13 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: CarraraGolemTownhall
   buildingType: 2
-  buildingConstructionTimerMax: 2
+  buildingConstructionTimerMax: 0
   constructionYOffset: 0
   prefab: {fileID: 5027002020256826652, guid: bf0a131ae12705d4b98902b367ef7c75, type: 3}
-  buildingDistanceMin: 0
+  buildingDistanceMin: 8
   showInBuildingPlacementManagerUI: 1
   sprite: {fileID: 21300000, guid: 0aac3aa6f7b72684cad566015dc5f233, type: 3}
   visualPrefab: {fileID: 7258244194174621070, guid: 8dcb3b5f05bb4d848a2bad78a16334f2, type: 3}
-  buildCostResourceAmountArray:
-  - resourceType: 2
-    amount: 0
+  buildCostResourceAmountArray: []

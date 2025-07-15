@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: Carrara Golem Quarry
   buildingType: 4
-  buildingConstructionTimerMax: 2
+  buildingConstructionTimerMax: 1
   constructionYOffset: 0
   prefab: {fileID: 4756588309988327447, guid: e63775f5ee6885447baa42ece8843517, type: 3}
-  buildingDistanceMin: 0
+  buildingDistanceMin: 5
   showInBuildingPlacementManagerUI: 1
   sprite: {fileID: 21300000, guid: 8861b09744ab67e4095f37a6fdb78691, type: 3}
   visualPrefab: {fileID: 6256397954293877532, guid: 584c8c540dfa03346836eca7833e88e8, type: 3}
   buildCostResourceAmountArray:
-  - resourceType: 2
-    amount: 0
+  - resourceType: 1
+    amount: 250

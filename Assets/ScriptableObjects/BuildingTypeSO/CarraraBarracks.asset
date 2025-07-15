@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: CarraraGolemsBarracks
   buildingType: 5
-  buildingConstructionTimerMax: 2
+  buildingConstructionTimerMax: 1
   constructionYOffset: 0
   prefab: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
-  buildingDistanceMin: 0
+  buildingDistanceMin: 5
   showInBuildingPlacementManagerUI: 1
   sprite: {fileID: 21300000, guid: 0aac3aa6f7b72684cad566015dc5f233, type: 3}
   visualPrefab: {fileID: 8245520188384699280, guid: 83e74744e2047ad4da93beb21d075ad2, type: 3}
   buildCostResourceAmountArray:
-  - resourceType: 2
-    amount: 0
+  - resourceType: 1
+    amount: 275
