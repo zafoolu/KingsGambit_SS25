@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 using System.Collections.Generic;
 
-public class MapSelectionUI : MonoBehaviour
+public class SkirmishMenuUI : MonoBehaviour
 {
     [Header("Map Selection")]
     public TMP_Dropdown mapDropdown;
@@ -33,15 +34,18 @@ public class MapSelectionUI : MonoBehaviour
     public string[] aiFactionNames;
     private int currentAIFactionIndex = 0;
 
+    [Header("Skirmish Settings")]
+    public SkirmishSettingsSO skirmishSettings;
+
     void Start()
     {
-        // Map Auswahl
+        // Map Dropdown initialisieren
         mapDropdown.ClearOptions();
         mapDropdown.AddOptions(new List<string>(maps));
         mapDropdown.onValueChanged.AddListener(OnMapChanged);
         OnMapChanged(0);
 
-        // Time Limit Dropdown
+        // Time Limit Dropdown initialisieren
         timeLimitDropdown.ClearOptions();
         timeLimitDropdown.AddOptions(new List<string> {
             "Keine Vorgabe", "5 Minuten", "10 Minuten", "30 Minuten", "60 Minuten"
@@ -52,13 +56,13 @@ public class MapSelectionUI : MonoBehaviour
         });
         timeLimitDropdown.gameObject.SetActive(timeLimitToggle.isOn);
 
-        // Player Faction
+        // Player Faction Dropdown
         playerFactionDropdown.ClearOptions();
         playerFactionDropdown.AddOptions(new List<string>(playerFactionNames));
         playerFactionDropdown.onValueChanged.AddListener(OnPlayerFactionChanged);
         OnPlayerFactionChanged(0);
 
-        // AI Faction
+        // AI Faction Dropdown
         aiFactionDropdown.ClearOptions();
         aiFactionDropdown.AddOptions(new List<string>(aiFactionNames));
         aiFactionDropdown.onValueChanged.AddListener(OnAIFactionChanged);
@@ -93,46 +97,41 @@ public class MapSelectionUI : MonoBehaviour
             aiFactionPreview.texture = null;
     }
 
-    public VictoryConditionSelection GetSelectedVictoryConditions()
+    /// <summary>
+    /// Speichert die ausgewählten Einstellungen in das ScriptableObject
+    /// </summary>
+    public void ApplySettings()
     {
-        return new VictoryConditionSelection
+        if (skirmishSettings == null)
         {
-            destroyTownhall = destroyTownhallToggle.isOn,
-            killKing = killKingToggle.isOn,
-            timeLimitEnabled = timeLimitToggle.isOn,
-            timeLimitMinutes = timeLimitToggle.isOn ? timeLimitOptions[timeLimitDropdown.value] : 0
-        };
+            Debug.LogError("SkirmishSettingsSO ist nicht zugewiesen!");
+            return;
+        }
+
+        var selectedMapIndex = mapDropdown.value;
+        var mapName = mapDropdown.options[selectedMapIndex].text;
+
+        skirmishSettings.selectedMapName = mapName;
+        skirmishSettings.playerFactionName = playerFactionNames[currentPlayerFactionIndex];
+        skirmishSettings.playerFactionIndex = currentPlayerFactionIndex;
+        skirmishSettings.aiFactionName = aiFactionNames[currentAIFactionIndex];
+        skirmishSettings.aiFactionIndex = currentAIFactionIndex;
+        skirmishSettings.destroyTownhall = destroyTownhallToggle.isOn;
+        skirmishSettings.killKing = killKingToggle.isOn;
+        skirmishSettings.useTimeLimit = timeLimitToggle.isOn;
+        skirmishSettings.timeLimitMinutes = timeLimitToggle.isOn ? timeLimitOptions[timeLimitDropdown.value] : 0;
+
+        Debug.Log("Skirmish Settings erfolgreich gespeichert.");
     }
 
-    public FactionSelection GetPlayerFaction()
+    /// <summary>
+    /// Wird vom Button "Start Skirmish" aufgerufen
+    /// </summary>
+    public void OnStartSkirmish()
     {
-        return new FactionSelection
-        {
-            factionIndex = currentPlayerFactionIndex,
-            factionName = playerFactionNames[currentPlayerFactionIndex]
-        };
-    }
+        Debug.Log("🎯 StartSkirmish-Button wurde gedrückt!");
 
-    public FactionSelection GetAIFaction()
-    {
-        return new FactionSelection
-        {
-            factionIndex = currentAIFactionIndex,
-            factionName = aiFactionNames[currentAIFactionIndex]
-        };
-    }
-
-    public struct VictoryConditionSelection
-    {
-        public bool destroyTownhall;
-        public bool killKing;
-        public bool timeLimitEnabled;
-        public int timeLimitMinutes;
-    }
-
-    public struct FactionSelection
-    {
-        public int factionIndex;
-        public string factionName;
+        ApplySettings();
+        SceneManager.LoadScene("SkirmishSceneLoader");
     }
 }
