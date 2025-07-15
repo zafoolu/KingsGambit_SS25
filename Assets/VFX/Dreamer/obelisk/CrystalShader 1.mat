@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: CrystalShader
+  m_Name: CrystalShader 1
   m_Shader: {fileID: -6465566751694194690, guid: 5b1862c8c0b32cb4b8addc782c33356d, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -45,9 +45,9 @@ Material:
     - _Smoothness: 0
     - _Topline: 0.431
     m_Colors:
-    - _Basecolor: {r: 0.7551322, g: 0.899371, b: 0.89672273, a: 1}
+    - _Basecolor: {r: 0.48732197, g: 1.7660339, b: 2.8176098, a: 1}
     - _Bottomcolor: {r: 84.55245, g: 84.41772, b: 766.996, a: 1}
-    - _Topcolor: {r: 0, g: 766.99615, b: 680.7921, a: 1}
+    - _Topcolor: {r: 24.955975, g: 10.123648, b: 22.815224, a: 1}
   m_BuildTextureStacks: []
   m_AllowLocking: 1
 --- !u!114 &9123250018950217316
