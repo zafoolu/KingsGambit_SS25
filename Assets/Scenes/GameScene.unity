@@ -17273,6 +17273,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -324
       objectReference: {fileID: 0}
+    - target: {fileID: 762667882985276149, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89d15f1bbdc3a5b4d9b9730da2803d77, type: 3}
     - target: {fileID: 1532252796559451961, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: minimapCamera
       value: 
