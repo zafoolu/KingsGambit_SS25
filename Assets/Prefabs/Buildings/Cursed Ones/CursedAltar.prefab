@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4168898030455927706}
   - component: {fileID: 5675277110588833701}
   - component: {fileID: 4889859224665404081}
+  - component: {fileID: 3785304463044745258}
   m_Layer: 0
   m_Name: CursedAltar
   m_TagString: Untagged
@@ -237,6 +238,23 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 4.59, y: 3.59, z: 5.89}
   m_Center: {x: 0.72, y: 1.22, z: 18.529152}
+--- !u!114 &3785304463044745258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221120250187058794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c06f90ea8acc18498f7132766a93ce8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  harvestTimerMax: 2
+  resourceType: 0
+  harvesterType: 0
+  captureRadius: 5
+  captureTime: 6
 --- !u!1 &2998823970107715688
 GameObject:
   m_ObjectHideFlags: 0
