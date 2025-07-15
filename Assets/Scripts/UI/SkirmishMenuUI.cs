@@ -132,6 +132,6 @@ public class SkirmishMenuUI : MonoBehaviour
         Debug.Log("🎯 StartSkirmish-Button wurde gedrückt!");
 
         ApplySettings();
-        SceneManager.LoadScene("SkirmishScene");
+        SceneManager.LoadScene("SkirmishSceneLoader");
     }
 }
