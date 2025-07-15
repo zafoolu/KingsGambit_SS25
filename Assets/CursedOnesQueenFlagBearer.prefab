@@ -290,7 +290,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_Name
-      value: CursedOnesQueen
+      value: CursedOnesQueenFlagBearer
       objectReference: {fileID: 0}
     - target: {fileID: 3576154652990622764, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalScale.x
@@ -519,7 +519,7 @@ MonoBehaviour:
   timerMax: 1.9
   damageAmount: 60
   attackDistance: 15
-  bulletspawnPositionTransform: {fileID: 0}
+  bulletspawnPositionTransform: {fileID: 2922900457871781756}
 --- !u!4 &5743167583605967350 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
