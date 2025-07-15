@@ -48,50 +48,6 @@ public class FlagBearerAuthoring : MonoBehaviour
             });
         }
     }
-
-    [ContextMenu("Auto-Update All Followers")]
-    private void AutoUpdateAllFollowers()
-    {
-        var allFollowers = FindObjectsOfType<FormationFollowerAuthoring>();
-        int updatedCount = 0;
-        
-        foreach (var follower in allFollowers)
-        {
-            if (follower.flagBearerGameObject == this.gameObject)
-            {
-                // Trigger re-baking oder Editor-Update
-                UnityEditor.EditorUtility.SetDirty(follower);
-                updatedCount++;
-            }
-        }
-        
-        Debug.Log($"Formation-Parameter für {updatedCount} Follower aktualisiert.");
-    }
-
-    [ContextMenu("Show Formation Layout")]
-    private void ShowFormationLayout()
-    {
-        var allFollowers = FindObjectsOfType<FormationFollowerAuthoring>();
-        var sameFormationFollowers = new System.Collections.Generic.List<FormationFollowerAuthoring>();
-        
-        foreach (var follower in allFollowers)
-        {
-            if (follower.flagBearerGameObject == this.gameObject && 
-                follower.autoAssignFormationPosition)
-            {
-                sameFormationFollowers.Add(follower);
-            }
-        }
-        
-        sameFormationFollowers.Sort((a, b) => string.Compare(a.name, b.name));
-        
-        Debug.Log($"Formation Layout (Breite: {formationWidth}):");
-        for (int i = 0; i < sameFormationFollowers.Count; i++)
-        {
-            int2 pos = FormationUtility.IndexToFormationPosition(i, formationWidth);
-            Debug.Log($"  {sameFormationFollowers[i].name}: Position ({pos.x}, {pos.y})");
-        }
-    }
 }
 
 /// <summary>
