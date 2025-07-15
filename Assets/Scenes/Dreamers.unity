@@ -558,7 +558,7 @@ Transform:
   m_GameObject: {fileID: 97080053}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 36.9, y: 0, z: 27.1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -577,8 +577,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineCamera: {fileID: 935374951}
-  fieldOfViewMin: 20
-  fieldOfViewMax: 60
+  fieldOfViewMin: 25
+  fieldOfViewMax: 70
 --- !u!1001 &167343551
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1574,7 +1574,7 @@ Transform:
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
   m_LocalRotation: {x: 0.41656962, y: -0.000000002452642, z: 0.0000000011238496, w: 0.9091039}
-  m_LocalPosition: {x: 36.9, y: 29, z: 2.1000004}
+  m_LocalPosition: {x: 0, y: 29, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4603,7 +4603,7 @@ Transform:
   m_GameObject: {fileID: 935374948}
   serializedVersion: 2
   m_LocalRotation: {x: 0.41656956, y: -0.0000000023860323, z: 9.784838e-10, w: 0.9091039}
-  m_LocalPosition: {x: 36.9, y: 29, z: 2.1000004}
+  m_LocalPosition: {x: 0, y: 29, z: -25}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
