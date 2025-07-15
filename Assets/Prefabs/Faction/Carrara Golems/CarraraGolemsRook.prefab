@@ -276,6 +276,14 @@ PrefabInstance:
       propertyPath: targetFaction
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: -81372276374732813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: healthAmount
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: -81372276374732813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: healthAmountMax
+      value: 5000
+      objectReference: {fileID: 0}
     - target: {fileID: 522523392802109760, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: moveSpeed
       value: 5
