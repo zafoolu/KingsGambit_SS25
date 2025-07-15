@@ -286,11 +286,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 522523392802109760, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: moveSpeed
-      value: 26
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_Name
-      value: CarraraQueen
+      value: CarraraQueenFlagBearer
       objectReference: {fileID: 0}
     - target: {fileID: 3576154652990622764, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalScale.x
