@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CursedBishopAttack
+  m_EditorClassIdentifier: 
+  animationType: 31
+  meshArray:
+  - {fileID: -1094619608510265920, guid: 76741b3cdbb5ce843b9c5a4a2b6c8733, type: 3}
+  - {fileID: -1094619608510265920, guid: f0bd91b612db14044b57ccf90965effb, type: 3}
+  - {fileID: -1094619608510265920, guid: bbc48cf7b7e5d9c40a4d5a86eb3a3a4e, type: 3}
+  - {fileID: -1094619608510265920, guid: 8d876867d6f5a844f9da56f00a2cc9a6, type: 3}
+  - {fileID: -1094619608510265920, guid: 2b2264cede94e064d9fc4d7eb1a09f02, type: 3}
+  - {fileID: -1094619608510265920, guid: 18457a9461de697498083c1b8854d730, type: 3}
+  - {fileID: -1094619608510265920, guid: c396c25422b7eea42a3dc73619f34d36, type: 3}
+  - {fileID: -1094619608510265920, guid: 9bf16b163169c08489461a244a3c7917, type: 3}
+  - {fileID: -1094619608510265920, guid: 4d9b8cd27269c3445821f1b07a6f6b13, type: 3}
+  - {fileID: -1094619608510265920, guid: 9f8d35412bbf3f14a9509b7306357bf3, type: 3}
+  - {fileID: -1094619608510265920, guid: 85e680f4233de254892969642db159d2, type: 3}
+  - {fileID: -1094619608510265920, guid: e48a4c5f0587ca34786f572772e20872, type: 3}
+  - {fileID: -1094619608510265920, guid: 6b55dcbe87ad519418f9629f62cf2622, type: 3}
+  - {fileID: -1094619608510265920, guid: 3b17b29e34fa4ee458128924c7626da4, type: 3}
+  - {fileID: -1094619608510265920, guid: affe6e1d350d94d459a5cb84dbe3498e, type: 3}
+  - {fileID: -1094619608510265920, guid: 7e5d487a1ecb8c348b27c80008fb1137, type: 3}
+  - {fileID: -1094619608510265920, guid: a1f9846c26e67c949a2a46c6b6eac180, type: 3}
+  - {fileID: -1094619608510265920, guid: 5e462f2a60fedea4495aadc86a5e2997, type: 3}
+  - {fileID: -1094619608510265920, guid: 68dd91bc95d0255459406513c8c9c930, type: 3}
+  - {fileID: -1094619608510265920, guid: 88eff9458f33c7547b67185e283a7bf0, type: 3}
+  - {fileID: -1094619608510265920, guid: 695154ad0df6dd24e90ca9b084156bdb, type: 3}
+  - {fileID: -1094619608510265920, guid: 23eda063fb351fd4b8a557d0b5298c60, type: 3}
+  - {fileID: -1094619608510265920, guid: 42cc38ec4f39363469cb545550ca5072, type: 3}
+  frameTimerMax: 0.05
