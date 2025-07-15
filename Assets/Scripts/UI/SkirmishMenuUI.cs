@@ -10,7 +10,6 @@ public class MapSelectionUI : MonoBehaviour
     public TextMeshProUGUI mapNameText;
     public RawImage mapPreview;
     public Texture2D[] mapPreviewImages;
-
     private string[] maps = { "Carrara", "CursedOnes", "Dreamers" };
 
     [Header("Victory Conditions")]
@@ -18,46 +17,52 @@ public class MapSelectionUI : MonoBehaviour
     public Toggle killKingToggle;
     public Toggle timeLimitToggle;
     public TMP_Dropdown timeLimitDropdown;
-
     private readonly int[] timeLimitOptions = { 0, 5, 10, 30, 60 };
 
-    [Header("Faction Selection")]
-    public TMP_Dropdown factionDropdown;
-    public RawImage factionPreviewImage;
-    public Texture2D[] factionPreviewImages;
-    public string[] factionNames;
+    [Header("Player Faction Selection")]
+    public TMP_Dropdown playerFactionDropdown;
+    public RawImage playerFactionPreview;
+    public Texture2D[] playerFactionImages;
+    public string[] playerFactionNames;
+    private int currentPlayerFactionIndex = 0;
 
-    private int currentFactionIndex = 0;
+    [Header("AI Faction Selection")]
+    public TMP_Dropdown aiFactionDropdown;
+    public RawImage aiFactionPreview;
+    public Texture2D[] aiFactionImages;
+    public string[] aiFactionNames;
+    private int currentAIFactionIndex = 0;
 
     void Start()
     {
-        // --- Map Dropdown ---
+        // Map Auswahl
         mapDropdown.ClearOptions();
         mapDropdown.AddOptions(new List<string>(maps));
         mapDropdown.onValueChanged.AddListener(OnMapChanged);
         OnMapChanged(0);
 
-        // --- Time Limit Dropdown ---
+        // Time Limit Dropdown
         timeLimitDropdown.ClearOptions();
         timeLimitDropdown.AddOptions(new List<string> {
             "Keine Vorgabe", "5 Minuten", "10 Minuten", "30 Minuten", "60 Minuten"
         });
-
         timeLimitToggle.onValueChanged.AddListener((value) =>
         {
             timeLimitDropdown.gameObject.SetActive(value);
         });
-
         timeLimitDropdown.gameObject.SetActive(timeLimitToggle.isOn);
 
-        // --- Faction Dropdown ---
-        if (factionNames != null && factionDropdown != null)
-        {
-            factionDropdown.ClearOptions();
-            factionDropdown.AddOptions(new List<string>(factionNames));
-            factionDropdown.onValueChanged.AddListener(OnFactionChanged);
-            OnFactionChanged(0); // initial setzen
-        }
+        // Player Faction
+        playerFactionDropdown.ClearOptions();
+        playerFactionDropdown.AddOptions(new List<string>(playerFactionNames));
+        playerFactionDropdown.onValueChanged.AddListener(OnPlayerFactionChanged);
+        OnPlayerFactionChanged(0);
+
+        // AI Faction
+        aiFactionDropdown.ClearOptions();
+        aiFactionDropdown.AddOptions(new List<string>(aiFactionNames));
+        aiFactionDropdown.onValueChanged.AddListener(OnAIFactionChanged);
+        OnAIFactionChanged(0);
     }
 
     void OnMapChanged(int index)
@@ -65,30 +70,29 @@ public class MapSelectionUI : MonoBehaviour
         mapNameText.text = maps[index];
 
         if (mapPreviewImages != null && index < mapPreviewImages.Length && mapPreviewImages[index] != null)
-        {
             mapPreview.texture = mapPreviewImages[index];
-        }
         else
-        {
             mapPreview.texture = null;
-        }
     }
 
-    void OnFactionChanged(int index)
+    void OnPlayerFactionChanged(int index)
     {
-        currentFactionIndex = index;
-
-        if (factionPreviewImages != null && index < factionPreviewImages.Length && factionPreviewImages[index] != null)
-        {
-            factionPreviewImage.texture = factionPreviewImages[index];
-        }
+        currentPlayerFactionIndex = index;
+        if (playerFactionImages != null && index < playerFactionImages.Length && playerFactionImages[index] != null)
+            playerFactionPreview.texture = playerFactionImages[index];
         else
-        {
-            factionPreviewImage.texture = null;
-        }
+            playerFactionPreview.texture = null;
     }
 
-    // Zugriff auf ausgewählte Siegbedingungen
+    void OnAIFactionChanged(int index)
+    {
+        currentAIFactionIndex = index;
+        if (aiFactionImages != null && index < aiFactionImages.Length && aiFactionImages[index] != null)
+            aiFactionPreview.texture = aiFactionImages[index];
+        else
+            aiFactionPreview.texture = null;
+    }
+
     public VictoryConditionSelection GetSelectedVictoryConditions()
     {
         return new VictoryConditionSelection
@@ -100,17 +104,24 @@ public class MapSelectionUI : MonoBehaviour
         };
     }
 
-    // Zugriff auf gewählte Fraktion
-    public FactionSelection GetSelectedFaction()
+    public FactionSelection GetPlayerFaction()
     {
         return new FactionSelection
         {
-            factionIndex = currentFactionIndex,
-            factionName = factionNames[currentFactionIndex]
+            factionIndex = currentPlayerFactionIndex,
+            factionName = playerFactionNames[currentPlayerFactionIndex]
         };
     }
 
-    // Structs
+    public FactionSelection GetAIFaction()
+    {
+        return new FactionSelection
+        {
+            factionIndex = currentAIFactionIndex,
+            factionName = aiFactionNames[currentAIFactionIndex]
+        };
+    }
+
     public struct VictoryConditionSelection
     {
         public bool destroyTownhall;

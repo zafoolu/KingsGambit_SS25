@@ -6152,6 +6152,22 @@ MonoBehaviour:
   killKingToggle: {fileID: 1008760977}
   timeLimitToggle: {fileID: 325438644}
   timeLimitDropdown: {fileID: 1924383907}
+  playerFactionDropdown: {fileID: 246904458}
+  playerFactionPreview: {fileID: 1568094484}
+  playerFactionImages:
+  - {fileID: 2800000, guid: a9848878079cdd54d90a8c08df41c7f1, type: 3}
+  - {fileID: 2800000, guid: 894965aa71a9ae348a8049571368a5d5, type: 3}
+  playerFactionNames:
+  - CarraraGolems
+  - CursedOnes
+  aiFactionDropdown: {fileID: 18502591}
+  aiFactionPreview: {fileID: 2034108081}
+  aiFactionImages:
+  - {fileID: 2800000, guid: a9848878079cdd54d90a8c08df41c7f1, type: 3}
+  - {fileID: 2800000, guid: 894965aa71a9ae348a8049571368a5d5, type: 3}
+  aiFactionNames:
+  - CarraraGolems
+  - CursedOnes
 --- !u!1 &1430540397
 GameObject:
   m_ObjectHideFlags: 0
