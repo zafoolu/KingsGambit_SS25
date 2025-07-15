@@ -824,7 +824,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
+  m_SizeDelta: {x: 96.4, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &325438644
 MonoBehaviour:
@@ -2221,7 +2221,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 293.6, y: 75.4}
+  m_AnchoredPosition: {x: 293.6, y: 75.9}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &768820590
@@ -4405,6 +4405,10 @@ MonoBehaviour:
   - {fileID: 2800000, guid: 0206fccdf7287d2449f2029878782c7d, type: 3}
   - {fileID: 2800000, guid: 566ed6df497046c4694d92d13a11e818, type: 3}
   - {fileID: 2800000, guid: 17305455fbd2f9a4cb3bc3670935c3d6, type: 3}
+  destroyTownhallToggle: {fileID: 940635499}
+  killKingToggle: {fileID: 1008760977}
+  timeLimitToggle: {fileID: 325438644}
+  timeLimitDropdown: {fileID: 1924383907}
 --- !u!1 &1430540397
 GameObject:
   m_ObjectHideFlags: 0
@@ -6192,7 +6196,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 91.3, y: 31.2}
+  m_SizeDelta: {x: 147.3, y: 20.5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1924383907
 MonoBehaviour:
