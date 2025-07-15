@@ -6362,7 +6362,7 @@ MonoBehaviour:
   aiFactionNames:
   - CarraraGolems
   - CursedOnes
-  skirmishSettings: {fileID: 0}
+  skirmishSettings: {fileID: 11400000, guid: 7e146f3156ec77d498b00b147fd95e9d, type: 2}
 --- !u!1 &1430540397
 GameObject:
   m_ObjectHideFlags: 0
