@@ -12043,12 +12043,16 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 145443436455340254, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -176.4
+      value: -171.7
       objectReference: {fileID: 0}
     - target: {fileID: 145443436455340254, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -328.3
       objectReference: {fileID: 0}
+    - target: {fileID: 762667882985276149, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 89d15f1bbdc3a5b4d9b9730da2803d77, type: 3}
     - target: {fileID: 839765741852436604, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_Texture
       value: 
@@ -12061,9 +12065,13 @@ PrefabInstance:
       propertyPath: cinemachineFollowTarget
       value: 
       objectReference: {fileID: 97080054}
+    - target: {fileID: 1632137616616726251, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1740132243168960857, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -176.4
+      value: -171.7
       objectReference: {fileID: 0}
     - target: {fileID: 1740132243168960857, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -12075,19 +12083,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2454812069070220824, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -176.4
+      value: -171.7
       objectReference: {fileID: 0}
     - target: {fileID: 2454812069070220824, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -328.3
+      value: -327.7
       objectReference: {fileID: 0}
     - target: {fileID: 2810223695404429866, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2923345599576530437, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3243928107642420423, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: minimapCamera
@@ -12098,12 +12106,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 97080054}
     - target: {fileID: 3789128827780019354, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -22.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3789128827780019354, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -328.3
+      value: -178.3
       objectReference: {fileID: 0}
     - target: {fileID: 5483173350843945821, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6829168653652113199, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_Pivot.x
