@@ -557,13 +557,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 97080053}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -134.3, y: 0, z: -0.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!114 &97080055
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1573,8 +1573,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.41656962, y: -0.000000002452642, z: 0.0000000011238496, w: 0.9091039}
-  m_LocalPosition: {x: 0, y: 29, z: -25}
+  m_LocalRotation: {x: 0.29455912, y: 0.64283365, z: -0.29455927, w: 0.64283335}
+  m_LocalPosition: {x: -159.3, y: 29, z: -0.19999702}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4602,8 +4602,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935374948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.41656956, y: -0.0000000023860323, z: 9.784838e-10, w: 0.9091039}
-  m_LocalPosition: {x: 0, y: 29, z: -25}
+  m_LocalRotation: {x: 0.29455918, y: 0.6428336, z: -0.29455924, w: 0.6428335}
+  m_LocalPosition: {x: -159.3, y: 29, z: -0.19999702}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12053,6 +12053,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 89d15f1bbdc3a5b4d9b9730da2803d77, type: 3}
+    - target: {fileID: 830549446589548143, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
+      propertyPath: skirmishSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e146f3156ec77d498b00b147fd95e9d, type: 2}
     - target: {fileID: 839765741852436604, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_Texture
       value: 
