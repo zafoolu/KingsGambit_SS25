@@ -17,8 +17,10 @@ MonoBehaviour:
   buildingConstructionTimerMax: 2
   constructionYOffset: 0
   prefab: {fileID: 1213933842533584588, guid: ab2e5a6d164dd9a4b8282b9e97d5201a, type: 3}
-  buildingDistanceMin: 0
+  buildingDistanceMin: 4
   showInBuildingPlacementManagerUI: 0
   sprite: {fileID: 21300000, guid: 0aac3aa6f7b72684cad566015dc5f233, type: 3}
   visualPrefab: {fileID: 7525631253977415457, guid: 3dab1625b01dc944b85e60fe49f65137, type: 3}
-  buildCostResourceAmountArray: []
+  buildCostResourceAmountArray:
+  - resourceType: 1
+    amount: 175

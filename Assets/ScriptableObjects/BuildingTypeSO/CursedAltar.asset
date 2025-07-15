@@ -14,11 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameString: Cursed Ones Altar
   buildingType: 11
-  buildingConstructionTimerMax: 2
+  buildingConstructionTimerMax: 10
   constructionYOffset: 0
   prefab: {fileID: 1213933842533584588, guid: 092636fac39334841a9db9f7e93ef1db, type: 3}
-  buildingDistanceMin: 0
+  buildingDistanceMin: 8
   showInBuildingPlacementManagerUI: 1
   sprite: {fileID: 21300000, guid: 0aac3aa6f7b72684cad566015dc5f233, type: 3}
   visualPrefab: {fileID: 7525631253977415457, guid: 6816784ad255f5e4c84335d2adceaf31, type: 3}
-  buildCostResourceAmountArray: []
+  buildCostResourceAmountArray:
+  - resourceType: 1
+    amount: 1250
