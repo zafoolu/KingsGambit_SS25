@@ -8,46 +8,30 @@ public class SkirmishLoader : MonoBehaviour
 
     private void Start()
     {
-        Debug.Log("SkirmishSceneLoader gestartet");
-        StartCoroutine(LoadMapAndApplySettings());
+        Debug.Log("📦 SkirmishSceneLoader gestartet.");
+        StartCoroutine(LoadMapAndLogSettings());
     }
 
-    private IEnumerator LoadMapAndApplySettings()
+    private IEnumerator LoadMapAndLogSettings()
     {
-        // Additiv geladene Map basierend auf der Auswahl
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(skirmishSettings.selectedMapName, LoadSceneMode.Additive);
+        Debug.Log("🌍 Lade Map: " + skirmishSettings.selectedMapName);
 
-        // Warte bis vollständig geladen
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(skirmishSettings.selectedMapName, LoadSceneMode.Additive);
         yield return new WaitUntil(() => asyncLoad.isDone);
 
-        Debug.Log("Map '" + skirmishSettings.selectedMapName + "' wurde erfolgreich geladen.");
-
-        // Übertrage die Einstellungen
-        ApplySettings();
+        Debug.Log("✅ Map wurde erfolgreich geladen.");
+        LogSettings();
     }
 
-    private void ApplySettings()
+    private void LogSettings()
     {
         Debug.Log("==== SKIRMISH SETTINGS ====");
-        Debug.Log("Map: " + skirmishSettings.selectedMapName);
-        Debug.Log("Player Faction: " + skirmishSettings.playerFactionName + " (Index: " + skirmishSettings.playerFactionIndex + ")");
-        Debug.Log("AI Faction: " + skirmishSettings.aiFactionName + " (Index: " + skirmishSettings.aiFactionIndex + ")");
-        Debug.Log("Victory: DestroyTownhall=" + skirmishSettings.destroyTownhall +
-                  ", KillKing=" + skirmishSettings.killKing +
-                  ", TimeLimit=" + (skirmishSettings.useTimeLimit ? skirmishSettings.timeLimitMinutes + " Minuten" : "Keine Vorgabe"));
-
-        // Falls du einen GameManager verwendest:
-        /*
-        GameManager.Instance.SetPlayerFaction(skirmishSettings.playerFactionIndex);
-        GameManager.Instance.SetAIFaction(skirmishSettings.aiFactionIndex);
-        GameManager.Instance.SetVictoryConditions(
-            skirmishSettings.destroyTownhall,
-            skirmishSettings.killKing,
-            skirmishSettings.timeLimitMinutes
-        );
-        */
-
-        // Optional: Spielstart triggern
-        // GameManager.Instance.StartSkirmish();
+        Debug.Log("🗺️ Map: " + skirmishSettings.selectedMapName);
+        Debug.Log("🧍 Player Faction: " + skirmishSettings.playerFactionName + " (Index: " + skirmishSettings.playerFactionIndex + ")");
+        Debug.Log("🤖 AI Faction: " + skirmishSettings.aiFactionName + " (Index: " + skirmishSettings.aiFactionIndex + ")");
+        Debug.Log("🎯 Victory Conditions:");
+        Debug.Log(" - Destroy Townhall: " + skirmishSettings.destroyTownhall);
+        Debug.Log(" - Kill King: " + skirmishSettings.killKing);
+        Debug.Log(" - Time Limit: " + (skirmishSettings.useTimeLimit ? skirmishSettings.timeLimitMinutes + " Minuten" : "Keine Vorgabe"));
     }
 }
