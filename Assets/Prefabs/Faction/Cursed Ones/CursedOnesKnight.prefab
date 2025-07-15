@@ -270,7 +270,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -4232887784662527282, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: range
-      value: 30
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: -4232887784662527282, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: targetFaction
@@ -311,6 +311,18 @@ PrefabInstance:
     - target: {fileID: 3576154652990622764, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: idleAnimationType
+      value: 35
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: walkAnimationType
+      value: 36
+      objectReference: {fileID: 0}
+    - target: {fileID: 3824742252860038454, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      propertyPath: shootAnimationType
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 4256729297452172453, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: unitType

@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CursedKnightAttack
+  m_EditorClassIdentifier: 
+  animationType: 37
+  meshArray:
+  - {fileID: -6588612361100412484, guid: e84b2f8f8e16f6748b28fbd284de99e8, type: 3}
+  - {fileID: -6588612361100412484, guid: a858467ef0934ea4fbd78cd25f3a8c41, type: 3}
+  - {fileID: -6588612361100412484, guid: 43835aa79a43a504c9f1b5a749e73ab6, type: 3}
+  - {fileID: -6588612361100412484, guid: 5a02bf099a40d704886e7e12d81bd109, type: 3}
+  - {fileID: -6588612361100412484, guid: 9c026a94db8d55a48be23df2958151d9, type: 3}
+  - {fileID: -6588612361100412484, guid: 850798612db14124eb54080cd39e712b, type: 3}
+  - {fileID: -6588612361100412484, guid: 294aee13076e32846b70e84f0e5b775a, type: 3}
+  - {fileID: -6588612361100412484, guid: b8098779fb90dc04f8856938b253fbfa, type: 3}
+  - {fileID: -6588612361100412484, guid: 486f1165e7ce0d94a988a67c4fcfffc9, type: 3}
+  - {fileID: -6588612361100412484, guid: 2143268589389b644bca03f199d0f4f1, type: 3}
+  - {fileID: -6588612361100412484, guid: ebcb54f3714d6d445bf713d160c1f5fd, type: 3}
+  - {fileID: -6588612361100412484, guid: a12999bffa7aae946920235de8359640, type: 3}
+  - {fileID: -6588612361100412484, guid: 56311b8d2b1a01240b49b4e47a8695ff, type: 3}
+  - {fileID: -6588612361100412484, guid: ad73912d5ad1eb649bd322ea19ab259a, type: 3}
+  - {fileID: -6588612361100412484, guid: e663f3c1dc30f5148b41c7391cf8720f, type: 3}
+  - {fileID: -6588612361100412484, guid: 1c9be6204b688cb4ea8025fbcc6f1e39, type: 3}
+  - {fileID: -6588612361100412484, guid: 4170dc93a08c555478c291f23b5a363f, type: 3}
+  - {fileID: -6588612361100412484, guid: 57a2b603edecc4c47b8ebfd486535163, type: 3}
+  - {fileID: -6588612361100412484, guid: 89b7141fc0e524249b9d096e04f83ce2, type: 3}
+  - {fileID: -6588612361100412484, guid: 62197c13555f2ce41b413c08855a4da5, type: 3}
+  - {fileID: -6588612361100412484, guid: 4bf6dfbea55d8934194c167aa989a197, type: 3}
+  - {fileID: -6588612361100412484, guid: 55f6adc3226ae704491bd1f1828e751e, type: 3}
+  - {fileID: -6588612361100412484, guid: af8c63e2bfead684296867784b740eea, type: 3}
+  frameTimerMax: 0.05
