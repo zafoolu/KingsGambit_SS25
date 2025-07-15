@@ -51,6 +51,40 @@ public struct EntitiesReferences : IComponentData {
     public Entity cursedKnightPrefabEntity;
     public Entity cursedRookPrefabEntity;
     public Entity cursedPawnPrefabEntity;
+
+    // Carrara Golems Formation Prefabs
+    public Entity carraraKingFormationPrefabEntity;
+    public Entity carraraQueenFormationPrefabEntity;
+    public Entity carraraBishopFormationPrefabEntity;
+    public Entity carraraKnightFormationPrefabEntity;
+    public Entity carraraRookFormationPrefabEntity;
+    public Entity carraraPawnFormationPrefabEntity;
+
+    // Cursed Ones Formation Prefabs
+    public Entity cursedKingFormationPrefabEntity;
+    public Entity uncursedKingFormationPrefabEntity;
+    public Entity cursedQueenFormationPrefabEntity;
+    public Entity cursedBishopFormationPrefabEntity;
+    public Entity cursedKnightFormationPrefabEntity;
+    public Entity cursedRookFormationPrefabEntity;
+    public Entity cursedPawnFormationPrefabEntity;
+
+    // Carrara Golems Flagbearer Prefabs
+    public Entity carraraKingFlagbearerPrefabEntity;
+    public Entity carraraQueenFlagbearerPrefabEntity;
+    public Entity carraraBishopFlagbearerPrefabEntity;
+    public Entity carraraKnightFlagbearerPrefabEntity;
+    public Entity carraraRookFlagbearerPrefabEntity;
+    public Entity carraraPawnFlagbearerPrefabEntity;
+
+    // Cursed Ones Flagbearer Prefabs
+    public Entity cursedKingFlagbearerPrefabEntity;
+    public Entity uncursedKingFlagbearerPrefabEntity;
+    public Entity cursedQueenFlagbearerPrefabEntity;
+    public Entity cursedBishopFlagbearerPrefabEntity;
+    public Entity cursedKnightFlagbearerPrefabEntity;
+    public Entity cursedRookFlagbearerPrefabEntity;
+    public Entity cursedPawnFlagbearerPrefabEntity;
 }
 
 public class EntitiesReferencesAuthoring : MonoBehaviour {
@@ -103,6 +137,40 @@ public class EntitiesReferencesAuthoring : MonoBehaviour {
     public GameObject cursedKnightPrefabGameObject;
     public GameObject cursedRookPrefabGameObject;
     public GameObject cursedPawnPrefabGameObject;
+
+    // Carrara Golems Formation Prefabs
+    public GameObject carraraKingFormationPrefabGameObject;
+    public GameObject carraraQueenFormationPrefabGameObject;
+    public GameObject carraraBishopFormationPrefabGameObject;
+    public GameObject carraraKnightFormationPrefabGameObject;
+    public GameObject carraraRookFormationPrefabGameObject;
+    public GameObject carraraPawnFormationPrefabGameObject;
+
+    // Cursed Ones Formation Prefabs
+    public GameObject cursedKingFormationPrefabGameObject;
+    public GameObject uncursedKingFormationPrefabGameObject;
+    public GameObject cursedQueenFormationPrefabGameObject;
+    public GameObject cursedBishopFormationPrefabGameObject;
+    public GameObject cursedKnightFormationPrefabGameObject;
+    public GameObject cursedRookFormationPrefabGameObject;
+    public GameObject cursedPawnFormationPrefabGameObject;
+
+    // Carrara Golems Flagbearer Prefabs
+    public GameObject carraraKingFlagbearerPrefabGameObject;
+    public GameObject carraraQueenFlagbearerPrefabGameObject;
+    public GameObject carraraBishopFlagbearerPrefabGameObject;
+    public GameObject carraraKnightFlagbearerPrefabGameObject;
+    public GameObject carraraRookFlagbearerPrefabGameObject;
+    public GameObject carraraPawnFlagbearerPrefabGameObject;
+
+    // Cursed Ones Flagbearer Prefabs
+    public GameObject cursedKingFlagbearerPrefabGameObject;
+    public GameObject uncursedKingFlagbearerPrefabGameObject;
+    public GameObject cursedQueenFlagbearerPrefabGameObject;
+    public GameObject cursedBishopFlagbearerPrefabGameObject;
+    public GameObject cursedKnightFlagbearerPrefabGameObject;
+    public GameObject cursedRookFlagbearerPrefabGameObject;
+    public GameObject cursedPawnFlagbearerPrefabGameObject;
 
     public class Baker : Baker<EntitiesReferencesAuthoring> {
         public override void Bake(EntitiesReferencesAuthoring authoring) {
@@ -157,6 +225,40 @@ public class EntitiesReferencesAuthoring : MonoBehaviour {
                 cursedKnightPrefabEntity = GetEntity(authoring.cursedKnightPrefabGameObject, TransformUsageFlags.Dynamic),
                 cursedRookPrefabEntity = GetEntity(authoring.cursedRookPrefabGameObject, TransformUsageFlags.Dynamic),
                 cursedPawnPrefabEntity = GetEntity(authoring.cursedPawnPrefabGameObject, TransformUsageFlags.Dynamic),
+
+                // Carrara Golems Formation Prefabs
+                carraraKingFormationPrefabEntity = GetEntity(authoring.carraraKingFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraQueenFormationPrefabEntity = GetEntity(authoring.carraraQueenFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraBishopFormationPrefabEntity = GetEntity(authoring.carraraBishopFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraKnightFormationPrefabEntity = GetEntity(authoring.carraraKnightFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraRookFormationPrefabEntity = GetEntity(authoring.carraraRookFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraPawnFormationPrefabEntity = GetEntity(authoring.carraraPawnFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+
+                // Cursed Ones Formation Prefabs
+                cursedKingFormationPrefabEntity = GetEntity(authoring.cursedKingFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                uncursedKingFormationPrefabEntity = GetEntity(authoring.uncursedKingFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedQueenFormationPrefabEntity = GetEntity(authoring.cursedQueenFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedBishopFormationPrefabEntity = GetEntity(authoring.cursedBishopFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedKnightFormationPrefabEntity = GetEntity(authoring.cursedKnightFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedRookFormationPrefabEntity = GetEntity(authoring.cursedRookFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedPawnFormationPrefabEntity = GetEntity(authoring.cursedPawnFormationPrefabGameObject, TransformUsageFlags.Dynamic),
+
+                // Carrara Golems Flagbearer Prefabs
+                carraraKingFlagbearerPrefabEntity = GetEntity(authoring.carraraKingFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraQueenFlagbearerPrefabEntity = GetEntity(authoring.carraraQueenFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraBishopFlagbearerPrefabEntity = GetEntity(authoring.carraraBishopFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraKnightFlagbearerPrefabEntity = GetEntity(authoring.carraraKnightFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraRookFlagbearerPrefabEntity = GetEntity(authoring.carraraRookFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                carraraPawnFlagbearerPrefabEntity = GetEntity(authoring.carraraPawnFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+
+                // Cursed Ones Flagbearer Prefabs
+                cursedKingFlagbearerPrefabEntity = GetEntity(authoring.cursedKingFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                uncursedKingFlagbearerPrefabEntity = GetEntity(authoring.uncursedKingFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedQueenFlagbearerPrefabEntity = GetEntity(authoring.cursedQueenFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedBishopFlagbearerPrefabEntity = GetEntity(authoring.cursedBishopFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedKnightFlagbearerPrefabEntity = GetEntity(authoring.cursedKnightFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedRookFlagbearerPrefabEntity = GetEntity(authoring.cursedRookFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
+                cursedPawnFlagbearerPrefabEntity = GetEntity(authoring.cursedPawnFlagbearerPrefabGameObject, TransformUsageFlags.Dynamic),
             });
         }
     }
