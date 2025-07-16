@@ -9,6 +9,7 @@ public class UIManager : MonoBehaviour
 
     private float remainingTime;
     private bool countdownActive = false;
+    private bool timerAvailable = true; // <-- NEU
 
     [Header("UI GameObject References")]
     [SerializeField] private GameObject minimapObject;
@@ -20,9 +21,9 @@ public class UIManager : MonoBehaviour
     {
         if (timerText == null || skirmishSettings == null)
         {
-            enabled = false;
-            Debug.LogError("❌ TimerText oder SkirmishSettingsSO fehlt!");
-            return;
+            Debug.LogWarning("⚠️ TimerText oder SkirmishSettingsSO fehlt! Timer wird deaktiviert.");
+            timerAvailable = false;
+            return; // Alles andere weiter normal
         }
 
         if (skirmishSettings.useTimeLimit)
@@ -33,7 +34,7 @@ public class UIManager : MonoBehaviour
         else
         {
             countdownActive = false;
-            timerText.gameObject.SetActive(false); // Timer verstecken, wenn nicht aktiv
+            timerText.gameObject.SetActive(false);
         }
 
         UpdateTimerDisplay();
@@ -41,7 +42,7 @@ public class UIManager : MonoBehaviour
 
     private void Update()
     {
-        if (!countdownActive) return;
+        if (!countdownActive || !timerAvailable) return;
 
         remainingTime -= Time.deltaTime;
         if (remainingTime <= 0f)
@@ -56,6 +57,8 @@ public class UIManager : MonoBehaviour
 
     private void UpdateTimerDisplay()
     {
+        if (!timerAvailable || timerText == null) return;
+
         int minutes = Mathf.FloorToInt(remainingTime / 60f);
         int seconds = Mathf.FloorToInt(remainingTime % 60f);
         timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
@@ -64,9 +67,7 @@ public class UIManager : MonoBehaviour
     private void OnTimeLimitReached()
     {
         Debug.Log("🛑 Zeitlimit erreicht – Game Over!");
-        // Hier kannst du z. B. eine GameOver-UI aktivieren oder Szene wechseln:
-        // Time.timeScale = 0f;
-        // SceneManager.LoadScene("GameOverScene");
+        // z. B. UI anzeigen oder Spiel beenden
     }
 
     public void ToggleMinimap()
