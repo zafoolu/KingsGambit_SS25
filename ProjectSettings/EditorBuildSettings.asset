@@ -18,10 +18,10 @@ EditorBuildSettings:
     path: Assets/Scenes/SkirmishSceneLoader.unity
     guid: 6a819f347e2da3246b7d5e33e8e8f247
   - enabled: 1
-    path: Assets/Scenes/Carrara.unity
+    path: Assets/Scenes/MapsForSkirmish/Carrara.unity
     guid: 8e27a668da7829a4dbdcfb070d324a89
   - enabled: 1
-    path: Assets/Scenes/Dreamers.unity
+    path: Assets/Scenes/MapsForSkirmish/Dreamers.unity
     guid: 041abab588ea79c40bc6ca8a6f392ebd
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
