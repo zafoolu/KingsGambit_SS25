@@ -7,6 +7,7 @@ public class FactionSelectUI : MonoBehaviour
     [SerializeField] private Button carraraButton;
     [SerializeField] private Button cursedButton;
     [SerializeField] private Button backButton;
+    [SerializeField] private Button startCampaignButton; // <-- NEU
 
     [SerializeField] private GameObject carraraCanvas;
     [SerializeField] private GameObject cursedCanvas;
@@ -40,7 +41,17 @@ public class FactionSelectUI : MonoBehaviour
             backButton.onClick.AddListener(() =>
             {
                 Debug.Log("Zurück zum Hauptmenü");
-                SceneManager.LoadScene("MainMenuScene"); // oder Index, z.B. SceneManager.LoadScene(0);
+                SceneManager.LoadScene("MainMenuScene"); // oder SceneManager.LoadScene(0);
+            });
+        }
+
+        // Start Campaign Button
+        if (startCampaignButton != null)
+        {
+            startCampaignButton.onClick.AddListener(() =>
+            {
+                Debug.Log("Start Campaign");
+                SceneManager.LoadScene("Campaign"); // Szene muss in Build Settings gelistet sein
             });
         }
     }
