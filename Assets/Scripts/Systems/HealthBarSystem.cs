@@ -22,16 +22,26 @@ partial struct HealthBarSystem : ISystem {
 
     //[BurstCompile]
     public void OnUpdate(ref SystemState state) {
-        Vector3 cameraForward = Vector3.zero;
-        if (Camera.main != null) {
-            cameraForward = Camera.main.transform.forward;
+        Vector3 cameraPosition = Vector3.zero;
+        Camera mainCamera = Camera.main;
+        
+        // Fallback: If Camera.main is null, find the camera with MainCamera tag
+        if (mainCamera == null) {
+            GameObject cameraObject = GameObject.FindGameObjectWithTag("MainCamera");
+            if (cameraObject != null) {
+                mainCamera = cameraObject.GetComponent<Camera>();
+            }
+        }
+        
+        if (mainCamera != null) {
+            cameraPosition = mainCamera.transform.position;
         }
 
         localTransformComponentLookup.Update(ref state);
         healthComponentLookup.Update(ref state);
         postTransformMatrixComponentLookup.Update(ref state);
         HealthBarJob healthBarJob = new HealthBarJob {
-            cameraForward = cameraForward,
+            cameraPosition = cameraPosition,
             localTransformComponentLookup = localTransformComponentLookup,
             healthComponentLookup = healthComponentLookup,
             postTransformMatrixComponentLookup = postTransformMatrixComponentLookup,
@@ -87,15 +97,28 @@ public partial struct HealthBarJob : IJobEntity {
     [NativeDisableParallelForRestriction] public ComponentLookup<PostTransformMatrix> postTransformMatrixComponentLookup;
 
 
-    public float3 cameraForward;
+    public float3 cameraPosition;
 
 
     public void Execute(in HealthBar healthBar, Entity entity) {
         RefRW<LocalTransform> localTransform = localTransformComponentLookup.GetRefRW(entity);
         LocalTransform parentLocalTransform = localTransformComponentLookup[healthBar.healthEntity];
+        
         if (localTransform.ValueRO.Scale == 1f) {
-            // Health bar is visible
-            localTransform.ValueRW.Rotation = parentLocalTransform.InverseTransformRotation(quaternion.LookRotation(cameraForward, math.up()));
+            // Health bar is visible - make it face the camera
+            if (math.lengthsq(cameraPosition) > 0.001f) {
+                // Get the world position of the healthbar
+                float3 healthBarWorldPos = math.transform(parentLocalTransform.ToMatrix(), localTransform.ValueRO.Position);
+                
+                // Calculate direction from healthbar to camera
+                float3 directionToCamera = math.normalize(cameraPosition - healthBarWorldPos);
+                
+                // Create rotation that looks towards the camera
+                quaternion lookRotation = quaternion.LookRotation(directionToCamera, math.up());
+                
+                // Convert to local space relative to parent
+                localTransform.ValueRW.Rotation = math.mul(math.inverse(parentLocalTransform.Rotation), lookRotation);
+            }
         }
 
         Health health = healthComponentLookup[healthBar.healthEntity];
