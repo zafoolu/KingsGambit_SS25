@@ -93,25 +93,20 @@ public partial struct HealthBarJob : IJobEntity {
     public void Execute(in HealthBar healthBar, Entity entity) {
         RefRW<LocalTransform> localTransform = localTransformComponentLookup.GetRefRW(entity);
         LocalTransform parentLocalTransform = localTransformComponentLookup[healthBar.healthEntity];
-        if (localTransform.ValueRO.Scale == 1f) {
-            // Health bar is visible
+        
+        Health health = healthComponentLookup[healthBar.healthEntity];
+        float healthNormalized = (float)health.healthAmount / health.healthAmountMax;
+
+        // Always update health bar visibility and scale based on current health
+        if (healthNormalized == 1f) {
+            localTransform.ValueRW.Scale = 0f; // Hide health bar when at full health
+        } else {
+            localTransform.ValueRW.Scale = 1f; // Show health bar when damaged
+            // Health bar is visible, so orient it towards camera
             localTransform.ValueRW.Rotation = parentLocalTransform.InverseTransformRotation(quaternion.LookRotation(cameraForward, math.up()));
         }
 
-        Health health = healthComponentLookup[healthBar.healthEntity];
-
-        if (!health.onHealthChanged) {
-            return;
-        }
-
-        float healthNormalized = (float)health.healthAmount / health.healthAmountMax;
-
-        if (healthNormalized == 1f) {
-            localTransform.ValueRW.Scale = 0f;
-        } else {
-            localTransform.ValueRW.Scale = 1f;
-        }
-
+        // Always update the health bar visual scale
         RefRW<PostTransformMatrix> barVisualPostTransformMatrix =
             postTransformMatrixComponentLookup.GetRefRW(healthBar.barVisualEntity);
 
