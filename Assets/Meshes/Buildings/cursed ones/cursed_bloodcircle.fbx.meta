@@ -3,7 +3,22 @@ guid: 8adefd798890b9f45a368dae1071bbdc
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: ffeda1b384c72364991aa77f94f20b26, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: blood circle
+    second: {fileID: -876546973899608171, guid: c5c7b5f757d783444bf4db551bdfb31d, type: 3}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: grass
+    second: {fileID: 4874126678125670354, guid: b87444f8bb6c29f4fa79227d39cbd679, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
