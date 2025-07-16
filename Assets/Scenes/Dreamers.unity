@@ -5371,11 +5371,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b048873e8a2690d4780fda78c9e14c8e, type: 3}
   m_PrefabInstance: {fileID: 1273362351}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1289658213 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5464891874387161305, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
-  m_PrefabInstance: {fileID: 1736802536}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1312011452
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12062,10 +12057,6 @@ PrefabInstance:
       propertyPath: skirmishSettings
       value: 
       objectReference: {fileID: 11400000, guid: 7e146f3156ec77d498b00b147fd95e9d, type: 2}
-    - target: {fileID: 830549446589548143, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
-      propertyPath: unitProductionObject
-      value: 
-      objectReference: {fileID: 1289658213}
     - target: {fileID: 839765741852436604, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_Texture
       value: 
@@ -12125,10 +12116,6 @@ PrefabInstance:
     - target: {fileID: 3789128827780019354, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -178.29999
-      objectReference: {fileID: 0}
-    - target: {fileID: 5464891874387161305, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
-      propertyPath: m_IsActive
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5483173350843945821, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_IsActive
@@ -12216,11 +12203,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8583294938769033525, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8583294938769033525, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

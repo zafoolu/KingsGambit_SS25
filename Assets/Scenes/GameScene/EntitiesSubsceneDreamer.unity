@@ -454,6 +454,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &757179627
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -96.43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000001490093
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -1.4551912e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7587909241615725581, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
+      propertyPath: m_Name
+      value: CursedOnesUncursedKing
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
 --- !u!1 &788752461
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,6 +1427,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 757179627}
   - {fileID: 1144650968}
   - {fileID: 1569770795}
   - {fileID: 1056479408}

@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: UnCursedKingWalk
+  m_EditorClassIdentifier: 
+  animationType: 45
+  meshArray:
+  - {fileID: 195832220718045582, guid: 5b0a9ba8d2e061e4c944a71e88c472b6, type: 3}
+  - {fileID: 195832220718045582, guid: 89ab6df9d8547de48be165786ba1d46a, type: 3}
+  - {fileID: 195832220718045582, guid: 7bea8120b8d52744fb65be3e20893c11, type: 3}
+  - {fileID: 195832220718045582, guid: ab50e9a7aefb31743965c644f0235f86, type: 3}
+  - {fileID: 195832220718045582, guid: 0f81137045f085646a85865b8a361ac9, type: 3}
+  - {fileID: 195832220718045582, guid: 01c05c4545e460946b548a63a338e0ab, type: 3}
+  - {fileID: 195832220718045582, guid: 386c49d62b758944a90b706f93e39e76, type: 3}
+  - {fileID: 195832220718045582, guid: 7ed5386fd491a4f41bd54e45c9231547, type: 3}
+  - {fileID: 195832220718045582, guid: 47ab345e7b2a90d4c9971ff2e88174f2, type: 3}
+  - {fileID: 195832220718045582, guid: 3b6a9974b1330394784336352d71ac7e, type: 3}
+  - {fileID: 195832220718045582, guid: c2cad16f0ef1d2649a8831b55f84d807, type: 3}
+  - {fileID: 195832220718045582, guid: b993634c8d923d148bcf554ed3bbaa2d, type: 3}
+  - {fileID: 195832220718045582, guid: b76a1f97498e5aa47a21e2b3225a59ab, type: 3}
+  - {fileID: 195832220718045582, guid: 6c81acaf2f0bc254ca90396573c481e2, type: 3}
+  - {fileID: 195832220718045582, guid: 94bd36b0693e40c40be466d2ca92ca04, type: 3}
+  - {fileID: 195832220718045582, guid: c925f6515b53e1c46bf34691541def6e, type: 3}
+  - {fileID: 195832220718045582, guid: 3a90a219fd6d69b46a76b7b1492aba5e, type: 3}
+  - {fileID: 195832220718045582, guid: 4a6da0c534b5aec40857623d6fdf3653, type: 3}
+  - {fileID: 195832220718045582, guid: 7379b8493f2b11e4db5c1ef415d45f62, type: 3}
+  - {fileID: 195832220718045582, guid: 152e2b7320d912344bffaf6f7109bb4d, type: 3}
+  - {fileID: 195832220718045582, guid: 0947bdb73166e604ea7002cb6614e2ca, type: 3}
+  frameTimerMax: 0.05
