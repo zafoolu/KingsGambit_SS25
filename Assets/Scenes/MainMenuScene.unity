@@ -6264,8 +6264,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 948043a9f3afebb44bbc8d975e4a86df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButton: {fileID: 0}
-  quitButton: {fileID: 1364704624}
+  newCampaignButton: {fileID: 1364704624}
+  battlesButton: {fileID: 1472992826}
+  skirmishMenuUI: {fileID: 1391684369}
 --- !u!1 &1434345814
 GameObject:
   m_ObjectHideFlags: 0
