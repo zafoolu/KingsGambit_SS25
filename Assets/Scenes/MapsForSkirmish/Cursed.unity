@@ -7240,6 +7240,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitboxMaterial: {fileID: 2100000, guid: ffeda1b384c72364991aa77f94f20b26, type: 2}
   useWireframe: 1
+  showTacticVisuals: 1
 --- !u!1001 &1284857763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15663,11 +15664,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8583294938769033525, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8583294938769033525, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
