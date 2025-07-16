@@ -1530,7 +1530,7 @@ MonoBehaviour:
   timerText: {fileID: 6322074937696191133}
   skirmishSettings: {fileID: 0}
   minimapObject: {fileID: 3134960794740949669}
-  unitProductionObject: {fileID: 0}
+  unitProductionObject: {fileID: 5464891874387161305}
   buildingToolObject: {fileID: 4173616456663988244}
   settingsObject: {fileID: 0}
 --- !u!1 &1965204053948970754
@@ -4450,7 +4450,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &834997222573296730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6870,6 +6870,7 @@ GameObject:
   - component: {fileID: 1675614502953530790}
   - component: {fileID: 3440334977185204042}
   - component: {fileID: 1152273636693479960}
+  - component: {fileID: 282467682128195994}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -6948,6 +6949,35 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltipText: Unit Production
   useDynamicText: 0
+--- !u!114 &282467682128195994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8080114219599804131}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 4
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 830549446589548143}
+          m_TargetAssemblyTypeName: UIManager, Assembly-CSharp
+          m_MethodName: ToggleUnitProduction
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &8401290866183988056
 GameObject:
   m_ObjectHideFlags: 0
