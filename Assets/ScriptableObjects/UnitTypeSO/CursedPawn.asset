@@ -13,9 +13,13 @@ MonoBehaviour:
   m_Name: CursedPawn
   m_EditorClassIdentifier: 
   unitType: 13
+  unitName: 
   ragdollPrefab: {fileID: 0}
   progressMax: 5
   sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
   spawnCostResourceAmountArray:
   - resourceType: 1
-    amount: 80
+    amount: 0
+  formationPrefab: {fileID: 7874505460035524181, guid: 81fc8c76014a6df44926f6d9a209cfbb, type: 3}
+  flagbearerPrefab: {fileID: 7874505460035524181, guid: dbbee4db5f572a84382d6ead31565ece, type: 3}
+  formationAmount: 16

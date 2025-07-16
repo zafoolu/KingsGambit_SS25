@@ -81,7 +81,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &5875889693282972231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -139,7 +139,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3475647906977801553}
-  - component: {fileID: 5998994105531404347}
   - component: {fileID: 3662070779037726110}
   m_Layer: 5
   m_Name: BuildingBarracksUI
@@ -165,7 +164,6 @@ RectTransform:
   - {fileID: 3496238707316345192}
   - {fileID: 8223738006255959615}
   - {fileID: 2028331165662665494}
-  - {fileID: 589345949250330500}
   - {fileID: 5875889693282972231}
   m_Father: {fileID: 6829168653652113199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -174,24 +172,6 @@ RectTransform:
   m_AnchoredPosition: {x: 2314, y: 1226}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &5998994105531404347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 361339929331735860}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 65239aa237c836d4eaae14b63740827c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  soldierButton: {fileID: 4482594473040507653}
-  scoutButton: {fileID: 6577260204449824682}
-  enemyButton: {fileID: 6097965336925346659}
-  progressBarImage: {fileID: 8915207316119705988}
-  unitQueueContainer: {fileID: 5875889693282972231}
-  unitQueueTemplate: {fileID: 9097231668456523881}
 --- !u!114 &3662070779037726110
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1154,6 +1134,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerText: {fileID: 6322074937696191133}
+  skirmishSettings: {fileID: 0}
   minimapObject: {fileID: 3134960794740949669}
   unitProductionObject: {fileID: 0}
   buildingToolObject: {fileID: 4173616456663988244}
@@ -2571,7 +2552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -2598,6 +2579,7 @@ GameObject:
   - component: {fileID: 7968866267008385116}
   - component: {fileID: 706043474496544474}
   - component: {fileID: 5428314190514398696}
+  - component: {fileID: 9110967120318469194}
   m_Layer: 5
   m_Name: RookButton
   m_TagString: Untagged
@@ -2662,6 +2644,50 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &9110967120318469194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3901134017256515775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 5428314190514398696}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4033201907840841841
 GameObject:
   m_ObjectHideFlags: 0
@@ -3166,19 +3192,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4605955769361438811}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5042635009536074582}
   - {fileID: 4446520936594564708}
-  m_Father: {fileID: 3475647906977801553}
+  m_Father: {fileID: 834997222573296730}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1195.1195, y: 169}
-  m_SizeDelta: {x: 1362.7312, y: 80}
+  m_AnchoredPosition: {x: 960, y: 150.4155}
+  m_SizeDelta: {x: 760.2389, y: 16.4288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4637907712778773765
 GameObject:
@@ -3752,13 +3778,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 834997222573296730}
+  - component: {fileID: 1653238917364058253}
   m_Layer: 5
   m_Name: UnitProductionUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &834997222573296730
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3772,6 +3799,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 665572824293347860}
+  - {fileID: 589345949250330500}
   - {fileID: 7968866267008385116}
   m_Father: {fileID: 6829168653652113199}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3780,6 +3808,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1653238917364058253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5464891874387161305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65239aa237c836d4eaae14b63740827c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carraraQueenButton: {fileID: 0}
+  carraraBishopButton: {fileID: 0}
+  carraraKnightButton: {fileID: 0}
+  carraraRookButton: {fileID: 9110967120318469194}
+  carraraPawnButton: {fileID: 0}
+  spawnPoint: {fileID: 0}
 --- !u!1 &5483173350843945821
 GameObject:
   m_ObjectHideFlags: 0

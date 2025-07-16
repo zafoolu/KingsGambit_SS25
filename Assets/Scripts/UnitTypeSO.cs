@@ -32,6 +32,9 @@ public class UnitTypeSO : ScriptableObject {
     public Transform formationPrefab;
     public Transform flagbearerPrefab;
 
+    [Tooltip("Anzahl der Units in der Formation (inklusive Flag Bearer)")]
+    public int formationAmount = 5;
+
     public Entity GetPrefabEntity(EntitiesReferences entitiesReferences) {
         switch (unitType) {
             default:

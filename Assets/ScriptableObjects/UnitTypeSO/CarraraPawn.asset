@@ -13,9 +13,11 @@ MonoBehaviour:
   m_Name: CarraraPawn
   m_EditorClassIdentifier: 
   unitType: 6
+  unitName: 
   ragdollPrefab: {fileID: 0}
   progressMax: 8
   sprite: {fileID: 0}
-  spawnCostResourceAmountArray:
-  - resourceType: 1
-    amount: 75
+  spawnCostResourceAmountArray: []
+  formationPrefab: {fileID: 0}
+  flagbearerPrefab: {fileID: 0}
+  formationAmount: 16

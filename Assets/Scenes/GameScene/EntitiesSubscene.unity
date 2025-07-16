@@ -2161,8 +2161,8 @@ MonoBehaviour:
   carraraQueenPrefabGameObject: {fileID: 0}
   carraraBishopPrefabGameObject: {fileID: 2547314701683967756, guid: 20d1f64e92990304ba98ab54976584df, type: 3}
   carraraKnightPrefabGameObject: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
-  carraraRookPrefabGameObject: {fileID: 0}
-  carraraPawnPrefabGameObject: {fileID: 0}
+  carraraRookPrefabGameObject: {fileID: 2547314701683967756, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
+  carraraPawnPrefabGameObject: {fileID: 2547314701683967756, guid: 81fc8c76014a6df44926f6d9a209cfbb, type: 3}
   cursedKingPrefabGameObject: {fileID: 0}
   uncursedKingPrefabGameObject: {fileID: 0}
   cursedQueenPrefabGameObject: {fileID: 121009751022966959, guid: 797c6ef876b2945418df80a763a2fcf4, type: 3}
@@ -2174,8 +2174,8 @@ MonoBehaviour:
   carraraQueenFormationPrefabGameObject: {fileID: 0}
   carraraBishopFormationPrefabGameObject: {fileID: 0}
   carraraKnightFormationPrefabGameObject: {fileID: 0}
-  carraraRookFormationPrefabGameObject: {fileID: 0}
-  carraraPawnFormationPrefabGameObject: {fileID: 0}
+  carraraRookFormationPrefabGameObject: {fileID: 2547314701683967756, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
+  carraraPawnFormationPrefabGameObject: {fileID: 2547314701683967756, guid: 81fc8c76014a6df44926f6d9a209cfbb, type: 3}
   cursedKingFormationPrefabGameObject: {fileID: 0}
   uncursedKingFormationPrefabGameObject: {fileID: 0}
   cursedQueenFormationPrefabGameObject: {fileID: 0}
@@ -2187,8 +2187,8 @@ MonoBehaviour:
   carraraQueenFlagbearerPrefabGameObject: {fileID: 0}
   carraraBishopFlagbearerPrefabGameObject: {fileID: 0}
   carraraKnightFlagbearerPrefabGameObject: {fileID: 0}
-  carraraRookFlagbearerPrefabGameObject: {fileID: 0}
-  carraraPawnFlagbearerPrefabGameObject: {fileID: 0}
+  carraraRookFlagbearerPrefabGameObject: {fileID: 2547314701683967756, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
+  carraraPawnFlagbearerPrefabGameObject: {fileID: 2547314701683967756, guid: dbbee4db5f572a84382d6ead31565ece, type: 3}
   cursedKingFlagbearerPrefabGameObject: {fileID: 0}
   uncursedKingFlagbearerPrefabGameObject: {fileID: 0}
   cursedQueenFlagbearerPrefabGameObject: {fileID: 0}
@@ -2277,6 +2277,63 @@ MonoBehaviour:
   harvesterType: 1
   captureRadius: 6
   captureTime: 5
+--- !u!1001 &2087251372
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 45.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4291405660112977149, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7615775973135517010, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
+      propertyPath: m_Name
+      value: CarraraGolemBarracks
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8105f60ed1c11f48a2eedce959530e1, type: 3}
 --- !u!1001 &2133724770
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2353,6 +2410,7 @@ PrefabInstance:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 2087251372}
   - {fileID: 818118184}
   - {fileID: 1541833967}
   - {fileID: 98194672}

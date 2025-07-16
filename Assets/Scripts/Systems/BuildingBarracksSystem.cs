@@ -1,5 +1,6 @@
 using Unity.Burst;
 using Unity.Entities;
+using Unity.Mathematics;
 using Unity.Transforms;
 
 partial struct BuildingBarracksSystem : ISystem {
@@ -69,18 +70,81 @@ partial struct BuildingBarracksSystem : ISystem {
             spawnUnitTypeDynamicBuffer.RemoveAt(0);
             buildingBarracks.ValueRW.onUnitQueueChanged = true;
 
-            Entity spawnedUnitEntity = state.EntityManager.Instantiate(unitTypeSO.GetPrefabEntity(entitiesReferences));
-            SystemAPI.SetComponent(spawnedUnitEntity, LocalTransform.FromPosition(localTransform.ValueRO.Position));
+            // Spawn formation instead of single unit
+            this.SpawnFormation(ref state, unitTypeSO, entitiesReferences, localTransform.ValueRO.Position, buildingBarracks.ValueRO.rallyPositionOffset);
+        }
+    }
 
-            // Only set MoveOverride for non-formation units
-            if (!SystemAPI.HasComponent<FormationFollower>(spawnedUnitEntity) && 
-                !SystemAPI.HasComponent<FlagBearer>(spawnedUnitEntity))
+    private void SpawnFormation(ref SystemState state, UnitTypeSO unitTypeSO, EntitiesReferences entitiesReferences, float3 spawnPosition, float3 rallyPositionOffset)
+    {
+        int formationAmount = unitTypeSO.formationAmount;
+        
+        if (formationAmount <= 1)
+        {
+            // Spawn single unit if formation amount is 1 or less
+            Entity spawnedUnitEntity = state.EntityManager.Instantiate(unitTypeSO.GetPrefabEntity(entitiesReferences));
+            state.EntityManager.SetComponentData(spawnedUnitEntity, LocalTransform.FromPosition(spawnPosition));
+            
+            // Set MoveOverride for single units
+            if (!state.EntityManager.HasComponent<FormationFollower>(spawnedUnitEntity) && 
+                !state.EntityManager.HasComponent<FlagBearer>(spawnedUnitEntity))
             {
-                SystemAPI.SetComponent(spawnedUnitEntity, new MoveOverride {
-                    targetPosition = localTransform.ValueRO.Position + buildingBarracks.ValueRO.rallyPositionOffset
+                state.EntityManager.SetComponentData(spawnedUnitEntity, new MoveOverride {
+                    targetPosition = spawnPosition + rallyPositionOffset
                 });
-                SystemAPI.SetComponentEnabled<MoveOverride>(spawnedUnitEntity, true);
+                state.EntityManager.SetComponentEnabled<MoveOverride>(spawnedUnitEntity, true);
             }
+            return;
+        }
+
+        // Calculate formation parameters
+        int followerCount = formationAmount - 1; // One unit becomes the flag bearer
+        int formationWidth = FormationUtility.CalculateOptimalFormationWidth(followerCount);
+        int formationHeight = FormationUtility.CalculateFormationHeight(followerCount, formationWidth);
+        
+        // Spawn Flag Bearer
+        Entity flagBearerEntity = state.EntityManager.Instantiate(unitTypeSO.GetFlagbearerPrefabEntity(entitiesReferences));
+        state.EntityManager.SetComponentData(flagBearerEntity, LocalTransform.FromPosition(spawnPosition));
+        
+        // Configure Flag Bearer
+        state.EntityManager.SetComponentData(flagBearerEntity, new FlagBearer
+        {
+            formationWidth = formationWidth,
+            formationHeight = formationHeight,
+            unitSpacing = 2f,
+            formationDistance = 1f,
+            moveSpeed = 5f,
+            rotationSpeed = 5f,
+            targetPosition = spawnPosition + rallyPositionOffset,
+            isMoving = false
+        });
+        
+        // Set MoveOverride for Flag Bearer to move to rally position
+        state.EntityManager.SetComponentData(flagBearerEntity, new MoveOverride {
+            targetPosition = spawnPosition + rallyPositionOffset
+        });
+        state.EntityManager.SetComponentEnabled<MoveOverride>(flagBearerEntity, true);
+        
+        // Spawn Formation Followers
+        for (int i = 0; i < followerCount; i++)
+        {
+            Entity followerEntity = state.EntityManager.Instantiate(unitTypeSO.GetPrefabEntity(entitiesReferences));
+            state.EntityManager.SetComponentData(followerEntity, LocalTransform.FromPosition(spawnPosition));
+            
+            // Calculate formation position
+            int2 formationPos = FormationUtility.IndexToFormationPosition(i, formationWidth);
+            
+            // Configure Formation Follower
+            state.EntityManager.SetComponentData(followerEntity, new FormationFollower
+            {
+                flagBearerEntity = flagBearerEntity,
+                formationPosition = formationPos,
+                targetPosition = float3.zero,
+                moveSpeed = 5f,
+                rotationSpeed = 5f,
+                isMoving = false,
+                shouldResetToFormation = false
+            });
         }
     }
 
