@@ -327,6 +327,7 @@ GameObject:
   - component: {fileID: 4249663614245142331}
   - component: {fileID: 3058571535076712594}
   - component: {fileID: 6915748298670056221}
+  - component: {fileID: 6129164786482892224}
   m_Layer: 7
   m_Name: CarraraGolemBarracks
   m_TagString: Untagged
@@ -441,6 +442,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 6.73, y: 3.6, z: 7.13}
   m_Center: {x: 0.1, y: 2.91, z: -0.63}
+--- !u!114 &6129164786482892224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7615775973135517010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e767c4219fbc0944aafb4e5774a8aaa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  factionType: 1
 --- !u!1001 &5119001533852827753
 PrefabInstance:
   m_ObjectHideFlags: 0
