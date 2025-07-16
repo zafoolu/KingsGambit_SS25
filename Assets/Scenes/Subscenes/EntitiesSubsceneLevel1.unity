@@ -683,12 +683,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1203715685}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 084eda3265446ed4ebee6719f20e62e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   unitType: 13
+  spawnInterval: 3
   maxSpawns: 10
   rallyPositionOffset: {x: 0, y: 0, z: 5}
   showSpawnArea: 0

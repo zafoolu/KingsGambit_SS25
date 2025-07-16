@@ -4,10 +4,10 @@ using Unity.Mathematics;
 using Unity.Transforms;
 
 /// <summary>
-/// ECS System für automatisches Enemy-Spawning
-/// Übernimmt die komplette Logik vom BuildingBarracksSystem aber spawnt automatisch
+/// ECS-System für automatisches Enemy-Spawning mit Formation-Support
 /// </summary>
-partial struct EnemySpawnerSystem : ISystem
+[BurstCompile]
+public partial struct EnemySpawnerSystem : ISystem
 {
     [BurstCompile]
     public void OnCreate(ref SystemState state)
@@ -18,57 +18,41 @@ partial struct EnemySpawnerSystem : ISystem
     public void OnUpdate(ref SystemState state)
     {
         EntitiesReferences entitiesReferences = SystemAPI.GetSingleton<EntitiesReferences>();
+        float deltaTime = SystemAPI.Time.DeltaTime;
 
-        foreach ((
-            RefRO<LocalTransform> localTransform,
-            RefRW<EnemySpawner> enemySpawner)
-            in SystemAPI.Query<
-                RefRO<LocalTransform>,
-                RefRW<EnemySpawner>>())
+        foreach (var (spawner, transform) in 
+            SystemAPI.Query<RefRW<EnemySpawner>, RefRO<LocalTransform>>())
         {
-            // Prüfe ob Spawner aktiv ist
-            if (!enemySpawner.ValueRO.isActive)
+            if (!spawner.ValueRO.isActive) continue;
+
+            // Timer aktualisieren
+            spawner.ValueRW.currentSpawnTimer -= deltaTime;
+
+            // Prüfen ob gespawnt werden soll
+            if (spawner.ValueRO.currentSpawnTimer <= 0f)
             {
-                continue;
+                // Prüfen ob maximale Spawns erreicht
+                if (spawner.ValueRO.maxSpawns > 0 && 
+                    spawner.ValueRO.currentSpawnCount >= spawner.ValueRO.maxSpawns)
+                {
+                    spawner.ValueRW.isActive = false;
+                    continue;
+                }
+
+                // UnitTypeSO holen - genau wie im BuildingBarracksSystem
+                UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(spawner.ValueRO.unitType);
+
+                // Formation spawnen - genau wie im BuildingBarracksSystem
+                this.SpawnFormation(ref state, unitTypeSO, entitiesReferences, transform.ValueRO.Position, spawner.ValueRO.rallyPositionOffset);
+
+                // Timer und Counter aktualisieren
+                spawner.ValueRW.currentSpawnTimer = spawner.ValueRO.spawnInterval;
+                spawner.ValueRW.currentSpawnCount++;
             }
-
-            // Prüfe Max Spawns (0 = unendlich)
-            if (enemySpawner.ValueRO.maxSpawns > 0 && 
-                enemySpawner.ValueRO.currentSpawnCount >= enemySpawner.ValueRO.maxSpawns)
-            {
-                enemySpawner.ValueRW.isActive = false;
-                continue;
-            }
-
-            // Hole UnitTypeSO für progressMax (wie im BuildingBarracksSystem)
-            UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(enemySpawner.ValueRO.unitType);
-            
-            // Update Progress Timer
-            enemySpawner.ValueRW.progress += SystemAPI.Time.DeltaTime;
-
-            // Prüfe ob Spawn-Zeit erreicht ist (verwende progressMax vom UnitTypeSO)
-            if (enemySpawner.ValueRO.progress < unitTypeSO.progressMax)
-            {
-                continue;
-            }
-
-            // Reset Progress Timer
-            enemySpawner.ValueRW.progress = 0f;
-
-            // Erhöhe Spawn Counter
-            enemySpawner.ValueRW.currentSpawnCount++;
-
-            // Spawn Formation (identisch zum BuildingBarracksSystem)
-            SpawnFormation(ref state, unitTypeSO, entitiesReferences, 
-                          localTransform.ValueRO.Position, enemySpawner.ValueRO.rallyPositionOffset);
         }
     }
 
-    /// <summary>
-    /// Identische SpawnFormation Methode vom BuildingBarracksSystem
-    /// </summary>
-    private void SpawnFormation(ref SystemState state, UnitTypeSO unitTypeSO, EntitiesReferences entitiesReferences, 
-                               float3 spawnPosition, float3 rallyPositionOffset)
+    private void SpawnFormation(ref SystemState state, UnitTypeSO unitTypeSO, EntitiesReferences entitiesReferences, float3 spawnPosition, float3 rallyPositionOffset)
     {
         int formationAmount = unitTypeSO.formationAmount;
         
@@ -78,10 +62,9 @@ partial struct EnemySpawnerSystem : ISystem
             Entity spawnedUnitEntity = state.EntityManager.Instantiate(unitTypeSO.GetPrefabEntity(entitiesReferences));
             state.EntityManager.SetComponentData(spawnedUnitEntity, LocalTransform.FromPosition(spawnPosition));
             
-            // Set MoveOverride for single units (only if component exists)
+            // Set MoveOverride for single units
             if (!state.EntityManager.HasComponent<FormationFollower>(spawnedUnitEntity) && 
-                !state.EntityManager.HasComponent<FlagBearer>(spawnedUnitEntity) &&
-                state.EntityManager.HasComponent<MoveOverride>(spawnedUnitEntity))
+                !state.EntityManager.HasComponent<FlagBearer>(spawnedUnitEntity))
             {
                 state.EntityManager.SetComponentData(spawnedUnitEntity, new MoveOverride {
                     targetPosition = spawnPosition + rallyPositionOffset
@@ -113,14 +96,11 @@ partial struct EnemySpawnerSystem : ISystem
             isMoving = false
         });
         
-        // Set MoveOverride for Flag Bearer to move to rally position (only if component exists)
-        if (state.EntityManager.HasComponent<MoveOverride>(flagBearerEntity))
-        {
-            state.EntityManager.SetComponentData(flagBearerEntity, new MoveOverride {
-                targetPosition = spawnPosition + rallyPositionOffset
-            });
-            state.EntityManager.SetComponentEnabled<MoveOverride>(flagBearerEntity, true);
-        }
+        // Set MoveOverride for Flag Bearer to move to rally position
+        state.EntityManager.SetComponentData(flagBearerEntity, new MoveOverride {
+            targetPosition = spawnPosition + rallyPositionOffset
+        });
+        state.EntityManager.SetComponentEnabled<MoveOverride>(flagBearerEntity, true);
         
         // Spawn Formation Followers
         for (int i = 0; i < followerCount; i++)

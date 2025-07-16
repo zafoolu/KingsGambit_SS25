@@ -4,12 +4,12 @@ using UnityEngine;
 
 /// <summary>
 /// MonoBehaviour für Enemy-Spawner-Konfiguration im Editor
-/// Übernimmt die Logik vom BuildingBarracksAuthoring aber spawnt automatisch
 /// </summary>
 public class EnemySpawnerAuthoring : MonoBehaviour
 {
     [Header("Spawn Settings")]
     [SerializeField] private UnitTypeSO.UnitType unitType = UnitTypeSO.UnitType.CursedPawn;
+    [SerializeField] private float spawnInterval = 5f;
     [SerializeField] private int maxSpawns = 0; // 0 = unendlich
     [SerializeField] private Vector3 rallyPositionOffset = new Vector3(0, 0, 5);
     
@@ -48,6 +48,7 @@ public class EnemySpawnerAuthoring : MonoBehaviour
     
     private void OnValidate()
     {
+        spawnInterval = Mathf.Max(0.1f, spawnInterval);
         maxSpawns = Mathf.Max(0, maxSpawns);
     }
     
@@ -57,14 +58,14 @@ public class EnemySpawnerAuthoring : MonoBehaviour
         {
             var entity = GetEntity(TransformUsageFlags.Dynamic);
             
-            // Übernehme die gleiche Struktur wie BuildingBarracks
             AddComponent(entity, new EnemySpawner
             {
                 unitType = authoring.unitType,
-                progress = 0f,
+                spawnInterval = authoring.spawnInterval,
                 maxSpawns = authoring.maxSpawns,
-                currentSpawnCount = 0,
                 rallyPositionOffset = authoring.rallyPositionOffset,
+                currentSpawnTimer = authoring.spawnInterval,
+                currentSpawnCount = 0,
                 isActive = true
             });
         }
@@ -73,14 +74,16 @@ public class EnemySpawnerAuthoring : MonoBehaviour
 
 /// <summary>
 /// ECS-Komponente für automatisches Enemy-Spawning
-/// Basiert auf BuildingBarracks aber spawnt automatisch ohne Queue
 /// </summary>
 public struct EnemySpawner : IComponentData
 {
     public UnitTypeSO.UnitType unitType;
-    public float progress;
+    public float spawnInterval;
     public int maxSpawns;
-    public int currentSpawnCount;
     public float3 rallyPositionOffset;
+    
+    // Runtime-Daten
+    public float currentSpawnTimer;
+    public int currentSpawnCount;
     public bool isActive;
 }
