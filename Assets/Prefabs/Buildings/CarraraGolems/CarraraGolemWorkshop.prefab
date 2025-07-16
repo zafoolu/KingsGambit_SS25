@@ -328,6 +328,7 @@ GameObject:
   - component: {fileID: 4928886949099503033}
   - component: {fileID: 1206592569127215245}
   - component: {fileID: 3085421922096493541}
+  - component: {fileID: -1653286202137826702}
   m_Layer: 7
   m_Name: CarraraGolemWorkshop
   m_TagString: Untagged
@@ -454,6 +455,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buildingType: 1
+--- !u!114 &-1653286202137826702
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7031758499250102526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 566756d0ec0728046b5ef7a5dd99f193, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressMax: 2
 --- !u!1001 &4246828632849892454
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -472,7 +486,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5687029766354154977, guid: 6784e11e33a66d6478705bd4eae26eac, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5687029766354154977, guid: 6784e11e33a66d6478705bd4eae26eac, type: 3}
       propertyPath: m_LocalPosition.z

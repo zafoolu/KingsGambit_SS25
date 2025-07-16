@@ -56,57 +56,131 @@ public class BuildingBarracksUI : MonoBehaviour {
         }
     }
 
-    private void SpawnUnit(UnitTypeSO.UnitType unitType) {
+    private bool IsEntityManagerReady() {
+        try {
+            // Check if EntityManager is null
+            if (entityManager == null) {
+                Debug.LogWarning("EntityManager is null");
+                return false;
+            }
+            
+            // Check if the world is created
+            if (!entityManager.World.IsCreated) {
+                Debug.LogWarning("EntityManager world is not created");
+                return false;
+            }
+            
+            // Try a simple operation to verify functionality
+            entityManager.CreateEntityQuery(typeof(LocalTransform));
+            return true;
+        } catch (System.Exception e) {
+            Debug.LogError("EntityManager is not ready: " + e.Message);
+            return false;
+        }
+    }
+
+    private bool HasBarracksInScene() {
+        try {
+            if (!IsEntityManagerReady()) {
+                Debug.LogWarning("EntityManager not ready, cannot check for barracks");
+                return false;
+            }
+             
+            EntityQuery barracksQuery = entityManager.CreateEntityQuery(typeof(BuildingBarracks));
+            int barracksCount = barracksQuery.CalculateEntityCount();
+            
+            Debug.Log($"Found {barracksCount} barracks in scene");
+            return barracksCount > 0;
+        } catch (System.Exception e) {
+            Debug.LogError("Error checking for barracks: " + e.Message);
+            return false;
+        }
+    }
+
+    private bool HasWorkshopsInScene() {
+        try {
+            if (!IsEntityManagerReady()) {
+                Debug.LogWarning("EntityManager not ready, cannot check for workshops");
+                return false;
+            }
+             
+            EntityQuery workshopQuery = entityManager.CreateEntityQuery(typeof(BuildingWorkshop));
+            int workshopCount = workshopQuery.CalculateEntityCount();
+            
+            Debug.Log($"Found {workshopCount} workshops in scene");
+            return workshopCount > 0;
+        } catch (System.Exception e) {
+            Debug.LogError("Error checking for workshops: " + e.Message);
+            return false;
+        }
+    }
+
+    private bool IsPawnUnit(UnitTypeSO.UnitType unitType) {
+        return unitType == UnitTypeSO.UnitType.CarraraPawn;
+    }
+
+    public void SpawnUnit(UnitTypeSO.UnitType unitType) {
         Debug.Log("SpawnUnit called for: " + unitType);
         
-        // Try to initialize EntityManager if it's null
-        if (entityManager == null) {
-            if (World.DefaultGameObjectInjectionWorld != null) {
-                entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
-                Debug.Log("EntityManager initialized in SpawnUnit");
-            } else {
-                Debug.LogError("World.DefaultGameObjectInjectionWorld is null! Cannot spawn unit.");
-                return;
-            }
-        }
-        
-        // Check if GameAssets.Instance is available
+        // Null checks for critical components
         if (GameAssets.Instance == null) {
-            Debug.LogError("GameAssets.Instance is null! Cannot spawn unit.");
+            Debug.LogError("GameAssets.Instance is null!");
             return;
         }
         
-        // Check if unitTypeListSO is available
         if (GameAssets.Instance.unitTypeListSO == null) {
-            Debug.LogError("GameAssets.Instance.unitTypeListSO is null! Cannot spawn unit.");
+            Debug.LogError("GameAssets.Instance.unitTypeListSO is null!");
             return;
         }
-        
-        float3 spawnPosition = FindBarracksSpawnPosition();
         
         UnitTypeSO unitTypeSO = GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(unitType);
-        
-        // Check if unitTypeSO was found
         if (unitTypeSO == null) {
-            Debug.LogError("UnitTypeSO for " + unitType + " not found! Cannot spawn unit.");
+            Debug.LogError("UnitTypeSO is null for unit type: " + unitType);
             return;
         }
         
-        // Check if ResourceManager.Instance is available
         if (ResourceManager.Instance == null) {
-            Debug.LogError("ResourceManager.Instance is null! Cannot spawn unit.");
+            Debug.LogError("ResourceManager.Instance is null!");
             return;
         }
         
-        // Check if spawnCostResourceAmountArray is valid
         if (unitTypeSO.spawnCostResourceAmountArray == null) {
-            Debug.LogError("spawnCostResourceAmountArray is null for " + unitType + "! Cannot spawn unit.");
+            Debug.LogError("spawnCostResourceAmountArray is null for unit type: " + unitType);
             return;
+        }
+        
+        // Check if EntityManager is ready
+        if (!IsEntityManagerReady()) {
+            Debug.LogError("EntityManager not ready, cannot spawn unit");
+            return;
+        }
+        
+        // Check if the appropriate building type exists before allowing spawn
+        bool isPawn = IsPawnUnit(unitType);
+        if (isPawn) {
+            // Pawns can only be spawned at barracks
+            if (!HasBarracksInScene()) {
+                Debug.LogWarning("Keine Kasernen in der Szene gefunden! Bauern können nur bei Kasernen gespawnt werden.");
+                return;
+            }
+        } else {
+            // All other units can only be spawned at workshops
+            if (!HasWorkshopsInScene()) {
+                Debug.LogWarning("Keine Werkstätten in der Szene gefunden! Diese Einheit kann nur bei Werkstätten gespawnt werden.");
+                return;
+            }
         }
         
         if (!ResourceManager.Instance.CanSpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray)) {
             Debug.Log("Nicht genug Ressourcen für " + unitType);
             return;
+        }
+        
+        float3 spawnPosition;
+        if (isPawn) {
+            spawnPosition = FindBarracksSpawnPosition();
+        } else {
+            spawnPosition = FindWorkshopSpawnPosition();
         }
         
         ResourceManager.Instance.SpendResourceAmount(unitTypeSO.spawnCostResourceAmountArray);
@@ -132,6 +206,75 @@ public class BuildingBarracksUI : MonoBehaviour {
             } catch (System.Exception refundException) {
                 Debug.LogError("Error refunding resources: " + refundException.Message);
             }
+        }
+    }
+
+    private float3 FindWorkshopSpawnPosition() {
+        // Try to initialize EntityManager if it's null
+        if (entityManager == null) {
+            if (World.DefaultGameObjectInjectionWorld != null) {
+                entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+                Debug.Log("EntityManager initialized in FindWorkshopSpawnPosition");
+            } else {
+                Debug.LogError("World.DefaultGameObjectInjectionWorld is null in FindWorkshopSpawnPosition!");
+                // Use safe fallback position
+                return GetSafeFallbackPosition();
+            }
+        }
+        
+        // Additional safety check - verify EntityManager is valid before using it
+        try {
+            // Query for all workshop entities
+            EntityQuery workshopQuery = entityManager.CreateEntityQuery(typeof(BuildingWorkshop), typeof(LocalTransform));
+        
+            if (workshopQuery.CalculateEntityCount() > 0) {
+                // Get the first workshop found
+                NativeArray<Entity> workshopEntities = workshopQuery.ToEntityArray(Allocator.Temp);
+                NativeArray<LocalTransform> workshopTransforms = workshopQuery.ToComponentDataArray<LocalTransform>(Allocator.Temp);
+                
+                if (workshopEntities.Length > 0 && workshopTransforms.Length > 0) {
+                    // Use the position of the first workshop, with a small offset for spawning
+                    float3 workshopPosition = workshopTransforms[0].Position;
+                    
+                    // Validate workshop position
+                    if (!IsValidPosition(workshopPosition)) {
+                        Debug.LogWarning("Workshop has invalid position, using fallback");
+                        workshopEntities.Dispose();
+                        workshopTransforms.Dispose();
+                        return GetSafeFallbackPosition();
+                    }
+                    
+                    float3 spawnOffset = new float3(3f, 0f, 3f); // Spawn 3 units away from workshop
+                    float3 spawnPosition = workshopPosition + spawnOffset;
+                    
+                    // Validate final spawn position
+                    if (!IsValidPosition(spawnPosition)) {
+                        Debug.LogWarning("Calculated spawn position is invalid, using fallback");
+                        workshopEntities.Dispose();
+                        workshopTransforms.Dispose();
+                        return GetSafeFallbackPosition();
+                    }
+                    
+                    workshopEntities.Dispose();
+                    workshopTransforms.Dispose();
+                    
+                    Debug.Log($"Spawning near workshop at position: {spawnPosition}");
+                    return spawnPosition;
+                }
+                
+                workshopEntities.Dispose();
+                workshopTransforms.Dispose();
+            }
+            
+            // If no workshop found, use the default spawn point or world origin
+            float3 fallbackPosition = GetSafeFallbackPosition();
+            Debug.Log($"No valid workshop found, using fallback position: {fallbackPosition}");
+            return fallbackPosition;
+        } catch (System.Exception e) {
+            Debug.LogError("Error in FindWorkshopSpawnPosition: " + e.Message);
+            Debug.LogError("Using fallback spawn position");
+            // Use safe fallback position
+            return GetSafeFallbackPosition();
         }
     }
 
