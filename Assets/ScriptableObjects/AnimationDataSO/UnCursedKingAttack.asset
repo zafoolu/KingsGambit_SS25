@@ -14,5 +14,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationType: 46
   meshArray:
-  - {fileID: 4300000, guid: 3e67c8e712f2b5040aaaeb8eb2492345, type: 2}
-  frameTimerMax: 0.5
+  - {fileID: 195832220718045582, guid: f2a84b5889991c742bf8fa0fc4c7e31b, type: 3}
+  - {fileID: 195832220718045582, guid: 9d19da0d7ea7a44489f09bfda9e57f8c, type: 3}
+  - {fileID: 195832220718045582, guid: 7045c25870e31874a80fc8de8478cf11, type: 3}
+  - {fileID: 195832220718045582, guid: c9598a8de120cdc46ba6246e8cb442fc, type: 3}
+  - {fileID: 195832220718045582, guid: 1de694cad2b6a344db4d8eb73c2b7017, type: 3}
+  - {fileID: 195832220718045582, guid: bcfaa3ca643ca0844a5f781ba13abc0f, type: 3}
+  - {fileID: 195832220718045582, guid: 465857b1728750e4fab05f6c20557f31, type: 3}
+  - {fileID: 195832220718045582, guid: a81a9941819062942b6df0db5784e469, type: 3}
+  - {fileID: 195832220718045582, guid: 3d60c51ec881bfe469f03eca195069a1, type: 3}
+  - {fileID: 195832220718045582, guid: 21c0600a72b767147b264ca55b3a68f5, type: 3}
+  - {fileID: 195832220718045582, guid: 913358b7b0587a9419d7530d37ae0ad6, type: 3}
+  - {fileID: 195832220718045582, guid: d070ec8f04b1b0d419efc7506cc83716, type: 3}
+  - {fileID: 195832220718045582, guid: b209b382e0098ac48b74c1b15f047d23, type: 3}
+  - {fileID: 195832220718045582, guid: 26e3506b02c9774498cb873eafbb8b3c, type: 3}
+  - {fileID: 195832220718045582, guid: 06fbb7cc5838f7d46b353d3a46103a36, type: 3}
+  - {fileID: 195832220718045582, guid: 8b7547b392d6e5e45a18406512106fe7, type: 3}
+  - {fileID: 195832220718045582, guid: 84ba56507305fe445aa47ddf7804a9af, type: 3}
+  - {fileID: 195832220718045582, guid: fcb4b6b091c46e744950f67a9ce67da8, type: 3}
+  - {fileID: 195832220718045582, guid: 1cb73b2b854dab94584099c36ff93dba, type: 3}
+  - {fileID: 195832220718045582, guid: f4cc64f64807b4d49a7fcc2eb1a40656, type: 3}
+  - {fileID: 195832220718045582, guid: 4dee17f4f9b1a754282c5cac4a44a62e, type: 3}
+  frameTimerMax: 0.0001
