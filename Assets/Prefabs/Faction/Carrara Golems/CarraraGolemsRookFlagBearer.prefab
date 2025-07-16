@@ -326,7 +326,7 @@ PrefabInstance:
       objectReference: {fileID: 895430802385478545, guid: 82de80981dbfab743bd6cafd579f6eef, type: 3}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 33.8
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.y
@@ -334,7 +334,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 20.2
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalRotation.w
@@ -444,6 +444,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7524218659150207173}
+    - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5088502637350841077}
   m_SourcePrefab: {fileID: 100100000, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
 --- !u!1 &2547314701683967756 stripped
 GameObject:
@@ -504,6 +507,26 @@ MonoBehaviour:
   timerMax: 5
   damageAmount: 225
   colliderSize: 0.6
+--- !u!114 &5088502637350841077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2547314701683967756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f125818969ba88941a2777954d1c04c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxOffset: {x: 0.1, y: 2.81, z: 24.9}
+  hitboxWidth: 3.79
+  hitboxHeight: 10.82
+  hitboxDepth: 46
+  hitboxColor: {r: 1, g: 0, b: 0, a: 1}
+  showRuntimeVisual: 1
+  hitboxVisualPrefab: {fileID: 0}
+  damageAmount: 10
 --- !u!4 &7874505460035524181 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
