@@ -9,17 +9,35 @@ EditorBuildSettings:
     path: Assets/Scenes/MainMenuScene.unity
     guid: 6ffd910e779d2ae4c94730d2cd8b90e3
   - enabled: 1
-    path: Assets/Scenes/Level1.unity
-    guid: c053d3dfe3110574ea7535f8c8b3c1a7
-  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 1
+    path: Assets/Scenes/Subscenes/EntitiesSubsceneLevel1.unity
+    guid: 8618fd3589f9cc9469f39efddd2f8f60
   - enabled: 1
     path: Assets/Scenes/SkirmishSceneLoader.unity
     guid: 6a819f347e2da3246b7d5e33e8e8f247
   - enabled: 1
+    path: Assets/Scenes/Campaign.unity
+    guid: 70230f469839b694a85eaebac326160a
+  - enabled: 1
+    path: Assets/Scenes/Subscenes/EntitiesSubsceneLevel2.unity
+    guid: eb2715ba0476a00468dd82fb887e398a
+  - enabled: 1
+    path: Assets/Scenes/Subscenes/SkirmishMaps/EntitiesSubsceneDreamer.unity
+    guid: 29623fac9501d3545bbc9435e5158e99
+  - enabled: 1
+    path: Assets/Scenes/Subscenes/SkirmishMaps/EntitiesSubsceneCarrara.unity
+    guid: b051100a6f151df43b2e79a251ae9ea0
+  - enabled: 1
+    path: Assets/Scenes/CampaignMenu.unity
+    guid: 03dc542c1620d5141b96dbe92fd909a4
+  - enabled: 1
     path: Assets/Scenes/MapsForSkirmish/Carrara.unity
     guid: 8e27a668da7829a4dbdcfb070d324a89
+  - enabled: 1
+    path: Assets/Scenes/Subscenes/SkirmishMaps/EntitiesSubsceneCursed.unity
+    guid: dd323d6d3c6f51a4a9e73c4c95c065c9
   - enabled: 1
     path: Assets/Scenes/MapsForSkirmish/Dreamers.unity
     guid: 041abab588ea79c40bc6ca8a6f392ebd
