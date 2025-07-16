@@ -15,11 +15,12 @@ public partial struct KnightTacticSystem : ISystem
         state.RequireForUpdate<EntitiesReferences>();
     }
 
-    // NICHT BurstCompile, weil wir auf GameObjects zugreifen
+    [BurstCompile]
     public void OnUpdate(ref SystemState state)
     {
         var physicsWorldSingleton = SystemAPI.GetSingleton<PhysicsWorldSingleton>();
         var collisionWorld = physicsWorldSingleton.CollisionWorld;
+        var ecb = new EntityCommandBuffer(Allocator.Temp);
         
         foreach (var (knightTactic, transform, entity) in 
                  SystemAPI.Query<RefRW<KnightTactic>, RefRO<LocalTransform>>()
@@ -29,115 +30,119 @@ public partial struct KnightTacticSystem : ISystem
             
             if (knightTactic.ValueRO.timer <= 0f)
             {
-                Debug.Log($"\n=== Knight Tactic Check for Entity {entity.Index} ===");
+                // Berechne Hitbox 1 Position, Größe und Rotation
+                float3 hitbox1WorldPos = transform.ValueRO.Position + math.mul(transform.ValueRO.Rotation, knightTactic.ValueRO.hitbox1Offset);
+                float3 hitbox1Size = new float3(knightTactic.ValueRO.hitbox1Width, knightTactic.ValueRO.hitbox1Height, knightTactic.ValueRO.hitbox1Depth);
+                quaternion hitbox1Rotation = math.mul(transform.ValueRO.Rotation, quaternion.Euler(math.radians(knightTactic.ValueRO.hitbox1Rotation)));
                 
-                // Prüfe auf LocalTransform statt Transform
-                if (SystemAPI.HasComponent<LocalTransform>(knightTactic.ValueRO.tacticBox1Entity) &&
-                    SystemAPI.HasComponent<LocalTransform>(knightTactic.ValueRO.tacticBox2Entity))
+                // Berechne Hitbox 2 Position, Größe und Rotation
+                float3 hitbox2WorldPos = transform.ValueRO.Position + math.mul(transform.ValueRO.Rotation, knightTactic.ValueRO.hitbox2Offset);
+                float3 hitbox2Size = new float3(knightTactic.ValueRO.hitbox2Width, knightTactic.ValueRO.hitbox2Height, knightTactic.ValueRO.hitbox2Depth);
+                quaternion hitbox2Rotation = math.mul(transform.ValueRO.Rotation, quaternion.Euler(math.radians(knightTactic.ValueRO.hitbox2Rotation)));
+                
+                // Finde Targets in beiden Hitboxen
+                var targetsInBox1 = GetTargetsInBox(ref state, collisionWorld, hitbox1WorldPos, hitbox1Size, hitbox1Rotation);
+                var targetsInBox2 = GetTargetsInBox(ref state, collisionWorld, hitbox2WorldPos, hitbox2Size, hitbox2Rotation);
+                
+                // Prüfe ob genau ein Ziel in jeder Box ist
+                if (targetsInBox1.Length == 1 && targetsInBox2.Length == 1)
                 {
-                    var box1Transform = SystemAPI.GetComponent<LocalTransform>(knightTactic.ValueRO.tacticBox1Entity);
-                    var box2Transform = SystemAPI.GetComponent<LocalTransform>(knightTactic.ValueRO.tacticBox2Entity);
+                    // Knight Tactic aktiviert!
+                    knightTactic.ValueRW.onShoot.isTriggered = true;
+                    knightTactic.ValueRW.onShoot.shootFromPosition = transform.ValueRO.Position;
+                    knightTactic.ValueRW.timer = knightTactic.ValueRO.timerMax;
                     
-                    Debug.Log($"Box1 Position: {box1Transform.Position}, Box2 Position: {box2Transform.Position}");
+                    // Schade den Targets
+                    Entity target1 = targetsInBox1[0];
+                    Entity target2 = targetsInBox2[0];
                     
-                    // Verwende DOTS Physics für Collision Detection
-                    var targetsInBox1 = GetTargetsInBoxEntity(ref state, collisionWorld, knightTactic.ValueRO.tacticBox1Entity);
-                    var targetsInBox2 = GetTargetsInBoxEntity(ref state, collisionWorld, knightTactic.ValueRO.tacticBox2Entity);
-                    
-                    // Prüfe ob genau ein Ziel in jeder Box ist
-                    Debug.Log($"Targets in Box1: {targetsInBox1.Length}, Targets in Box2: {targetsInBox2.Length}");
-                    
-                    if (targetsInBox1.Length == 1 && targetsInBox2.Length == 1)
+                    if (SystemAPI.HasComponent<Health>(target1))
                     {
-                        knightTactic.ValueRW.onShoot.isTriggered = true;
-                        knightTactic.ValueRW.timer = knightTactic.ValueRO.timerMax;
-                        
-                        Debug.Log($"🎯 KNIGHT TACTIC ACTIVATED! Target1: {targetsInBox1[0].Index}, Target2: {targetsInBox2[0].Index}");
+                        var health1 = SystemAPI.GetComponent<Health>(target1);
+                        health1.healthAmount -= knightTactic.ValueRO.damageAmount;
+                        ecb.SetComponent(target1, health1);
+                    }
+                    
+                    if (SystemAPI.HasComponent<Health>(target2))
+                    {
+                        var health2 = SystemAPI.GetComponent<Health>(target2);
+                        health2.healthAmount -= knightTactic.ValueRO.damageAmount;
+                        ecb.SetComponent(target2, health2);
+                    }
+                    
+                    // Füge Kollisionsstatus hinzu für Visualisierung
+                    if (!SystemAPI.HasComponent<TacticCollisionState>(entity))
+                    {
+                        ecb.AddComponent(entity, new TacticCollisionState
+                        {
+                            isCollidingWithFlagBearer = true,
+                            originalColor = knightTactic.ValueRO.hitboxColor,
+                            collisionColor = new float4(0f, 1f, 0f, 0.5f) // Grün für erfolgreiche Aktivierung
+                        });
                     }
                     else
                     {
-                        Debug.Log($"❌ Knight Tactic NOT activated - need exactly 1 target in each box");
+                        ecb.SetComponent(entity, new TacticCollisionState
+                        {
+                            isCollidingWithFlagBearer = true,
+                            originalColor = knightTactic.ValueRO.hitboxColor,
+                            collisionColor = new float4(0f, 1f, 0f, 0.5f) // Grün für erfolgreiche Aktivierung
+                        });
                     }
-                    
-                    targetsInBox1.Dispose();
-                    targetsInBox2.Dispose();
                 }
                 else
                 {
-                    Debug.LogWarning($"Knight Entity {entity.Index} missing tactic box LocalTransform components!");
-                }
-                
-                Debug.Log($"=== End Knight Tactic Check ===\n");
-            }
-        }
-    }
-    
-    // Methode die DOTS Physics verwendet
-    private NativeList<Entity> GetTargetsInBoxEntity(ref SystemState state, CollisionWorld collisionWorld, 
-        Entity boxEntity)
-    {
-        var targets = new NativeList<Entity>(Allocator.Temp);
-        
-        // Hole das echte GameObject über ManagedAPI
-        if (SystemAPI.ManagedAPI.HasComponent<Transform>(boxEntity))
-        {
-            var gameObjectTransform = SystemAPI.ManagedAPI.GetComponent<Transform>(boxEntity);
-            var boxCollider = gameObjectTransform.GetComponent<UnityEngine.BoxCollider>();
-            if (boxCollider != null)
-            {
-                // ✅ RICHTIG: Verwende die echten BoxCollider-Dimensionen
-                Vector3 center = gameObjectTransform.position + gameObjectTransform.TransformVector(boxCollider.center);
-                Vector3 halfExtents = Vector3.Scale(boxCollider.size, gameObjectTransform.lossyScale) * 0.5f;
-                Quaternion orientation = gameObjectTransform.rotation;
-                
-                Debug.Log($"Using REAL BoxCollider: center={center}, halfExtents={halfExtents}");
-                
-                // Verwende DOTS Physics OverlapBox mit ECHTEN Dimensionen
-                var distanceHitList = new NativeList<DistanceHit>(Allocator.Temp);
-                
-                if (collisionWorld.OverlapBox(
-                    center,
-                    orientation,
-                    halfExtents,
-                    ref distanceHitList,
-                    new CollisionFilter {
-                        BelongsTo = ~0u,
-                        CollidesWith = 1u << GameAssets.UNITS_LAYER,
-                        GroupIndex = 0,
-                    }))
-                {
-                    foreach (var distanceHit in distanceHitList)
+                    // Keine erfolgreiche Aktivierung
+                    if (SystemAPI.HasComponent<TacticCollisionState>(entity))
                     {
-                        targets.Add(distanceHit.Entity);
-                        Debug.Log($"Found entity {distanceHit.Entity.Index} with REAL box dimensions");
+                        ecb.SetComponent(entity, new TacticCollisionState
+                        {
+                            isCollidingWithFlagBearer = false,
+                            originalColor = knightTactic.ValueRO.hitboxColor,
+                            collisionColor = knightTactic.ValueRO.hitboxColor
+                        });
                     }
                 }
                 
-                distanceHitList.Dispose();
+                targetsInBox1.Dispose();
+                targetsInBox2.Dispose();
             }
-            else
-            {
-                Debug.LogError($"Box Entity {boxEntity.Index} has no BoxCollider component!");
-            }
-        }
-        else
-        {
-            Debug.LogError($"Box Entity {boxEntity.Index} has no Transform component!");
         }
         
-        return targets;
+        ecb.Playback(state.EntityManager);
+        ecb.Dispose();
     }
     
     [BurstCompile]
-    private bool IsPointInOrientedBox(float3 point, float3 boxCenter, float3 boxSize, quaternion boxRotation)
+    private NativeList<Entity> GetTargetsInBox(ref SystemState state, CollisionWorld collisionWorld, float3 boxCenter, float3 boxSize, quaternion boxRotation)
     {
-        // Transformiere Punkt in lokale Box-Koordinaten
-        float3 localPoint = math.mul(math.inverse(boxRotation), point - boxCenter);
+        var targets = new NativeList<Entity>(Allocator.Temp);
+        var distanceHitList = new NativeList<DistanceHit>(Allocator.Temp);
         
-        // Prüfe ob Punkt innerhalb der Box-Grenzen liegt
-        float3 halfSize = boxSize * 0.5f;
-        return math.abs(localPoint.x) <= halfSize.x && 
-               math.abs(localPoint.y) <= halfSize.y && 
-               math.abs(localPoint.z) <= halfSize.z;
+        float3 halfExtents = boxSize * 0.5f;
+        
+        if (collisionWorld.OverlapBox(
+            boxCenter,
+            boxRotation,
+            halfExtents,
+            ref distanceHitList,
+            new CollisionFilter {
+                BelongsTo = ~0u,
+                CollidesWith = 1u << GameAssets.UNITS_LAYER,
+                GroupIndex = 0,
+            }))
+        {
+            foreach (var distanceHit in distanceHitList)
+            {
+                // Prüfe ob es ein FlagBearer ist
+                if (state.EntityManager.HasComponent<FlagBearer>(distanceHit.Entity))
+                {
+                    targets.Add(distanceHit.Entity);
+                }
+            }
+        }
+        
+        distanceHitList.Dispose();
+        return targets;
     }
 }

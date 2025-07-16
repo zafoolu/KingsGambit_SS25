@@ -7194,6 +7194,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 099aa85e82f63d14a9eed9e319859dd2, type: 3}
   m_PrefabInstance: {fileID: 1268444718}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1279607767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1279607768}
+  - component: {fileID: 1279607769}
+  m_Layer: 0
+  m_Name: TACTIC
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1279607768
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279607767}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1279607769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1279607767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc0cf3400724b544a7f9c461793a64e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxMaterial: {fileID: 2100000, guid: ffeda1b384c72364991aa77f94f20b26, type: 2}
+  useWireframe: 1
 --- !u!1001 &1284857763
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16918,6 +16964,7 @@ SceneRoots:
   - {fileID: 1702895206}
   - {fileID: 1795609993}
   - {fileID: 1611861099}
+  - {fileID: 1279607768}
   - {fileID: 1528700809}
   - {fileID: 5181352074421180075}
   - {fileID: 1898393373}

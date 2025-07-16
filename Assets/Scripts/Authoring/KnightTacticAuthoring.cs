@@ -1,138 +1,131 @@
 using Unity.Entities;
 using Unity.Mathematics;
 using UnityEngine;
-using System.Collections;
 
 public class KnightTacticAuthoring : MonoBehaviour
 {
-    [Header("Tactic Box GameObjects")]
-    [Tooltip("Ziehe hier die TacticHitbox1 GameObject rein")]
-    public GameObject tacticBox1GameObject;
+    [Header("Hitbox 1 Settings")]
+    public Vector3 hitbox1Offset = new Vector3(-1f, 0, 2f); // Relative zur Entität
+    public Vector3 hitbox1Rotation = Vector3.zero; // Euler Winkel für Rotation
+    public float hitbox1Width = 1f;
+    public float hitbox1Height = 1f;
+    public float hitbox1Depth = 1f;
     
-    [Tooltip("Ziehe hier die TacticHitbox2 GameObject rein")]
-    public GameObject tacticBox2GameObject;
-
-    [Header("Tactic Einstellungen")]
+    [Header("Hitbox 2 Settings")]
+    public Vector3 hitbox2Offset = new Vector3(1f, 0, 2f); // Relative zur Entität
+    public Vector3 hitbox2Rotation = Vector3.zero; // Euler Winkel für Rotation
+    public float hitbox2Width = 1f;
+    public float hitbox2Height = 1f;
+    public float hitbox2Depth = 1f;
+    
+    [Header("Visual Settings")]
+    public Color hitboxColor = Color.yellow;
+    public bool showRuntimeVisual = true;
+    public GameObject hitboxVisualPrefab; // Optional: Custom prefab für die Visualisierung
+    
+    [Header("Tactic Settings")]
     public float timerMax = 1f;
     public int damageAmount = 10;
     
-    [Header("Visual Feedback")]
-    [Tooltip("Wie oft pro Sekunde soll das visuelle Feedback aktualisiert werden")]
-    public float visualUpdateRate = 10f;
-    
-    // Private Felder für Material-Management
-    private Material box1OriginalMaterial;
-    private Material box2OriginalMaterial;
-    private Material box1CurrentMaterial;
-    private Material box2CurrentMaterial;
-    private MeshRenderer box1Renderer;
-    private MeshRenderer box2Renderer;
-    
-    // Materialien für verschiedene Zustände
-    private Material goodStateMaterial;  // Grün und transparent
-    private Material badStateMaterial;   // Rötlich und transparent
-    
-    private void Start()
+    public Vector3 GetHitbox1WorldPosition()
     {
-        InitializeVisualFeedback();
-        StartCoroutine(UpdateVisualFeedback());
+        // Transformiere den lokalen Offset in Weltkoordinaten
+        return transform.position + transform.TransformDirection(hitbox1Offset);
     }
     
-    private void InitializeVisualFeedback()
+    public Quaternion GetHitbox1WorldRotation()
     {
-        // Hole MeshRenderer Komponenten
-        if (tacticBox1GameObject != null)
-        {
-            box1Renderer = tacticBox1GameObject.GetComponent<MeshRenderer>();
-            if (box1Renderer != null)
-            {
-                box1OriginalMaterial = box1Renderer.material;
-            }
-        }
-        
-        if (tacticBox2GameObject != null)
-        {
-            box2Renderer = tacticBox2GameObject.GetComponent<MeshRenderer>();
-            if (box2Renderer != null)
-            {
-                box2OriginalMaterial = box2Renderer.material;
-            }
-        }
-        
-        // Erstelle Materialien für verschiedene Zustände
-        CreateFeedbackMaterials();
+        // Kombiniere Entity-Rotation mit Hitbox-Rotation
+        return transform.rotation * Quaternion.Euler(hitbox1Rotation);
     }
     
-    private void CreateFeedbackMaterials()
+    public Vector3 GetHitbox1Size()
     {
-        // Erstelle grünes transparentes Material (genau eine Unit)
-        goodStateMaterial = new Material(Shader.Find("Standard"));
-        goodStateMaterial.color = new Color(0f, 1f, 0f, 0.3f); // Grün, 30% Transparenz
-        goodStateMaterial.SetFloat("_Mode", 3); // Transparent mode
-        goodStateMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-        goodStateMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-        goodStateMaterial.SetInt("_ZWrite", 0);
-        goodStateMaterial.DisableKeyword("_ALPHATEST_ON");
-        goodStateMaterial.EnableKeyword("_ALPHABLEND_ON");
-        goodStateMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-        goodStateMaterial.renderQueue = 3000;
-        
-        // Erstelle rötliches transparentes Material (keine oder mehr als eine Unit)
-        badStateMaterial = new Material(Shader.Find("Standard"));
-        badStateMaterial.color = new Color(1f, 0.3f, 0.3f, 0.3f); // Rötlich, 30% Transparenz
-        badStateMaterial.SetFloat("_Mode", 3); // Transparent mode
-        badStateMaterial.SetInt("_SrcBlend", (int)UnityEngine.Rendering.BlendMode.SrcAlpha);
-        badStateMaterial.SetInt("_DstBlend", (int)UnityEngine.Rendering.BlendMode.OneMinusSrcAlpha);
-        badStateMaterial.SetInt("_ZWrite", 0);
-        badStateMaterial.DisableKeyword("_ALPHATEST_ON");
-        badStateMaterial.EnableKeyword("_ALPHABLEND_ON");
-        badStateMaterial.DisableKeyword("_ALPHAPREMULTIPLY_ON");
-        badStateMaterial.renderQueue = 3000;
+        return new Vector3(hitbox1Width, hitbox1Height, hitbox1Depth);
     }
     
-    private IEnumerator UpdateVisualFeedback()
+    public Vector3 GetHitbox2WorldPosition()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(1f / visualUpdateRate);
-            
-            // Aktualisiere visuelle Darstellung für beide Boxen
-            UpdateBoxVisual(tacticBox1GameObject, box1Renderer);
-            UpdateBoxVisual(tacticBox2GameObject, box2Renderer);
-        }
+        // Transformiere den lokalen Offset in Weltkoordinaten
+        return transform.position + transform.TransformDirection(hitbox2Offset);
     }
     
-    private void UpdateBoxVisual(GameObject boxObject, MeshRenderer renderer)
+    public Quaternion GetHitbox2WorldRotation()
     {
-        if (boxObject == null || renderer == null) return;
-        
-        var boxCollider = boxObject.GetComponent<BoxCollider>();
-        if (boxCollider == null) return;
-        
-        // Zähle Units in der Box
-        int unitsInBox = CountUnitsInBox(boxObject.transform, boxCollider);
-        
-        // Wähle das passende Material basierend auf der Unit-Anzahl
-        Material targetMaterial = (unitsInBox == 1) ? goodStateMaterial : badStateMaterial;
-        
-        // Setze das Material nur wenn es sich geändert hat
-        if (renderer.material != targetMaterial)
-        {
-            renderer.material = targetMaterial;
-        }
+        // Kombiniere Entity-Rotation mit Hitbox-Rotation
+        return transform.rotation * Quaternion.Euler(hitbox2Rotation);
     }
     
-    private void OnDestroy()
+    public Vector3 GetHitbox2Size()
     {
-        // Cleanup: Zerstöre erstellte Materialien
-        if (goodStateMaterial != null)
-        {
-            DestroyImmediate(goodStateMaterial);
-        }
-        if (badStateMaterial != null)
-        {
-            DestroyImmediate(badStateMaterial);
-        }
+        return new Vector3(hitbox2Width, hitbox2Height, hitbox2Depth);
+    }
+    
+    private void OnDrawGizmos()
+    {
+        // Zeichne beide Hitboxen in Gizmos (für Scene View)
+        DrawHitboxGizmo(hitbox1Offset, hitbox1Rotation, GetHitbox1Size(), Color.red, "Box 1");
+        DrawHitboxGizmo(hitbox2Offset, hitbox2Rotation, GetHitbox2Size(), Color.blue, "Box 2");
+    }
+    
+    private void DrawHitboxGizmo(Vector3 offset, Vector3 rotation, Vector3 size, Color color, string label)
+    {
+        Gizmos.color = color;
+        
+        Vector3 hitboxPosition = transform.position + transform.TransformDirection(offset);
+        Quaternion hitboxRotation = transform.rotation * Quaternion.Euler(rotation);
+        
+        // Setze Gizmo Matrix für Position und Rotation
+        Matrix4x4 oldMatrix = Gizmos.matrix;
+        Gizmos.matrix = Matrix4x4.TRS(hitboxPosition, hitboxRotation, Vector3.one);
+        
+        // Zeichne Wireframe Cube
+        Gizmos.DrawWireCube(Vector3.zero, size);
+        
+        // Zeichne auch eine transparente gefüllte Version
+        Color transparentColor = color;
+        transparentColor.a = 0.2f;
+        Gizmos.color = transparentColor;
+        Gizmos.DrawCube(Vector3.zero, size);
+        
+        // Stelle Matrix wieder her
+        Gizmos.matrix = oldMatrix;
+        
+        // Zeichne Linie von Entität zur Hitbox
+        Gizmos.color = color;
+        Gizmos.DrawLine(transform.position, hitboxPosition);
+        
+        // Zeichne Koordinatenachsen an der Hitbox (mit individueller Rotation)
+        Gizmos.color = Color.red;
+        Gizmos.DrawLine(hitboxPosition, hitboxPosition + hitboxRotation * Vector3.right * 0.3f);
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(hitboxPosition, hitboxPosition + hitboxRotation * Vector3.up * 0.3f);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawLine(hitboxPosition, hitboxPosition + hitboxRotation * Vector3.forward * 0.3f);
+    }
+    
+    private void OnDrawGizmosSelected()
+    {
+        // Zusätzliche Gizmos wenn das Objekt ausgewählt ist
+        Gizmos.color = Color.yellow;
+        
+        Vector3 hitbox1Position = GetHitbox1WorldPosition();
+        Vector3 hitbox2Position = GetHitbox2WorldPosition();
+        
+        // Zeichne Offset-Vektoren
+        Gizmos.DrawLine(transform.position, hitbox1Position);
+        Gizmos.DrawLine(transform.position, hitbox2Position);
+        Gizmos.DrawWireSphere(hitbox1Position, 0.1f);
+        Gizmos.DrawWireSphere(hitbox2Position, 0.1f);
+        
+        // Zeige Offset-Werte als Text (nur im Editor)
+        #if UNITY_EDITOR
+        UnityEditor.Handles.color = Color.white;
+        UnityEditor.Handles.Label(hitbox1Position + Vector3.up * 0.5f, 
+            $"Box 1\nOffset: {hitbox1Offset}\nRotation: {hitbox1Rotation}\nSize: {hitbox1Width:F1}x{hitbox1Height:F1}x{hitbox1Depth:F1}");
+        UnityEditor.Handles.Label(hitbox2Position + Vector3.up * 0.5f, 
+            $"Box 2\nOffset: {hitbox2Offset}\nRotation: {hitbox2Rotation}\nSize: {hitbox2Width:F1}x{hitbox2Height:F1}x{hitbox2Depth:F1}");
+        #endif
     }
 
     public class Baker : Baker<KnightTacticAuthoring>
@@ -141,142 +134,60 @@ public class KnightTacticAuthoring : MonoBehaviour
         {
             Entity entity = GetEntity(TransformUsageFlags.Dynamic);
             
-            Entity box1Entity = Entity.Null;
-            Entity box2Entity = Entity.Null;
-            
-            if (authoring.tacticBox1GameObject != null)
-            {
-                box1Entity = GetEntity(authoring.tacticBox1GameObject, TransformUsageFlags.Dynamic);
-                Debug.Log($"Baked tacticBox1: {authoring.tacticBox1GameObject.name} -> Entity {box1Entity.Index}");
-            }
-            else
-            {
-                Debug.LogWarning($"tacticBox1GameObject is null in {authoring.name}!");
-            }
-            
-            if (authoring.tacticBox2GameObject != null)
-            {
-                box2Entity = GetEntity(authoring.tacticBox2GameObject, TransformUsageFlags.Dynamic);
-                Debug.Log($"Baked tacticBox2: {authoring.tacticBox2GameObject.name} -> Entity {box2Entity.Index}");
-            }
-            else
-            {
-                Debug.LogWarning($"tacticBox2GameObject is null in {authoring.name}!");
-            }
-            
             AddComponent(entity, new KnightTactic
             {
-                tacticBox1Entity = box1Entity,
-                tacticBox2Entity = box2Entity,
+                hitbox1Offset = authoring.hitbox1Offset,
+                hitbox1Rotation = authoring.hitbox1Rotation,
+                hitbox1Width = authoring.hitbox1Width,
+                hitbox1Height = authoring.hitbox1Height,
+                hitbox1Depth = authoring.hitbox1Depth,
+                hitbox2Offset = authoring.hitbox2Offset,
+                hitbox2Rotation = authoring.hitbox2Rotation,
+                hitbox2Width = authoring.hitbox2Width,
+                hitbox2Height = authoring.hitbox2Height,
+                hitbox2Depth = authoring.hitbox2Depth,
+                hitboxColor = new float4(authoring.hitboxColor.r, authoring.hitboxColor.g, authoring.hitboxColor.b, authoring.hitboxColor.a),
+                showRuntimeVisual = authoring.showRuntimeVisual,
                 timerMax = authoring.timerMax,
                 timer = 0f,
                 damageAmount = authoring.damageAmount,
                 onShoot = new KnightTactic.OnShootEvent { isTriggered = false }
             });
+            
+            // Wenn ein Custom Prefab gesetzt ist, konvertiere es auch
+            if (authoring.hitboxVisualPrefab != null)
+            {
+                Entity visualPrefab = GetEntity(authoring.hitboxVisualPrefab, TransformUsageFlags.Dynamic);
+                AddComponent(entity, new KnightTacticVisualPrefab
+                {
+                    prefab = visualPrefab
+                });
+            }
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        // Die Boxen sind bereits visuell da, aber wir können trotzdem Gizmos für Debug-Info zeigen
-        if (tacticBox1GameObject != null)
-        {
-            DrawDebugInfo(tacticBox1GameObject, Color.red);
-            DrawDOTSHitbox(tacticBox1GameObject, Color.yellow);
-        }
-        
-        if (tacticBox2GameObject != null)
-        {
-            DrawDebugInfo(tacticBox2GameObject, Color.blue);
-            DrawDOTSHitbox(tacticBox2GameObject, Color.cyan);
-        }
-    }
-    
-    private void DrawDebugInfo(GameObject boxObject, Color color)
-    {
-        var boxCollider = boxObject.GetComponent<BoxCollider>();
-        if (boxCollider == null) return;
-        
-        // Zähle Units für Debug-Info
-        int unitsInBox = CountUnitsInBox(boxObject.transform, boxCollider);
-        
-        // Zeige Text über der Box
-        Vector3 textPos = boxObject.transform.position + Vector3.up * 2f;
-        
-#if UNITY_EDITOR
-        // Zeichne Prefab-Hitbox (grün = BoxCollider bounds)
-        UnityEditor.Handles.color = Color.green;
-        Vector3 boxSize = Vector3.Scale(boxCollider.size, boxObject.transform.lossyScale);
-        Vector3 boxCenter = boxObject.transform.position + boxObject.transform.TransformVector(boxCollider.center);
-        
-        // Zeichne Wireframe Cube für Prefab-Hitbox
-        Matrix4x4 oldMatrix = UnityEditor.Handles.matrix;
-        UnityEditor.Handles.matrix = Matrix4x4.TRS(boxCenter, boxObject.transform.rotation, boxSize);
-        UnityEditor.Handles.DrawWireCube(Vector3.zero, Vector3.one);
-        UnityEditor.Handles.matrix = oldMatrix;
-        
-        UnityEditor.Handles.color = (unitsInBox == 1) ? Color.green : color;
-        UnityEditor.Handles.Label(textPos, $"Prefab Units: {unitsInBox}");
-#endif
-    }
-    
-    private void DrawDOTSHitbox(GameObject boxObject, Color color)
-    {
-    #if UNITY_EDITOR
-        // Zeichne DOTS-berechnete Hitbox (wie im KnightTacticSystem berechnet)
-        Transform boxTransform = boxObject.transform;
-        
-        // Verwende die gleiche Berechnung wie im DOTS System
-        Vector3 boxSize = boxTransform.lossyScale; // DOTS verwendet direkt die Scale
-        Vector3 boxCenter = boxTransform.position; // DOTS verwendet direkt die Position
-        
-        // Zeichne DOTS-Hitbox in anderer Farbe
-        UnityEditor.Handles.color = color;
-        
-        // Zeichne Wireframe Cube für DOTS-Hitbox
-        Matrix4x4 oldMatrix = UnityEditor.Handles.matrix;
-        UnityEditor.Handles.matrix = Matrix4x4.TRS(boxCenter, boxTransform.rotation, boxSize);
-        UnityEditor.Handles.DrawWireCube(Vector3.zero, Vector3.one);
-        UnityEditor.Handles.matrix = oldMatrix;
-        
-        // Zeige DOTS-Info
-        Vector3 textPos = boxCenter + Vector3.up * 3f;
-        UnityEditor.Handles.Label(textPos, $"DOTS Box: {boxSize.x:F1}x{boxSize.y:F1}x{boxSize.z:F1}");
-        
-        // Zeichne Min/Max Punkte der AABB
-        Vector3 aabbMin = boxCenter - boxSize * 0.5f;
-        Vector3 aabbMax = boxCenter + boxSize * 0.5f;
-        
-        UnityEditor.Handles.color = Color.red;
-        UnityEditor.Handles.DrawWireCube(aabbMin, Vector3.one * 0.1f);
-        UnityEditor.Handles.Label(aabbMin + Vector3.up * 0.5f, "AABB Min");
-        
-        UnityEditor.Handles.color = Color.blue;
-        UnityEditor.Handles.DrawWireCube(aabbMax, Vector3.one * 0.1f);
-        UnityEditor.Handles.Label(aabbMax + Vector3.up * 0.5f, "AABB Max");
-    #endif
-    }
-    
-    private int CountUnitsInBox(Transform boxTransform, BoxCollider boxCollider)
-    {
-        Vector3 boxSize = Vector3.Scale(boxCollider.size, boxTransform.lossyScale);
-        
-        Collider[] colliders = Physics.OverlapBox(
-            boxTransform.position + boxTransform.TransformVector(boxCollider.center),
-            boxSize / 2,
-            boxTransform.rotation,
-            LayerMask.GetMask("Unit")
-        );
-
-        return colliders?.Length ?? 0;
     }
 }
 
 public struct KnightTactic : IComponentData
 {
-    public Entity tacticBox1Entity;
-    public Entity tacticBox2Entity;
+    // Hitbox 1 Settings
+    public float3 hitbox1Offset;
+    public float3 hitbox1Rotation;
+    public float hitbox1Width;
+    public float hitbox1Height;
+    public float hitbox1Depth;
     
+    // Hitbox 2 Settings
+    public float3 hitbox2Offset;
+    public float3 hitbox2Rotation;
+    public float hitbox2Width;
+    public float hitbox2Height;
+    public float hitbox2Depth;
+    
+    // Visual Settings
+    public float4 hitboxColor;
+    public bool showRuntimeVisual;
+    
+    // Tactic Settings
     public float timer;
     public float timerMax;
     public int damageAmount;
@@ -287,4 +198,16 @@ public struct KnightTactic : IComponentData
         public bool isTriggered;
         public float3 shootFromPosition;
     }
+}
+
+// Visual Prefab Component für Knight Tactics
+public struct KnightTacticVisualPrefab : IComponentData
+{
+    public Entity prefab;
+}
+
+public struct KnightTacticVisualInstance : IComponentData
+{
+    public Entity visual1Entity;
+    public Entity visual2Entity;
 }
