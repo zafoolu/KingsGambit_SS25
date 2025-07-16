@@ -14,5 +14,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationType: 34
   meshArray:
-  - {fileID: 4300000, guid: 3e67c8e712f2b5040aaaeb8eb2492345, type: 2}
-  frameTimerMax: 0.5
+  - {fileID: -7575165341393195745, guid: e2db15ab9bd7e344bb38decaa26e6685, type: 3}
+  - {fileID: -7575165341393195745, guid: 9dbfb9e8f327a784fb592b633f0d8cca, type: 3}
+  - {fileID: -7575165341393195745, guid: e8937b3385c74fa4085a96ff03de4549, type: 3}
+  - {fileID: -7575165341393195745, guid: 068d5b8b4f5195f478e2d12849f03dc4, type: 3}
+  - {fileID: -7575165341393195745, guid: 4fe05df82d3df4e419b07f9b9e709c20, type: 3}
+  - {fileID: -7575165341393195745, guid: de43e22fe6679cf4faeffe15e4581485, type: 3}
+  - {fileID: -7575165341393195745, guid: 55e98bddea30beb46a530e3f4b828912, type: 3}
+  - {fileID: -7575165341393195745, guid: a98809c0328c33f45a2f6f9d66de2a9b, type: 3}
+  - {fileID: -7575165341393195745, guid: 35fddbf64a0393e428a7491d3d39e7a0, type: 3}
+  - {fileID: 3236387697592942098, guid: d403fe947451b3942a73d31372da79b9, type: 3}
+  - {fileID: -7575165341393195745, guid: 0f6e18f373e0373408b254ab5f7f06ff, type: 3}
+  - {fileID: -7575165341393195745, guid: bb1d581f375fc2044a8f0d4b01410146, type: 3}
+  - {fileID: -7575165341393195745, guid: 9f2a8c48fbaa34046b643e80b1bf6703, type: 3}
+  - {fileID: -7575165341393195745, guid: aeaa23ef22990dc45aef4dd9491ffc06, type: 3}
+  - {fileID: -7575165341393195745, guid: 97ae8d51460c6d84b9e7d81cb36b3901, type: 3}
+  - {fileID: -7575165341393195745, guid: 76eda72b9a374394d8cc18d452f8d793, type: 3}
+  - {fileID: -7575165341393195745, guid: bdde88ade18641541b365b21894d0137, type: 3}
+  - {fileID: -7575165341393195745, guid: e580d26476eefac4d9835e09aba20a33, type: 3}
+  - {fileID: -7575165341393195745, guid: 449510aef0f65504f9cda70f2537d65a, type: 3}
+  - {fileID: -7575165341393195745, guid: ea5b700bc9d46bf40ac80770a94aecbf, type: 3}
+  - {fileID: -7575165341393195745, guid: b909bbb5d5a0a2247a5b70b95db836b0, type: 3}
+  - {fileID: -7575165341393195745, guid: 3538b0872a5396948b84990ef7895a19, type: 3}
+  - {fileID: 3236387697592942098, guid: bd346077aa5b76c41a4f6341f903f982, type: 3}
+  frameTimerMax: 0.05
