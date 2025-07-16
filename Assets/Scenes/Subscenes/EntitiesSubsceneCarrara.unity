@@ -150,6 +150,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &166657490
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -103.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 10.23
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.00000001490093
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -1.4551912e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4903800395988386136, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+      propertyPath: m_Name
+      value: CursedOnesKingFlagBearer
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
 --- !u!1 &307106710
 GameObject:
   m_ObjectHideFlags: 0
@@ -289,63 +346,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &659411102
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1071688989540379779, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_Name
-      value: CursedOnesBishop
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -102.99
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000001490093
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1.4551912e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4666110409903324634, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
 --- !u!1 &673977982
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,63 +454,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &757179627
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -96.43
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000001490093
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1.4551912e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2833774099596240212, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7587909241615725581, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
-      propertyPath: m_Name
-      value: CursedOnesUncursedKing
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bbfe9791a0baa1e4eb17b64947777d1a, type: 3}
 --- !u!1 &788752461
 GameObject:
   m_ObjectHideFlags: 0
@@ -650,120 +593,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1056479408
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 7863333484300795, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_Name
-      value: CursedOnesPawn
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -109.93
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000001490093
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1.4551912e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5622131087739148450, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
---- !u!1001 &1144650968
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1146967737301966780, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_Name
-      value: CursedOnesRook
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -113.13
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000001490093
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1.4551912e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4752675104440045285, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
 --- !u!1 &1154472424
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,120 +923,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1831424198
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -107.01
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000001490093
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1.4551912e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6757793543741109600, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
-      propertyPath: m_Name
-      value: CursedOnesKnight
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
---- !u!1001 &1868260104
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -99.2
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0.00000001490093
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -1.4551912e-10
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 726189761907429377, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4903800395988386136, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
-      propertyPath: m_Name
-      value: CursedOnesKing
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9e2812224c0ed8247a744c25bf04516b, type: 3}
 --- !u!1 &1918957904
 GameObject:
   m_ObjectHideFlags: 0
@@ -1427,13 +1142,7 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 757179627}
-  - {fileID: 1144650968}
   - {fileID: 1569770795}
-  - {fileID: 1056479408}
-  - {fileID: 1831424198}
-  - {fileID: 659411102}
-  - {fileID: 1868260104}
   - {fileID: 1961384568}
   - {fileID: 1261657731}
   - {fileID: 1154472428}
@@ -1447,3 +1156,4 @@ SceneRoots:
   - {fileID: 788752462}
   - {fileID: 307106711}
   - {fileID: 1203715687}
+  - {fileID: 166657490}

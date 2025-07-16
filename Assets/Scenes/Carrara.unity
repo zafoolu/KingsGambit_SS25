@@ -4873,7 +4873,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1316218457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4886,15 +4886,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a335734b1572644a6a5d09d87adc65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _SceneAsset: {fileID: 102900000, guid: dd323d6d3c6f51a4a9e73c4c95c065c9, type: 3}
+  _SceneAsset: {fileID: 102900000, guid: b051100a6f151df43b2e79a251ae9ea0, type: 3}
   _HierarchyColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   AutoLoadScene: 1
   _SceneGUID:
     Value:
-      x: 3604161501
-      y: 1242953411
-      z: 3301146266
-      w: 2622884953
+      x: 2684425483
+      y: 1339118070
+      z: 714597043
+      w: 183101973
 --- !u!4 &1316218458
 Transform:
   m_ObjectHideFlags: 0
