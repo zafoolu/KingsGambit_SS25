@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 4168898030455927706}
   - component: {fileID: 5675277110588833701}
   - component: {fileID: 4889859224665404081}
+  - component: {fileID: 2277854409389916833}
   m_Layer: 0
   m_Name: CursedRuins
   m_TagString: Untagged
@@ -237,6 +238,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5.17, y: 6.02, z: 5.89}
   m_Center: {x: -0.6, y: 2.86, z: 20.12}
+--- !u!114 &2277854409389916833
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1221120250187058794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc88171702d5d564fbf7a630143e6a79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  progressMax: 2
 --- !u!1 &2998823970107715688
 GameObject:
   m_ObjectHideFlags: 0

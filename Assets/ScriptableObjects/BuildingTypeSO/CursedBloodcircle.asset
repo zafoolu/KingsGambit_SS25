@@ -19,7 +19,7 @@ MonoBehaviour:
   prefab: {fileID: 1213933842533584588, guid: 4b43a363ae3536a468921e7e188ee38b, type: 3}
   buildingDistanceMin: 8
   showInBuildingPlacementManagerUI: 1
-  sprite: {fileID: 21300000, guid: 0aac3aa6f7b72684cad566015dc5f233, type: 3}
+  sprite: {fileID: 21300000, guid: b122268ee55943d469c882fb11a4c3d8, type: 3}
   visualPrefab: {fileID: 7525631253977415457, guid: 4cd82b0dd62fd7e41a5b10b3c034b45a, type: 3}
   buildCostResourceAmountArray:
   - resourceType: 1
