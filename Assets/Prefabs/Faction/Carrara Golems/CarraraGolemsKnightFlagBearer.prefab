@@ -354,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: -250844637386769753, guid: 1d4c44bdb504934468c03703d0ed7bf6, type: 3}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 43.7
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.y
@@ -362,7 +362,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7273244649239706813, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       propertyPath: m_LocalRotation.w
@@ -519,11 +519,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25509569f60cee1418125ab3bc94fe91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tacticBox1GameObject: {fileID: 0}
-  tacticBox2GameObject: {fileID: 0}
+  hitbox1Offset: {x: 9, y: 5, z: 9}
+  hitbox1Rotation: {x: 0, y: -45, z: 0}
+  hitbox1Width: 20
+  hitbox1Height: 8
+  hitbox1Depth: 5
+  hitbox2Offset: {x: -9, y: 5, z: 9}
+  hitbox2Rotation: {x: 0, y: 45, z: 0}
+  hitbox2Width: 20
+  hitbox2Height: 8
+  hitbox2Depth: 5
+  hitboxColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  showRuntimeVisual: 1
+  hitboxVisualPrefab: {fileID: 0}
   timerMax: 1
   damageAmount: 10
-  visualUpdateRate: 10
 --- !u!114 &3310414852858521443
 MonoBehaviour:
   m_ObjectHideFlags: 0
