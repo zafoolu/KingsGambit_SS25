@@ -28,7 +28,7 @@ public class MainMenuUI : MonoBehaviour
             newCampaignButton.onClick.AddListener(() =>
             {
                 Debug.Log("Campaign clicked");
-                SceneManager.LoadScene(1); // Stelle sicher, dass Szene 1 existiert
+                SceneManager.LoadScene("CampaignMenu"); // Stelle sicher, dass Szene 1 existiert
             });
         }
         else

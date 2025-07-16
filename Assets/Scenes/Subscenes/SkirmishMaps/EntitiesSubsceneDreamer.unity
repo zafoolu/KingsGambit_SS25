@@ -1432,6 +1432,63 @@ MonoBehaviour:
   harvesterType: 1
   captureRadius: 5
   captureTime: 6
+--- !u!1001 &1633632298
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 136.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027002020256826652, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9086386954394918745, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
+      propertyPath: m_Name
+      value: CursedTownHall
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1b9247bdb0551634dbbfe815ffa0fbd7, type: 3}
 --- !u!1001 &1679735923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1825,6 +1882,7 @@ SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
   - {fileID: 1569770795}
+  - {fileID: 1633632298}
   - {fileID: 1961384568}
   - {fileID: 1261657731}
   - {fileID: 1154472428}
