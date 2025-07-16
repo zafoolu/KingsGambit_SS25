@@ -10,6 +10,8 @@ public class TacticVisualManager : MonoBehaviour
     [Header("Visual Settings")]
     public Material hitboxMaterial;
     public bool useWireframe = true;
+    [Header("Toggle Settings")]
+    public bool showTacticVisuals = true;
     
     private EntityManager entityManager;
     private EntityQuery visualQuery;
@@ -48,13 +50,34 @@ public class TacticVisualManager : MonoBehaviour
     
     private void Update()
     {
-        if (!visualQuery.IsEmpty)
+        // Handle spacebar toggle
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            showTacticVisuals = !showTacticVisuals;
+            Debug.Log($"Tactic Visualization: {(showTacticVisuals ? "ON" : "OFF")}");
+            
+            // Immediately update visibility of all existing visuals
+            UpdateVisualsVisibility();
+        }
+        
+        if (showTacticVisuals && !visualQuery.IsEmpty)
         {
             UpdateVisuals();
         }
         
         // Cleanup zerstörte Entities
         CleanupDestroyedVisuals();
+    }
+    
+    private void UpdateVisualsVisibility()
+    {
+        foreach (var kvp in visualGameObjects)
+        {
+            if (kvp.Value != null)
+            {
+                kvp.Value.SetActive(showTacticVisuals);
+            }
+        }
     }
     
     private void UpdateVisuals()
@@ -97,6 +120,9 @@ public class TacticVisualManager : MonoBehaviour
     {
         GameObject visualGO = GameObject.CreatePrimitive(PrimitiveType.Cube);
         visualGO.name = $"Tactic_Visual_{entity.Index}";
+        
+        // Set initial visibility based on current toggle state
+        visualGO.SetActive(showTacticVisuals);
         
         // Entferne Collider
         var collider = visualGO.GetComponent<Collider>();
