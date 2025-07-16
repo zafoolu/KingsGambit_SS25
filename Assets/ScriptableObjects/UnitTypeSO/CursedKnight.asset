@@ -20,6 +20,6 @@ MonoBehaviour:
   spawnCostResourceAmountArray:
   - resourceType: 3
     amount: 35
-  formationPrefab: {fileID: 0}
-  flagbearerPrefab: {fileID: 0}
-  formationAmount: 5
+  formationPrefab: {fileID: 1429537375877833785, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
+  flagbearerPrefab: {fileID: 1429537375877833785, guid: 11ad91f05d9ae3843ba5c2b77df5258d, type: 3}
+  formationAmount: 11

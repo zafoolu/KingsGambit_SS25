@@ -15,9 +15,13 @@ MonoBehaviour:
   unitType: 4
   unitName: 
   ragdollPrefab: {fileID: 0}
-  progressMax: 30
+  progressMax: 20
   sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
-  spawnCostResourceAmountArray: []
+  spawnCostResourceAmountArray:
+  - resourceType: 2
+    amount: 300
+  - resourceType: 4
+    amount: 20
   formationPrefab: {fileID: 8580884141649540636, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
-  flagbearerPrefab: {fileID: 1429537375877833785, guid: 11ad91f05d9ae3843ba5c2b77df5258d, type: 3}
+  flagbearerPrefab: {fileID: 8580884141649540636, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
   formationAmount: 1

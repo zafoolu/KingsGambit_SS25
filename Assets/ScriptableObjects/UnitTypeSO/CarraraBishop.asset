@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: CarraraBishop
   m_EditorClassIdentifier: 
   unitType: 3
+  unitName: 
   ragdollPrefab: {fileID: 0}
   progressMax: 10
   sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
@@ -21,3 +22,6 @@ MonoBehaviour:
     amount: 100
   - resourceType: 4
     amount: 20
+  formationPrefab: {fileID: 7874505460035524181, guid: ee9a6388b2ffb8048ae6685f6888b374, type: 3}
+  flagbearerPrefab: {fileID: 7874505460035524181, guid: cfd97e8a2fd0be64a85ec4dba2770d88, type: 3}
+  formationAmount: 19
