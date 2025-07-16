@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CursedRookWalk
+  m_EditorClassIdentifier: 
+  animationType: 42
+  meshArray:
+  - {fileID: 9130509431102646348, guid: decac1f9913f0fd45897b11978041f6c, type: 3}
+  - {fileID: 9130509431102646348, guid: 93b0829d41656054f8dec11a2d857073, type: 3}
+  - {fileID: 9130509431102646348, guid: 1c7f0aef74af36543ac9454d701f014b, type: 3}
+  - {fileID: 9130509431102646348, guid: 0972edefffe80354ca8a50fffa2ff421, type: 3}
+  - {fileID: 9130509431102646348, guid: 9fd712351bcb14f45b1790c4a2fe3207, type: 3}
+  - {fileID: 9130509431102646348, guid: f2fff016d2dc44146945eb313d105154, type: 3}
+  - {fileID: 9130509431102646348, guid: 470840ff379f0d54cbdab32faf741c43, type: 3}
+  - {fileID: 9130509431102646348, guid: 4437a6cedf90b974fbea3446ea5699ff, type: 3}
+  - {fileID: 9130509431102646348, guid: f794f4ad2f8b38949b061affb5d7f6e0, type: 3}
+  - {fileID: 9130509431102646348, guid: bcf46d507826efd4fa79083a25a362e9, type: 3}
+  - {fileID: 9130509431102646348, guid: 6105c5c82883ebd408ccd296f29aef4b, type: 3}
+  - {fileID: 9130509431102646348, guid: 878b64340e37ec445847bae184adfa2b, type: 3}
+  - {fileID: 9130509431102646348, guid: b5289aaaa5aecd144bf9bbff13ff8ac8, type: 3}
+  - {fileID: 9130509431102646348, guid: 132686c7b047f5d45af0148a2ce4e9dd, type: 3}
+  - {fileID: 9130509431102646348, guid: f485fefb24b15d54388d505734f21a84, type: 3}
+  - {fileID: 9130509431102646348, guid: 3055331e54f314b439e74c36a0f42b9d, type: 3}
+  - {fileID: 9130509431102646348, guid: a6cc7074aebb2cb4181e3633b13cf1b3, type: 3}
+  - {fileID: 9130509431102646348, guid: d496531919c894644974dc0b65fd4184, type: 3}
+  - {fileID: 9130509431102646348, guid: e9c87067203e8294aaa3e802b9343509, type: 3}
+  - {fileID: 9130509431102646348, guid: 0e82f57445324804b8b660ee6dabdcba, type: 3}
+  - {fileID: 9130509431102646348, guid: 5a1d6425f9fa3e9498c4b70175def145, type: 3}
+  - {fileID: 9130509431102646348, guid: 7df3a670d0a3ead42a2c518020d93ad6, type: 3}
+  frameTimerMax: 0.05

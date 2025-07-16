@@ -45,6 +45,9 @@ public class AnimationDataSO : ScriptableObject {
         CursedKingIdle,
         CursedKingWalk,
         CursedKingAttack,
+        CursedRookIdle,
+        CursedRookWalk,
+        CursedRookAttack,
     }
 
 
@@ -70,6 +73,7 @@ public class AnimationDataSO : ScriptableObject {
             case AnimationType.CursedPawnAttack:
             case AnimationType.CursedKnightAttack:
             case AnimationType.CursedKingAttack:
+            case AnimationType.CursedRookAttack:
                 return true;
         }
     }
