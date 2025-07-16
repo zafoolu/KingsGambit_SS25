@@ -16752,6 +16752,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 89d15f1bbdc3a5b4d9b9730da2803d77, type: 3}
+    - target: {fileID: 830549446589548143, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
+      propertyPath: skirmishSettings
+      value: 
+      objectReference: {fileID: 11400000, guid: 7e146f3156ec77d498b00b147fd95e9d, type: 2}
     - target: {fileID: 1532252796559451961, guid: e5d9a6f3db951464a968579e7ef360f6, type: 3}
       propertyPath: minimapCamera
       value: 
