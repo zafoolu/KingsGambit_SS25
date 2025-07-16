@@ -17,6 +17,9 @@ public class RookTacticAuthoring : MonoBehaviour
     public bool showRuntimeVisual = true;
     public GameObject hitboxVisualPrefab; // Optional: Custom prefab für die Visualisierung
     
+    [Header("Damage Settings")]
+    public int damageAmount = 10;
+    
     public Vector3 GetHitboxWorldPosition()
     {
         // Transformiere den lokalen Offset in Weltkoordinaten
@@ -98,7 +101,8 @@ public class RookTacticAuthoring : MonoBehaviour
                 hitboxColor = new float4(authoring.hitboxColor.r, authoring.hitboxColor.g, authoring.hitboxColor.b, authoring.hitboxColor.a),
                 showRuntimeVisual = authoring.showRuntimeVisual,
                 timer = 0f,
-                timerMax = 1f
+                timerMax = 1f,
+                damageAmount = authoring.damageAmount
             });
             
             // Wenn ein Custom Prefab gesetzt ist, konvertiere es auch
@@ -124,6 +128,7 @@ public struct RookTactic : IComponentData
     public bool showRuntimeVisual;
     public float timer;
     public float timerMax;
+    public int damageAmount;
 }
 
 // Allgemeine Kollisionsstatus-Komponente für alle Tactics

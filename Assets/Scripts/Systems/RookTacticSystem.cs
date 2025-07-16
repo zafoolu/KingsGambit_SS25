@@ -46,15 +46,16 @@ public partial struct RookTacticSystem : ISystem
             // Suche nach Zielen in der Hitbox
             var targetsInHitbox = GetTargetsInBox(collisionWorld, hitboxCenter, hitboxSize, entityRotation);
             
-            // Prüfe auf FlagBearer-Kollisionen
-            bool isCollidingWithFlagBearer = CheckForFlagBearerCollision(ref state, targetsInHitbox);
+            // Zähle FlagBearer in der Hitbox
+            int flagBearerCount = CountFlagBearers(ref state, targetsInHitbox);
+            bool isExactlyTwoFlagBearers = flagBearerCount == 2;
             
             // Erstelle oder aktualisiere CollisionState Komponente
             if (!SystemAPI.HasComponent<TacticCollisionState>(entity))
             {
                 ecb.AddComponent(entity, new TacticCollisionState
                 {
-                    isCollidingWithFlagBearer = isCollidingWithFlagBearer,
+                    isCollidingWithFlagBearer = isExactlyTwoFlagBearers,
                     originalColor = rookTactic.ValueRO.hitboxColor,
                     collisionColor = new float4(0f, 1f, 0f, rookTactic.ValueRO.hitboxColor.w) // Grün
                 });
@@ -62,7 +63,7 @@ public partial struct RookTacticSystem : ISystem
             else
             {
                 var collisionState = SystemAPI.GetComponent<TacticCollisionState>(entity);
-                collisionState.isCollidingWithFlagBearer = isCollidingWithFlagBearer;
+                collisionState.isCollidingWithFlagBearer = isExactlyTwoFlagBearers;
                 ecb.SetComponent(entity, collisionState);
             }
             
@@ -70,15 +71,24 @@ public partial struct RookTacticSystem : ISystem
             {
                 if (targetsInHitbox.Length > 0)
                 {
-                    Debug.Log($"🎯 ROOK TACTIC: Found {targetsInHitbox.Length} targets in hitbox at position {hitboxCenter}!");
+                    Debug.Log($"🎯 ROOK TACTIC: Found {targetsInHitbox.Length} targets ({flagBearerCount} FlagBearers) in hitbox at position {hitboxCenter}!");
                     
-                    if (isCollidingWithFlagBearer)
+                    if (isExactlyTwoFlagBearers)
                     {
-                        Debug.Log($"💚 ROOK TACTIC: Colliding with FlagBearer! Hitbox should be GREEN!");
+                        Debug.Log($"💚 ROOK TACTIC: EXACTLY 2 FlagBearers! Activating tactic!");
+                        
+                        // Rook Tactic aktiviert - Schade alle FlagBearer in der Hitbox
+                        for (int i = 0; i < targetsInHitbox.Length; i++)
+                        {
+                            Entity target = targetsInHitbox[i];
+                            if (SystemAPI.HasComponent<FlagBearer>(target) && SystemAPI.HasComponent<Health>(target))
+                            {
+                                var health = SystemAPI.GetComponent<Health>(target);
+                                health.healthAmount -= rookTactic.ValueRO.damageAmount;
+                                ecb.SetComponent(target, health);
+                            }
+                        }
                     }
-                    
-                    // Hier kannst du die Logik für den Rook-Angriff implementieren
-                    // Zum Beispiel Schaden verursachen oder andere Effekte
                     
                     rookTactic.ValueRW.timer = rookTactic.ValueRO.timerMax;
                 }
@@ -124,15 +134,16 @@ public partial struct RookTacticSystem : ISystem
     }
     
     [BurstCompile]
-    private bool CheckForFlagBearerCollision(ref SystemState state, NativeList<Entity> targets)
+    private int CountFlagBearers(ref SystemState state, NativeList<Entity> targets)
     {
+        int count = 0;
         for (int i = 0; i < targets.Length; i++)
         {
             if (SystemAPI.HasComponent<FlagBearer>(targets[i]))
             {
-                return true;
+                count++;
             }
         }
-        return false;
+        return count;
     }
 }

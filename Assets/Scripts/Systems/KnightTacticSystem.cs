@@ -28,29 +28,52 @@ public partial struct KnightTacticSystem : ISystem
         {
             knightTactic.ValueRW.timer -= SystemAPI.Time.DeltaTime;
             
+            // Berechne Hitbox 1 Position, Größe und Rotation
+            float3 hitbox1WorldPos = transform.ValueRO.Position + math.mul(transform.ValueRO.Rotation, knightTactic.ValueRO.hitbox1Offset);
+            float3 hitbox1Size = new float3(knightTactic.ValueRO.hitbox1Width, knightTactic.ValueRO.hitbox1Height, knightTactic.ValueRO.hitbox1Depth);
+            quaternion hitbox1Rotation = math.mul(transform.ValueRO.Rotation, quaternion.Euler(math.radians(knightTactic.ValueRO.hitbox1Rotation)));
+            
+            // Berechne Hitbox 2 Position, Größe und Rotation
+            float3 hitbox2WorldPos = transform.ValueRO.Position + math.mul(transform.ValueRO.Rotation, knightTactic.ValueRO.hitbox2Offset);
+            float3 hitbox2Size = new float3(knightTactic.ValueRO.hitbox2Width, knightTactic.ValueRO.hitbox2Height, knightTactic.ValueRO.hitbox2Depth);
+            quaternion hitbox2Rotation = math.mul(transform.ValueRO.Rotation, quaternion.Euler(math.radians(knightTactic.ValueRO.hitbox2Rotation)));
+            
+            // Finde Targets in beiden Hitboxen
+            var targetsInBox1 = GetTargetsInBox(ref state, collisionWorld, hitbox1WorldPos, hitbox1Size, hitbox1Rotation);
+            var targetsInBox2 = GetTargetsInBox(ref state, collisionWorld, hitbox2WorldPos, hitbox2Size, hitbox2Rotation);
+            
+            // Prüfe ob genau ein FlagBearer in jeder Box ist
+            bool hasExactlyOneFlagBearerPerBox = (targetsInBox1.Length == 1 && targetsInBox2.Length == 1);
+            
+            // Aktualisiere Kollisionsstatus kontinuierlich
+            if (!SystemAPI.HasComponent<TacticCollisionState>(entity))
+            {
+                ecb.AddComponent(entity, new TacticCollisionState
+                {
+                    isCollidingWithFlagBearer = hasExactlyOneFlagBearerPerBox,
+                    originalColor = knightTactic.ValueRO.hitboxColor,
+                    collisionColor = new float4(0f, 1f, 0f, 0.5f) // Grün für erfolgreiche Aktivierung
+                });
+            }
+            else
+            {
+                ecb.SetComponent(entity, new TacticCollisionState
+                {
+                    isCollidingWithFlagBearer = hasExactlyOneFlagBearerPerBox,
+                    originalColor = knightTactic.ValueRO.hitboxColor,
+                    collisionColor = new float4(0f, 1f, 0f, 0.5f) // Grün für erfolgreiche Aktivierung
+                });
+            }
+            
             if (knightTactic.ValueRO.timer <= 0f)
             {
-                // Berechne Hitbox 1 Position, Größe und Rotation
-                float3 hitbox1WorldPos = transform.ValueRO.Position + math.mul(transform.ValueRO.Rotation, knightTactic.ValueRO.hitbox1Offset);
-                float3 hitbox1Size = new float3(knightTactic.ValueRO.hitbox1Width, knightTactic.ValueRO.hitbox1Height, knightTactic.ValueRO.hitbox1Depth);
-                quaternion hitbox1Rotation = math.mul(transform.ValueRO.Rotation, quaternion.Euler(math.radians(knightTactic.ValueRO.hitbox1Rotation)));
-                
-                // Berechne Hitbox 2 Position, Größe und Rotation
-                float3 hitbox2WorldPos = transform.ValueRO.Position + math.mul(transform.ValueRO.Rotation, knightTactic.ValueRO.hitbox2Offset);
-                float3 hitbox2Size = new float3(knightTactic.ValueRO.hitbox2Width, knightTactic.ValueRO.hitbox2Height, knightTactic.ValueRO.hitbox2Depth);
-                quaternion hitbox2Rotation = math.mul(transform.ValueRO.Rotation, quaternion.Euler(math.radians(knightTactic.ValueRO.hitbox2Rotation)));
-                
-                // Finde Targets in beiden Hitboxen
-                var targetsInBox1 = GetTargetsInBox(ref state, collisionWorld, hitbox1WorldPos, hitbox1Size, hitbox1Rotation);
-                var targetsInBox2 = GetTargetsInBox(ref state, collisionWorld, hitbox2WorldPos, hitbox2Size, hitbox2Rotation);
-                
-                // Prüfe ob genau ein Ziel in jeder Box ist
-                if (targetsInBox1.Length == 1 && targetsInBox2.Length == 1)
+                if (hasExactlyOneFlagBearerPerBox)
                 {
+                    Debug.Log($"💚 KNIGHT TACTIC: EXACTLY 1 FlagBearer per hitbox! Activating tactic!");
+                    
                     // Knight Tactic aktiviert!
                     knightTactic.ValueRW.onShoot.isTriggered = true;
                     knightTactic.ValueRW.onShoot.shootFromPosition = transform.ValueRO.Position;
-                    knightTactic.ValueRW.timer = knightTactic.ValueRO.timerMax;
                     
                     // Schade den Targets
                     Entity target1 = targetsInBox1[0];
@@ -69,44 +92,17 @@ public partial struct KnightTacticSystem : ISystem
                         health2.healthAmount -= knightTactic.ValueRO.damageAmount;
                         ecb.SetComponent(target2, health2);
                     }
-                    
-                    // Füge Kollisionsstatus hinzu für Visualisierung
-                    if (!SystemAPI.HasComponent<TacticCollisionState>(entity))
-                    {
-                        ecb.AddComponent(entity, new TacticCollisionState
-                        {
-                            isCollidingWithFlagBearer = true,
-                            originalColor = knightTactic.ValueRO.hitboxColor,
-                            collisionColor = new float4(0f, 1f, 0f, 0.5f) // Grün für erfolgreiche Aktivierung
-                        });
-                    }
-                    else
-                    {
-                        ecb.SetComponent(entity, new TacticCollisionState
-                        {
-                            isCollidingWithFlagBearer = true,
-                            originalColor = knightTactic.ValueRO.hitboxColor,
-                            collisionColor = new float4(0f, 1f, 0f, 0.5f) // Grün für erfolgreiche Aktivierung
-                        });
-                    }
                 }
                 else
                 {
-                    // Keine erfolgreiche Aktivierung
-                    if (SystemAPI.HasComponent<TacticCollisionState>(entity))
-                    {
-                        ecb.SetComponent(entity, new TacticCollisionState
-                        {
-                            isCollidingWithFlagBearer = false,
-                            originalColor = knightTactic.ValueRO.hitboxColor,
-                            collisionColor = knightTactic.ValueRO.hitboxColor
-                        });
-                    }
+                    Debug.Log($"🎯 KNIGHT TACTIC: Found {targetsInBox1.Length} targets in box1, {targetsInBox2.Length} targets in box2. Need exactly 1 per box!");
                 }
                 
-                targetsInBox1.Dispose();
-                targetsInBox2.Dispose();
+                knightTactic.ValueRW.timer = knightTactic.ValueRO.timerMax;
             }
+            
+            targetsInBox1.Dispose();
+            targetsInBox2.Dispose();
         }
         
         ecb.Playback(state.EntityManager);
