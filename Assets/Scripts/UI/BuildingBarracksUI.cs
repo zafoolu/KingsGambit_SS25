@@ -161,13 +161,31 @@ public class BuildingBarracksUI : MonoBehaviour {
                 if (barracksEntities.Length > 0 && barracksTransforms.Length > 0) {
                     // Use the position of the first barracks, with a small offset for spawning
                     float3 barracksPosition = barracksTransforms[0].Position;
+                    
+                    // Validate barracks position
+                    if (!IsValidPosition(barracksPosition)) {
+                        Debug.LogWarning("Barracks has invalid position, using fallback");
+                        barracksEntities.Dispose();
+                        barracksTransforms.Dispose();
+                        return GetSafeFallbackPosition();
+                    }
+                    
                     float3 spawnOffset = new float3(3f, 0f, 3f); // Spawn 3 units away from barracks
+                    float3 spawnPosition = barracksPosition + spawnOffset;
+                    
+                    // Validate final spawn position
+                    if (!IsValidPosition(spawnPosition)) {
+                        Debug.LogWarning("Calculated spawn position is invalid, using fallback");
+                        barracksEntities.Dispose();
+                        barracksTransforms.Dispose();
+                        return GetSafeFallbackPosition();
+                    }
                     
                     barracksEntities.Dispose();
                     barracksTransforms.Dispose();
                     
-                    Debug.Log($"Spawning near barracks at position: {barracksPosition + spawnOffset}");
-                    return barracksPosition + spawnOffset;
+                    Debug.Log($"Spawning near barracks at position: {spawnPosition}");
+                    return spawnPosition;
                 }
                 
                 barracksEntities.Dispose();
@@ -176,7 +194,7 @@ public class BuildingBarracksUI : MonoBehaviour {
             
             // If no barracks found, use the default spawn point or world origin
             float3 fallbackPosition = GetSafeFallbackPosition();
-            Debug.Log($"No barracks found, using fallback position: {fallbackPosition}");
+            Debug.Log($"No valid barracks found, using fallback position: {fallbackPosition}");
             return fallbackPosition;
         } catch (System.Exception e) {
             Debug.LogError("Error in FindBarracksSpawnPosition: " + e.Message);
@@ -232,6 +250,12 @@ public class BuildingBarracksUI : MonoBehaviour {
     }
 
     private void SpawnFormation(UnitTypeSO unitTypeSO, EntitiesReferences entitiesReferences, float3 spawnPosition) {
+        // Validate spawn position before using it
+        if (!IsValidPosition(spawnPosition)) {
+            Debug.LogError("Invalid spawn position detected in SpawnFormation: " + spawnPosition + ", using fallback");
+            spawnPosition = GetSafeFallbackPosition();
+        }
+        
         int formationAmount = unitTypeSO.formationAmount;
         
         if (formationAmount <= 1) {
