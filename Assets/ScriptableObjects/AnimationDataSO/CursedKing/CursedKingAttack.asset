@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 126d9ac176964a54bb72263070596466, type: 3}
+  m_Name: CursedKingAttack
+  m_EditorClassIdentifier: 
+  animationType: 40
+  meshArray:
+  - {fileID: 4112477705498660961, guid: dcfa9bf791a740b488572cbecd8c47f5, type: 3}
+  - {fileID: 4112477705498660961, guid: af712aa62a989284d84ad0597bf50d88, type: 3}
+  - {fileID: 4112477705498660961, guid: 7614088590715264ea37e47c9f8c4a34, type: 3}
+  - {fileID: 4112477705498660961, guid: c2694f7f6b0217b479faf8202daa73d5, type: 3}
+  - {fileID: 4112477705498660961, guid: 4aa223895bd1b7f42b3bf980cb5a4ca9, type: 3}
+  - {fileID: 4112477705498660961, guid: 8aada4b4512805646bff16cb733da369, type: 3}
+  - {fileID: 4112477705498660961, guid: b36d3ef73bbf74f46b367b7972901af3, type: 3}
+  - {fileID: 4112477705498660961, guid: fa652639423d53e4fa05298de5c344b6, type: 3}
+  - {fileID: 4112477705498660961, guid: 2008dd1b0cf27ef46a34891113361072, type: 3}
+  - {fileID: 4112477705498660961, guid: 1a09c9fbec88744469e4082150c3f569, type: 3}
+  - {fileID: 4112477705498660961, guid: 40c0c8d2d0b814444afd89546976bdc1, type: 3}
+  - {fileID: 4112477705498660961, guid: dda1f4df4aa6a43408752a2cffba7553, type: 3}
+  - {fileID: 4112477705498660961, guid: ed64930ba7085604e9b02b752e6f95fe, type: 3}
+  - {fileID: 4112477705498660961, guid: bdadcb5ae80d067438f5eeb66db90768, type: 3}
+  - {fileID: 4112477705498660961, guid: 96f27ded1b747b641b42cb33ed9045c7, type: 3}
+  - {fileID: 4112477705498660961, guid: 0a0d421c37b931b4499eabb4f8e66ea3, type: 3}
+  - {fileID: 4112477705498660961, guid: bcdb82f7af929494ba66c2ce492f6b21, type: 3}
+  - {fileID: 4112477705498660961, guid: 86278ac47df949b44993e122d172d0bc, type: 3}
+  - {fileID: 4112477705498660961, guid: 2326e77e7cfdb474ebe451c3b2662491, type: 3}
+  - {fileID: 4112477705498660961, guid: 53cbf4d5b6518104a95472b78401999a, type: 3}
+  frameTimerMax: 0.05

@@ -37,4 +37,4 @@ MonoBehaviour:
   - {fileID: -1094619608510265920, guid: f021fcf3c0db41d44a2c481c30ddb28c, type: 3}
   - {fileID: -1094619608510265920, guid: 041954c78d2c871468c39c46dfd1cc9c, type: 3}
   - {fileID: -1094619608510265920, guid: b0dc028f241f76a4e9f62bdd9836a874, type: 3}
-  frameTimerMax: 0.05
+  frameTimerMax: 0.03
