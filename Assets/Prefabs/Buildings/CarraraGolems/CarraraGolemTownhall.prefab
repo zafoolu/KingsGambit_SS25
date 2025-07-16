@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 4000193661695808718}
   - component: {fileID: 5119031571152098424}
   - component: {fileID: 3829963295896918752}
+  - component: {fileID: -1531014555367831720}
   m_Layer: 7
   m_Name: CarraraGolemTownhall
   m_TagString: Untagged
@@ -206,7 +207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59e8acb8046e8884c8a21a382ea2495c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buildingType: 0
+  buildingType: 2
 --- !u!114 &2648040323489816463
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,7 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e767c4219fbc0944aafb4e5774a8aaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  factionType: 0
+  factionType: 1
 --- !u!114 &3829963295896918752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,6 +259,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c16549610bfe4458aa9389201d072bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &-1531014555367831720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9086386954394918745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63f3c290608b78e438534c9af8962ddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitPositionTransform: {fileID: 7625875131034742053}
 --- !u!1001 &967987654545012907
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -338,11 +352,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1841816067194310290, guid: a8b164289094dae40909e9b517b7e6b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.31
+      value: 5.43
       objectReference: {fileID: 0}
     - target: {fileID: 1841816067194310290, guid: a8b164289094dae40909e9b517b7e6b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1841816067194310290, guid: a8b164289094dae40909e9b517b7e6b9, type: 3}
       propertyPath: m_LocalRotation.w
@@ -372,6 +386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8994995976082566052, guid: a8b164289094dae40909e9b517b7e6b9, type: 3}
+      propertyPath: healthGameObject
+      value: 
+      objectReference: {fileID: 9086386954394918745}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
