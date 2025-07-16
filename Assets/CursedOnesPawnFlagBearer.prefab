@@ -457,7 +457,7 @@ MonoBehaviour:
   formationHeight: 3
   unitSpacing: 2
   formationDistance: 3
-  moveSpeed: 5
+  moveSpeed: 7
   rotationSpeed: 10
 --- !u!4 &5622131087739148450 stripped
 Transform:

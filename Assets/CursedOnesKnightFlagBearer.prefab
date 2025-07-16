@@ -456,6 +456,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
       insertIndex: -1
       addedObject: {fileID: -2627852240496243755}
+    - targetCorrespondingSourceObject: {fileID: 3094532311958105572, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6310086938149677189}
   m_SourcePrefab: {fileID: 100100000, guid: b558ec2268ee9574687b5faadf1c0e93, type: 3}
 --- !u!4 &1429537375877833785 stripped
 Transform:
@@ -522,3 +525,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitPositionTransform: {fileID: 6545660520001021035}
+--- !u!114 &6310086938149677189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6757793543741109600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dfd69701ee8e2e847956959f9d6828bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  formationWidth: 3
+  formationHeight: 3
+  unitSpacing: 2
+  formationDistance: 3
+  moveSpeed: 11
+  rotationSpeed: 10
