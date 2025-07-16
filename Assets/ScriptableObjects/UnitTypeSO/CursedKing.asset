@@ -13,7 +13,11 @@ MonoBehaviour:
   m_Name: CursedKing
   m_EditorClassIdentifier: 
   unitType: 7
+  unitName: 
   ragdollPrefab: {fileID: 0}
   progressMax: 0
   sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
   spawnCostResourceAmountArray: []
+  formationPrefab: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+  flagbearerPrefab: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+  formationAmount: 1

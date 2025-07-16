@@ -2157,45 +2157,45 @@ MonoBehaviour:
   cursedOnesCathedralVisualPrefabGameObject: {fileID: 4872919489429875883, guid: b7ee0af520cc9c9448c2924bcb6a3dd5, type: 3}
   cursedOnesBloodCircleVisualPrefabGameObject: {fileID: 4872919489429875883, guid: 4cd82b0dd62fd7e41a5b10b3c034b45a, type: 3}
   cursedOnesAltarVisualPrefabGameObject: {fileID: 4872919489429875883, guid: 6816784ad255f5e4c84335d2adceaf31, type: 3}
-  carraraKingPrefabGameObject: {fileID: 0}
-  carraraQueenPrefabGameObject: {fileID: 0}
-  carraraBishopPrefabGameObject: {fileID: 2547314701683967756, guid: 20d1f64e92990304ba98ab54976584df, type: 3}
+  carraraKingPrefabGameObject: {fileID: 2547314701683967756, guid: 64d2dcaacb202554f99295aac5f0b79d, type: 3}
+  carraraQueenPrefabGameObject: {fileID: 121009751022966959, guid: 6cb0dc141034b544a8fcbdffa92b980d, type: 3}
+  carraraBishopPrefabGameObject: {fileID: 2547314701683967756, guid: ee9a6388b2ffb8048ae6685f6888b374, type: 3}
   carraraKnightPrefabGameObject: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
   carraraRookPrefabGameObject: {fileID: 2547314701683967756, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
   carraraPawnPrefabGameObject: {fileID: 2547314701683967756, guid: 81fc8c76014a6df44926f6d9a209cfbb, type: 3}
-  cursedKingPrefabGameObject: {fileID: 0}
-  uncursedKingPrefabGameObject: {fileID: 0}
-  cursedQueenPrefabGameObject: {fileID: 121009751022966959, guid: 797c6ef876b2945418df80a763a2fcf4, type: 3}
+  cursedKingPrefabGameObject: {fileID: 4903800395988386136, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+  uncursedKingPrefabGameObject: {fileID: 7587909241615725581, guid: 95b1c8809f9e51f48b210b6623b81e63, type: 3}
+  cursedQueenPrefabGameObject: {fileID: 121009751022966959, guid: a35270cf8a1c8564ab9992712cdfec48, type: 3}
   cursedBishopPrefabGameObject: {fileID: 1071688989540379779, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
-  cursedKnightPrefabGameObject: {fileID: 0}
-  cursedRookPrefabGameObject: {fileID: 0}
+  cursedKnightPrefabGameObject: {fileID: 6757793543741109600, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
+  cursedRookPrefabGameObject: {fileID: 1146967737301966780, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
   cursedPawnPrefabGameObject: {fileID: 7863333484300795, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
-  carraraKingFormationPrefabGameObject: {fileID: 0}
-  carraraQueenFormationPrefabGameObject: {fileID: 0}
-  carraraBishopFormationPrefabGameObject: {fileID: 0}
-  carraraKnightFormationPrefabGameObject: {fileID: 0}
+  carraraKingFormationPrefabGameObject: {fileID: 2547314701683967756, guid: 64d2dcaacb202554f99295aac5f0b79d, type: 3}
+  carraraQueenFormationPrefabGameObject: {fileID: 121009751022966959, guid: 6cb0dc141034b544a8fcbdffa92b980d, type: 3}
+  carraraBishopFormationPrefabGameObject: {fileID: 2547314701683967756, guid: ee9a6388b2ffb8048ae6685f6888b374, type: 3}
+  carraraKnightFormationPrefabGameObject: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
   carraraRookFormationPrefabGameObject: {fileID: 2547314701683967756, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
   carraraPawnFormationPrefabGameObject: {fileID: 2547314701683967756, guid: 81fc8c76014a6df44926f6d9a209cfbb, type: 3}
-  cursedKingFormationPrefabGameObject: {fileID: 0}
-  uncursedKingFormationPrefabGameObject: {fileID: 0}
-  cursedQueenFormationPrefabGameObject: {fileID: 0}
-  cursedBishopFormationPrefabGameObject: {fileID: 0}
-  cursedKnightFormationPrefabGameObject: {fileID: 0}
-  cursedRookFormationPrefabGameObject: {fileID: 0}
-  cursedPawnFormationPrefabGameObject: {fileID: 0}
-  carraraKingFlagbearerPrefabGameObject: {fileID: 0}
-  carraraQueenFlagbearerPrefabGameObject: {fileID: 0}
-  carraraBishopFlagbearerPrefabGameObject: {fileID: 0}
-  carraraKnightFlagbearerPrefabGameObject: {fileID: 0}
+  cursedKingFormationPrefabGameObject: {fileID: 4903800395988386136, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+  uncursedKingFormationPrefabGameObject: {fileID: 7587909241615725581, guid: 95b1c8809f9e51f48b210b6623b81e63, type: 3}
+  cursedQueenFormationPrefabGameObject: {fileID: 121009751022966959, guid: a35270cf8a1c8564ab9992712cdfec48, type: 3}
+  cursedBishopFormationPrefabGameObject: {fileID: 1071688989540379779, guid: a1cb942fe677ded4fb76afe545724cf2, type: 3}
+  cursedKnightFormationPrefabGameObject: {fileID: 6757793543741109600, guid: f5800bfbfee5eb64daaf652de73c93e3, type: 3}
+  cursedRookFormationPrefabGameObject: {fileID: 1146967737301966780, guid: 1e4c63cd98bc5254bb4b305c50f73b16, type: 3}
+  cursedPawnFormationPrefabGameObject: {fileID: 7863333484300795, guid: 54da6dab9761cd245972333e8b4c165b, type: 3}
+  carraraKingFlagbearerPrefabGameObject: {fileID: 2547314701683967756, guid: 64d2dcaacb202554f99295aac5f0b79d, type: 3}
+  carraraQueenFlagbearerPrefabGameObject: {fileID: 121009751022966959, guid: 6cb0dc141034b544a8fcbdffa92b980d, type: 3}
+  carraraBishopFlagbearerPrefabGameObject: {fileID: 2547314701683967756, guid: cfd97e8a2fd0be64a85ec4dba2770d88, type: 3}
+  carraraKnightFlagbearerPrefabGameObject: {fileID: 4110468621879732037, guid: d5a5f5723a3e91141a364fa917cac194, type: 3}
   carraraRookFlagbearerPrefabGameObject: {fileID: 2547314701683967756, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
   carraraPawnFlagbearerPrefabGameObject: {fileID: 2547314701683967756, guid: dbbee4db5f572a84382d6ead31565ece, type: 3}
-  cursedKingFlagbearerPrefabGameObject: {fileID: 0}
-  uncursedKingFlagbearerPrefabGameObject: {fileID: 0}
-  cursedQueenFlagbearerPrefabGameObject: {fileID: 0}
-  cursedBishopFlagbearerPrefabGameObject: {fileID: 0}
-  cursedKnightFlagbearerPrefabGameObject: {fileID: 0}
-  cursedRookFlagbearerPrefabGameObject: {fileID: 0}
-  cursedPawnFlagbearerPrefabGameObject: {fileID: 0}
+  cursedKingFlagbearerPrefabGameObject: {fileID: 4903800395988386136, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
+  uncursedKingFlagbearerPrefabGameObject: {fileID: 7587909241615725581, guid: 95b1c8809f9e51f48b210b6623b81e63, type: 3}
+  cursedQueenFlagbearerPrefabGameObject: {fileID: 121009751022966959, guid: a35270cf8a1c8564ab9992712cdfec48, type: 3}
+  cursedBishopFlagbearerPrefabGameObject: {fileID: 1071688989540379779, guid: 4fced640c296fe34abfc73bd4b1b83a3, type: 3}
+  cursedKnightFlagbearerPrefabGameObject: {fileID: 6757793543741109600, guid: 11ad91f05d9ae3843ba5c2b77df5258d, type: 3}
+  cursedRookFlagbearerPrefabGameObject: {fileID: 1146967737301966780, guid: 04626c0226dd31c42a98bbcb16ae3e55, type: 3}
+  cursedPawnFlagbearerPrefabGameObject: {fileID: 7863333484300795, guid: e2c491d3ab9a1354083ecee0448ee29c, type: 3}
 --- !u!4 &1961384568
 Transform:
   m_ObjectHideFlags: 0

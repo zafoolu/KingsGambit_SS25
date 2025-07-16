@@ -15,9 +15,13 @@ MonoBehaviour:
   unitType: 5
   unitName: Carrara Rook
   ragdollPrefab: {fileID: 0}
-  progressMax: 30
+  progressMax: 20
   sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
-  spawnCostResourceAmountArray: []
+  spawnCostResourceAmountArray:
+  - resourceType: 2
+    amount: 400
+  - resourceType: 4
+    amount: 15
   formationPrefab: {fileID: 7874505460035524181, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
   flagbearerPrefab: {fileID: 7874505460035524181, guid: 28d9880ce30cd274da90b36f6a977c49, type: 3}
   formationAmount: 1
