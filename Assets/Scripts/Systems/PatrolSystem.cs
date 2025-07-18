@@ -35,10 +35,10 @@ public partial struct PatrolSystem : ISystem
             }
             
             float3 currentPos = transform.ValueRO.Position;
-            float3 targetPos = patrol.ValueRO.isMovingToB ? patrol.ValueRO.pointB : patrol.ValueRO.pointA;
+            float3 targetPos = GetTargetPosition(patrol.ValueRO);
             
             // Debug-Ausgabe der Positionen
-            UnityEngine.Debug.Log($"Patrol Debug - Current: {currentPos}, Target: {targetPos}, PointA: {patrol.ValueRO.pointA}, PointB: {patrol.ValueRO.pointB}, MovingToB: {patrol.ValueRO.isMovingToB}");
+            UnityEngine.Debug.Log($"Patrol Debug - Current: {currentPos}, Target: {targetPos}, TargetIndex: {patrol.ValueRO.currentTargetIndex}");
             
             // Überprüfe auf ungültige Zielposition
             if (math.all(targetPos == float3.zero))
@@ -69,16 +69,24 @@ public partial struct PatrolSystem : ISystem
                 
                 if (patrol.ValueRO.oneWayOnly)
                 {
-                    // One-Way: Stoppe hier
-                    patrol.ValueRW.hasReachedDestination = true;
+                    // One-Way: Prüfe ob wir am letzten Punkt (D = Index 3) angekommen sind
+                    if (patrol.ValueRO.currentTargetIndex == 3)
+                    {
+                        patrol.ValueRW.hasReachedDestination = true;
+                    }
+                    else
+                    {
+                        // Gehe zum nächsten Punkt
+                        patrol.ValueRW.currentTargetIndex = patrol.ValueRO.currentTargetIndex + 1;
+                    }
                 }
                 else
                 {
-                    // Normal Patrol: Wechsle Richtung
-                    patrol.ValueRW.isMovingToB = !patrol.ValueRO.isMovingToB;
+                    // Normal Patrol: Gehe zum nächsten Punkt im Kreis (A->B->C->D->A)
+                    patrol.ValueRW.currentTargetIndex = (patrol.ValueRO.currentTargetIndex + 1) % 4;
                     
                     // Drehe zur neuen Richtung
-                    float3 newTargetPos = patrol.ValueRO.isMovingToB ? patrol.ValueRO.pointB : patrol.ValueRO.pointA;
+                    float3 newTargetPos = GetTargetPosition(patrol.ValueRO);
                     float3 newDirection = math.normalize(newTargetPos - targetPos);
                     if (math.lengthsq(newDirection) > 0.001f)
                     {
@@ -97,6 +105,18 @@ public partial struct PatrolSystem : ISystem
                     transform.ValueRW.Rotation = quaternion.LookRotationSafe(direction, math.up());
                 }
             }
+        }
+    }
+    
+    private static float3 GetTargetPosition(PatrolData patrol)
+    {
+        switch (patrol.currentTargetIndex)
+        {
+            case 0: return patrol.pointA;
+            case 1: return patrol.pointB;
+            case 2: return patrol.pointC;
+            case 3: return patrol.pointD;
+            default: return patrol.pointA; // Fallback
         }
     }
 }
