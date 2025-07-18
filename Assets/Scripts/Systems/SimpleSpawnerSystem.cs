@@ -42,47 +42,87 @@ partial struct SimpleSpawnerSystem : ISystem {
                 
                 // Debug Output (nur im Editor)
                 #if UNITY_EDITOR 
-                               if (hasValidTarget) {
-                    Debug.Log($"Spawning FlagBearer with VALID target: {targetPos.x}, {targetPos.y}, {targetPos.z}");
+                if (hasValidTarget) {
+                    Debug.Log($"Spawning Formation with VALID target: {targetPos.x}, {targetPos.y}, {targetPos.z}");
                 } else {
-                    Debug.LogWarning("Spawning FlagBearer with INVALID target - all coordinates are near zero!");
+                    Debug.LogWarning("Spawning Formation with INVALID target - all coordinates are near zero!");
                     Debug.Log($"Target was: {targetPos.x}, {targetPos.y}, {targetPos.z}");
                 }
                 #endif
                 
-                // Spawne die Entities
-                for (int i = 0; i < spawner.ValueRO.spawnAmount; i++) {
-                    Entity newEntity = entityCommandBuffer.Instantiate(spawner.ValueRO.prefabEntity);
+                // Spawne Formationen
+                for (int formationIndex = 0; formationIndex < spawner.ValueRO.spawnAmount; formationIndex++) {
                     
-                    // Zufällige Position um den Spawner
-                    Unity.Mathematics.Random random = new Unity.Mathematics.Random((uint)(i + 1 + SystemAPI.Time.ElapsedTime * 1000));
+                    // Zufällige Position um den Spawner für diese Formation
+                    Unity.Mathematics.Random random = new Unity.Mathematics.Random((uint)(formationIndex + 1 + SystemAPI.Time.ElapsedTime * 1000));
                     float3 randomPos = new float3(
                         random.NextFloat(-spawner.ValueRO.randomOffset.x, spawner.ValueRO.randomOffset.x),
                         random.NextFloat(-spawner.ValueRO.randomOffset.y, spawner.ValueRO.randomOffset.y),
                         random.NextFloat(-spawner.ValueRO.randomOffset.z, spawner.ValueRO.randomOffset.z)
                     );
                     
-                    float3 spawnPos = transform.ValueRO.Position + randomPos;
-                    entityCommandBuffer.SetComponent(newEntity, LocalTransform.FromPosition(spawnPos));
+                    float3 formationSpawnPos = transform.ValueRO.Position + randomPos;
+                    
+                    // 1. Erstelle FlagBearer
+                    Entity flagBearerEntity = entityCommandBuffer.Instantiate(spawner.ValueRO.prefabEntity);
+                    entityCommandBuffer.SetComponent(flagBearerEntity, LocalTransform.FromPosition(formationSpawnPos));
                     
                     // Entferne UnitMover und SetupUnitMoverDefaultPosition Komponenten falls vorhanden
-                    entityCommandBuffer.RemoveComponent<UnitMover>(newEntity);
-                    entityCommandBuffer.RemoveComponent<SetupUnitMoverDefaultPosition>(newEntity);
+                    entityCommandBuffer.RemoveComponent<UnitMover>(flagBearerEntity);
+                    entityCommandBuffer.RemoveComponent<SetupUnitMoverDefaultPosition>(flagBearerEntity);
                     
                     // Füge FlagBearer Komponente hinzu
-                    entityCommandBuffer.AddComponent(newEntity, new FlagBearer {
+                    entityCommandBuffer.AddComponent(flagBearerEntity, new FlagBearer {
                         formationWidth = 3,
                         formationHeight = 3,
                         unitSpacing = 2f,
                         formationDistance = 3f,
                         moveSpeed = spawner.ValueRO.moveSpeed,
                         rotationSpeed = 10f,
-                        targetPosition = hasValidTarget ? targetPos : spawnPos,
+                        targetPosition = hasValidTarget ? targetPos : formationSpawnPos,
                         isMoving = hasValidTarget
                     });
                     
+                    // 2. Erstelle FormationFollower Units (8 Units in 3x3 Formation, ohne die Mitte)
+                    int followerCount = 8; // 3x3 - 1 (FlagBearer in der Mitte)
+                    int formationWidth = 3;
+                    
+                    for (int i = 0; i < followerCount; i++) {
+                        Entity followerEntity = entityCommandBuffer.Instantiate(spawner.ValueRO.prefabEntity);
+                        
+                        // Berechne Formation Position (überspringe die Mitte für FlagBearer)
+                        int adjustedIndex = i >= 4 ? i + 1 : i; // Überspringe Index 4 (Mitte)
+                        int column = adjustedIndex % formationWidth;
+                        int row = adjustedIndex / formationWidth;
+                        int2 formationPos = new int2(column, row);
+                        
+                        // Setze initiale Position leicht versetzt
+                        float3 followerSpawnPos = formationSpawnPos + new float3(
+                            (column - 1) * 2f, // -1 um zu zentrieren
+                            0,
+                            (row - 1) * 2f
+                        );
+                        
+                        entityCommandBuffer.SetComponent(followerEntity, LocalTransform.FromPosition(followerSpawnPos));
+                        
+                        // Entferne UnitMover und SetupUnitMoverDefaultPosition Komponenten
+                        entityCommandBuffer.RemoveComponent<UnitMover>(followerEntity);
+                        entityCommandBuffer.RemoveComponent<SetupUnitMoverDefaultPosition>(followerEntity);
+                        
+                        // Füge FormationFollower Komponente hinzu
+                        entityCommandBuffer.AddComponent(followerEntity, new FormationFollower {
+                            flagBearerEntity = flagBearerEntity,
+                            formationPosition = formationPos,
+                            targetPosition = float3.zero,
+                            moveSpeed = spawner.ValueRO.moveSpeed,
+                            rotationSpeed = 10f,
+                            isMoving = false,
+                            shouldResetToFormation = false
+                        });
+                    }
+                    
                     #if UNITY_EDITOR
-                    Debug.Log($"Added FlagBearer component - Target: {(hasValidTarget ? targetPos : spawnPos)}");
+                    Debug.Log($"Created Formation: 1 FlagBearer + {followerCount} Followers - Target: {(hasValidTarget ? targetPos : formationSpawnPos)}");
                     #endif
                 }
 
