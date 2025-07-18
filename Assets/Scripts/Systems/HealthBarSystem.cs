@@ -91,6 +91,15 @@ public partial struct HealthBarJob : IJobEntity {
 
 
     public void Execute(in HealthBar healthBar, Entity entity) {
+        // Prüfe ob die referenzierten Entities noch existieren
+        if (!localTransformComponentLookup.HasComponent(healthBar.healthEntity) ||
+            !healthComponentLookup.HasComponent(healthBar.healthEntity) ||
+            !postTransformMatrixComponentLookup.HasComponent(healthBar.barVisualEntity))
+        {
+            // Eine der referenzierten Entities existiert nicht mehr, überspringe diese HealthBar
+            return;
+        }
+
         RefRW<LocalTransform> localTransform = localTransformComponentLookup.GetRefRW(entity);
         LocalTransform parentLocalTransform = localTransformComponentLookup[healthBar.healthEntity];
         
