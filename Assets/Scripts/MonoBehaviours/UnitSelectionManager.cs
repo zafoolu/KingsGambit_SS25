@@ -16,6 +16,13 @@ public class UnitSelectionManager : MonoBehaviour {
     public event EventHandler OnSelectionAreaStart;
     public event EventHandler OnSelectionAreaEnd;
     public event EventHandler OnSelectedEntitiesChanged;
+    // Neues Event für Portrait-Updates
+    public event EventHandler<OnSelectedFlagbearerChangedEventArgs> OnSelectedFlagbearerChanged;
+
+    public class OnSelectedFlagbearerChangedEventArgs : EventArgs {
+        public Entity selectedFlagbearer;
+        public UnitTypeSO unitTypeSO;
+    }
 
 
     private Vector2 selectionStartMousePosition;
@@ -295,4 +302,36 @@ public class UnitSelectionManager : MonoBehaviour {
         }
     }
 
+    // Neue Methode um den ausgewählten Flagbearer zu bekommen
+    public Entity GetSelectedFlagbearer() {
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        EntityQuery entityQuery = new EntityQueryBuilder(Allocator.Temp)
+            .WithAll<Selected, FlagBearer>()
+            .Build(entityManager);
+
+        NativeArray<Entity> selectedFlagbearers = entityQuery.ToEntityArray(Allocator.Temp);
+        
+        if (selectedFlagbearers.Length > 0) {
+            Entity flagbearer = selectedFlagbearers[0];
+            selectedFlagbearers.Dispose();
+            return flagbearer;
+        }
+        
+        selectedFlagbearers.Dispose();
+        return Entity.Null;
+    }
+
+    // Neue Methode um UnitTypeSO vom Flagbearer zu bekommen
+    public UnitTypeSO GetSelectedFlagbearerUnitType() {
+        Entity selectedFlagbearer = GetSelectedFlagbearer();
+        if (selectedFlagbearer == Entity.Null) return null;
+
+        EntityManager entityManager = World.DefaultGameObjectInjectionWorld.EntityManager;
+        if (entityManager.HasComponent<UnitTypeHolder>(selectedFlagbearer)) {
+            UnitTypeHolder unitTypeHolder = entityManager.GetComponentData<UnitTypeHolder>(selectedFlagbearer);
+            return GameAssets.Instance.unitTypeListSO.GetUnitTypeSO(unitTypeHolder.unitType);
+        }
+        
+        return null;
+    }
 }

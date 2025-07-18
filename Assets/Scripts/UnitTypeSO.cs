@@ -28,6 +28,8 @@ public class UnitTypeSO : ScriptableObject {
     public Transform ragdollPrefab;
     public float progressMax;
     public Sprite sprite;
+    [Tooltip("Portrait für die ausgewählte Unit UI")]
+    public Sprite portrait; // Neues Portrait-Feld hinzugefügt
     public ResourceAmount[] spawnCostResourceAmountArray;
     public Transform formationPrefab;
     public Transform flagbearerPrefab;

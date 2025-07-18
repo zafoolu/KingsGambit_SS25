@@ -17,6 +17,7 @@ MonoBehaviour:
   ragdollPrefab: {fileID: 0}
   progressMax: 0
   sprite: {fileID: 21300000, guid: a0e35f6b808bb7447826cc6c69ffe448, type: 3}
+  portrait: {fileID: 21300000, guid: a08ada584c8dcef41b6e0bb4c863521e, type: 3}
   spawnCostResourceAmountArray: []
   formationPrefab: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
   flagbearerPrefab: {fileID: 726189761907429377, guid: e26479d0fae63214b876e9b90ffbb1ec, type: 3}
